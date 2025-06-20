@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/06/20 14:56:08 by dximenes         ###   ########.fr        #
+#    Updated: 2025/06/20 18:50:37 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,7 +75,7 @@ MAKE		= make --no-print-directory
 #                                  Commands                                    #
 # **************************************************************************** #
 
-all: verify_libft verify_gnl verify_mlx $(LIBFT) $(GNL) $(MLX) $(EXEC)
+all: verify_libft $(LIBFT) verify_gnl $(GNL) verify_mlx $(MLX) $(EXEC)
 	@printf "\n$(C_GREEN)Program is ready :D$(C_STD)\n"
 
 $(LIBFT):
