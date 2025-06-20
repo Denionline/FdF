@@ -1,27 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   FdF.h                                              :+:      :+:    :+:   */
+/*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/18 22:55:50 by dximenes         ###   ########.fr       */
+/*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
+/*   Updated: 2025/06/20 18:34:51 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_FDF
-# define FT_FDF
+#include "FdF.h"
 
-typedef struct s_window
+void render(t_mlx * mlx)
 {
-	int	viewport_y;
-	int	viewport_x;
-	int	square_min_y;
-	int	square_max_y;
-	int	square_min_x;
-	int	square_max_x;
-}	t_window;
+	int x;
+	int y;
 
-
-#endif
+	y = 0;
+	while (y < mlx->map->size_y)
+	{
+		x = 0;
+		while (x < mlx->map->size_x)
+		{
+			if (mlx->map->coordinates[y][x] != 0)
+				mlx_pixel_put(
+					mlx->connection,
+					mlx->window->content,
+					x,
+					y,
+					0xff0000);
+			x++;
+		}
+		y++;
+	}
+	mlx_loop(mlx->connection);
+}

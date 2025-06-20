@@ -6,45 +6,37 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/18 23:03:23 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/06/20 18:39:52 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx_linux/mlx.h"
 #include "FdF.h"
 
-int	main(void)
+int main(int argc, char * argv[])
 {
-	t_window	window;
+	t_mlx * mlx;
 
-	window.viewport_x = 1000;
-	window.viewport_y = 800;
-	void	*mlx_connection;
-	void	*mlx_window;
-	
-	mlx_connection = mlx_init();
-	mlx_window = mlx_new_window(
-		mlx_connection,
-		window.viewport_x,
-		window.viewport_y,
-		"New window"
-	);
-	window.square_min_x = 0;
-	window.square_max_x = window.viewport_x - 1;
-	window.square_min_y = 0;
-	window.square_max_y = window.viewport_y - 1;
-	for (int x = window.square_min_x; x <= window.square_max_x; x++) {
-		for (int y = window.square_min_y; y <= window.square_max_y; y++) {
-			if ((x == window.square_min_x || y == window.square_min_y) || (x == window.square_max_x || y == window.square_max_y)) {
-				mlx_pixel_put(
-					mlx_connection,
-					mlx_window,
-					x,
-					y,
-					0xff000ff
-				);
-			}
-		}
-	}
-	mlx_loop(mlx_connection);
+	if (argc != 2)
+		return (0);
+	mlx = malloc(sizeof(t_mlx));
+	if (!mlx)
+		return (0);
+	mlx->window = malloc(sizeof(t_window));
+	if (!mlx->window)
+		return (0);
+	mlx->map = malloc(sizeof(t_map));
+	if (!mlx->map)
+		return (0);
+	mlx->window->vw = 1000;
+	mlx->window->vh = 800;
+	mlx->connection = mlx_init();
+	mlx->window->content = mlx_new_window(
+		mlx->connection,
+		mlx->window->vw,
+		mlx->window->vh,
+		"New window");
+	mlx->map->path = ft_strdup(argv[1]);
+	load_map(&mlx->map);
+	render(mlx);
+	return (free(mlx->window), free(mlx), 0);
 }

@@ -8,14 +8,7 @@
   "C_Cpp_Runner.useMsvc": false,
   "C_Cpp_Runner.warnings": [
     "-Wall",
-    "-Wextra",
-    "-Wpedantic",
-    "-Wshadow",
-    "-Wformat=2",
-    "-Wcast-align",
-    "-Wconversion",
-    "-Wsign-conversion",
-    "-Wnull-dereference"
+    "-Wextra"
   ],
   "C_Cpp_Runner.msvcWarnings": [
     "/W4",
@@ -35,9 +28,22 @@
   ],
   "C_Cpp_Runner.enableWarnings": true,
   "C_Cpp_Runner.warningsAsError": false,
-  "C_Cpp_Runner.compilerArgs": [],
-  "C_Cpp_Runner.linkerArgs": [],
-  "C_Cpp_Runner.includePaths": [],
+  "C_Cpp_Runner.compilerArgs": [
+    "-Iinclude",
+    "-Iinclude/libft/include",
+    "-Iinclude/get_next_line/include",
+    "-Iinclude/minilibx-linux"
+  ],
+  "C_Cpp_Runner.linkerArgs": [
+    "${workspaceFolder}/include/libft/libft.a",
+    "${workspaceFolder}/include/get_next_line/get_next_line.a",
+    "${workspaceFolder}/include/minilibx-linux/libmlx_Linux.a"
+  ],
+  "C_Cpp_Runner.includePaths": [
+    "${workspaceFolder}/include/libft",
+    "${workspaceFolder}/include/get_next_line",
+    "${workspaceFolder}/include/minilibx-linux"
+  ],
   "C_Cpp_Runner.includeSearch": [
     "*",
     "**/*"
@@ -55,8 +61,5 @@
   "C_Cpp_Runner.useLeakSanitizer": false,
   "C_Cpp_Runner.showCompilationTime": false,
   "C_Cpp_Runner.useLinkTimeOptimization": false,
-  "C_Cpp_Runner.msvcSecureNoWarnings": false,
-  "files.associations": {
-    "mlx.h": "c"
-  }
+  "C_Cpp_Runner.msvcSecureNoWarnings": false
 }
