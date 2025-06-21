@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/20 18:33:52 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/06/21 16:41:01 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ static int ** get_values(t_map * map, char ** values)
 	map->coordinates[map->size_y] = malloc(get_size(values) * sizeof(int));
 	if (!map->coordinates || !map->coordinates[map->size_y])
 		return (free(map->coordinates), free(map->coordinates[map->size_y]), NULL);
+	if (map->size_x < get_size(values))
+		map->size_x = get_size(values);
 	i = 0;
 	while (values[i])
 	{
