@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/06/20 18:50:37 by dximenes         ###   ########.fr        #
+#    Updated: 2025/06/22 21:33:14 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ $(MLX):
 	@$(MAKE) -C $(MLX_PATH)
 
 $(EXEC): $(OBJ)
-	@$(CC) $(MLXFLAGS) $(OBJ) $(LIBFT) $(GNL) $(MLX) -o $(EXEC)
+	@$(CC) $(CFLAGS) $(OBJ) $(MLXFLAGS) $(LIBFT) $(GNL) $(MLX) -o $(EXEC)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 %.o: %.c
