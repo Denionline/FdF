@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/22 20:26:00 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/06/22 22:13:13 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,18 @@
 #include "minilibx-linux/mlx.h"
 #include <stdlib.h>
 
+typedef struct s_axis
+{
+	int x;
+	int y;
+} t_axis;
+
 typedef struct s_draw
 {
-	int x0;
-	int x1;
-	int y0;
-	int y1;
+	t_axis dot;
+	t_axis line;
+	t_axis off;
+	int	color;
 	int pad;
 } t_draw;
 
