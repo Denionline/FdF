@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/24 13:10:05 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/06/24 22:53:36 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include "get_next_line/include/get_next_line.h"
 #include "minilibx-linux/mlx.h"
 #include <stdlib.h>
+
+# define abs(value) ((value) < 0 ? -(value) : (value))
 
 typedef struct s_axis
 {
