@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/21 16:38:45 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:12:36 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ int main(int argc, char * argv[])
 	mlx->map = malloc(sizeof(t_map));
 	if (!mlx->map)
 		return (0);
-	mlx->window->vw = 1000;
-	mlx->window->vh = 800;
+	mlx->window->size.x = 1000;
+	mlx->window->size.y = 800;
 	mlx->connection = mlx_init();
 	mlx->window->content = mlx_new_window(
 		mlx->connection,
-		mlx->window->vw,
-		mlx->window->vh,
+		mlx->window->size.x,
+		mlx->window->size.y,
 		"New window");
 	mlx->map->path = ft_strdup(argv[1]);
 	load_map(&mlx->map);

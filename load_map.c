@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/21 16:41:01 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:12:04 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,20 +45,20 @@ static int ** get_values(t_map * map, char ** values)
 {
 	int i;
 
-	map->coordinates = realloc_coordinates(map->coordinates, map->size_y);
-	map->coordinates[map->size_y] = malloc(get_size(values) * sizeof(int));
-	if (!map->coordinates || !map->coordinates[map->size_y])
-		return (free(map->coordinates), free(map->coordinates[map->size_y]), NULL);
-	if (map->size_x < get_size(values))
-		map->size_x = get_size(values);
+	map->coordinates = realloc_coordinates(map->coordinates, map->size.y);
+	map->coordinates[map->size.y] = malloc(get_size(values) * sizeof(int));
+	if (!map->coordinates || !map->coordinates[map->size.y])
+		return (free(map->coordinates), free(map->coordinates[map->size.y]), NULL);
+	if (map->size.x < get_size(values))
+		map->size.x = get_size(values);
 	i = 0;
 	while (values[i])
 	{
-		map->coordinates[map->size_y][i] = ft_atoi(values[i]);
+		map->coordinates[map->size.y][i] = ft_atoi(values[i]);
 		free(values[i++]);
 	}
 	free(values);
-	map->size_y += 1;
+	map->size.y += 1;
 	return (map->coordinates);
 }
 
@@ -68,8 +68,8 @@ void load_map(t_map ** map)
 	int	   fd;
 
 	fd = open((*map)->path, O_RDONLY);
-	(*map)->size_x = 0;
-	(*map)->size_y = 0;
+	(*map)->size.x = 0;
+	(*map)->size.y = 0;
 	row = get_next_line(fd);
 	while (row)
 	{
