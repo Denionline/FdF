@@ -6,38 +6,53 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/20 18:49:41 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/06/24 13:10:05 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_FDF
 #define FT_FDF
 
-#include "minilibx-linux/mlx.h"
+#include "ft_printf/include/ft_printf.h"
+#include "ft_printf/include/libft/include/libft.h"
 #include "get_next_line/include/get_next_line.h"
-#include "libft/include/libft.h"
+#include "minilibx-linux/mlx.h"
 #include <stdlib.h>
+
+typedef struct s_axis
+{
+	int x;
+	int y;
+} t_axis;
+
+typedef struct s_draw
+{
+	t_axis dot;
+	t_axis line;
+	t_axis off;
+	int	   color;
+	int	   pad;
+} t_draw;
 
 typedef struct s_map
 {
 	int ** coordinates;
 	char * path;
-	int	   size_x;
-	int	   size_y;
+	t_axis size;
 } t_map;
 
 typedef struct s_window
 {
 	void * content;
-	int	   vh;
-	int	   vw;
+	t_axis size;
 } t_window;
 
 typedef struct s_mlx
 {
 	void *	   connection;
-	t_window * window;
 	t_map *	   map;
+	t_window * window;
+	t_draw *   draw;
 } t_mlx;
 
 void render(t_mlx * mlx);

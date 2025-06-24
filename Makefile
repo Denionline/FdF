@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/06/22 21:33:14 by dximenes         ###   ########.fr        #
+#    Updated: 2025/06/24 15:17:47 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,18 +28,20 @@ C_WHITE = \033[0;97m
 #                                    Names                                     #
 # **************************************************************************** #
 
-EXEC		= FdF
-LIBFT		= $(LIBFT_PATH)libft.a
-GNL			= $(GNL_PATH)get_next_line.a
-MLX			= $(MLX_PATH)libmlx.a
+EXEC			= FdF
+FTPRINTF		= $(FTPRINTF_PATH)libftprintf.a
+LIBFT			= $(LIBFT_PATH)libft.a
+GNL				= $(GNL_PATH)get_next_line.a
+MLX				= $(MLX_PATH)libmlx.a
 
 # **************************************************************************** #
 #                                    Path's                                    #
 # **************************************************************************** #
 
-INC		= include
+INC				= include
 
-LIBFT_PATH		= $(INC)/libft/
+FTPRINTF_PATH	= $(INC)/ft_printf/
+LIBFT_PATH		= $(FTPRINTF_PATH)$(INC)/libft/
 GNL_PATH		= $(INC)/get_next_line/
 MLX_PATH		= $(INC)/minilibx-linux/
 
@@ -47,9 +49,9 @@ MLX_PATH		= $(INC)/minilibx-linux/
 #                                    Files                                     #
 # **************************************************************************** #
 
-FILES	+= main
-FILES	+= render
-FILES	+= load_map
+FILES			+= main
+FILES			+= render
+FILES			+= load_map
 
 SRC	= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJ	= $(addprefix ./, $(addsuffix .o, $(FILES)))
@@ -58,9 +60,9 @@ OBJ	= $(addprefix ./, $(addsuffix .o, $(FILES)))
 #                                    Git                                       #
 # **************************************************************************** #
 
-LIBFT_URL	= https://github.com/Denionline/Libft.git
-GNL_URL		= https://github.com/Denionline/get_next_line.git
-MLX_URL		= https://github.com/42paris/minilibx-linux.git
+FTPRINTF_URL	= https://github.com/Denionline/ft_printf.git
+GNL_URL			= https://github.com/Denionline/get_next_line.git
+MLX_URL			= https://github.com/42paris/minilibx-linux.git
 
 # **************************************************************************** #
 #                                  Compiler                                    #
@@ -75,11 +77,11 @@ MAKE		= make --no-print-directory
 #                                  Commands                                    #
 # **************************************************************************** #
 
-all: verify_libft $(LIBFT) verify_gnl $(GNL) verify_mlx $(MLX) $(EXEC)
+all: verify_ftprintf $(FTPRINTF) verify_gnl $(GNL) verify_mlx $(MLX) $(EXEC)
 	@printf "\n$(C_GREEN)Program is ready :D$(C_STD)\n"
 
-$(LIBFT):
-	@$(MAKE) -C $(LIBFT_PATH)
+$(FTPRINTF):
+	@$(MAKE) -C $(FTPRINTF_PATH)
 
 $(GNL):
 	@$(MAKE) -C $(GNL_PATH)
@@ -88,7 +90,7 @@ $(MLX):
 	@$(MAKE) -C $(MLX_PATH)
 
 $(EXEC): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) $(MLXFLAGS) $(LIBFT) $(GNL) $(MLX) -o $(EXEC)
+	@$(CC) $(CFLAGS) $(OBJ) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 %.o: %.c
@@ -109,15 +111,15 @@ v:
 	@valgrind ./FdF maps/test_maps/42.fdf
 
 # libft processes
-verify_libft:
-	@if test ! -d "$(LIBFT_PATH)"; then $(MAKE) get_libft; \
-		else printf "libft: $(C_GREEN)✅$(C_STD)\n"; fi
+verify_ftprintf:
+	@if test ! -d "$(FTPRINTF_PATH)"; then $(MAKE) get_ftprintf; \
+		else printf "ft_printf: $(C_GREEN)✅$(C_STD)\n"; fi
 	@$(MAKE) update_modules
 
-get_libft:
-	@echo "Cloning Libft"
-	@git clone $(LIBFT_URL) $(LIBFT_PATH)
-	@echo "Libft clone successfully downloaded"
+get_ftprintf:
+	@echo "Cloning ftprintf"
+	@git clone $(FTPRINTF_URL) $(FTPRINTF_PATH)
+	@echo "ft_printf clone successfully downloaded"
 
 # get_next_line processes
 verify_gnl:
