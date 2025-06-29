@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/24 22:34:15 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/06/29 12:15:57 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,18 +105,18 @@ void bresenham(void * conn, void * win,
 void render(t_mlx * mlx)
 {
 	int pad = 20;
-	int offx = mlx->window->vw / 3;
-	int offy = mlx->window->vh / 3;
+	int offx = mlx->window->size.x / 3;
+	int offy = mlx->window->size.y / 3;
 	int x, y;
 	int sx0, sy0, sx1, sy1;
 	int z0, z1;
 	int color;
 
 	y = 0;
-	while (y < mlx->map->size_y)
+	while (y < mlx->map->size.y)
 	{
 		x = 0;
-		while (x < mlx->map->size_x)
+		while (x < mlx->map->size.x)
 		{
 			z0 = mlx->map->coordinates[y][x];
 			color = (z0 == 0 ? 0x00FF00 : 0x0000FF);
@@ -125,7 +125,7 @@ void render(t_mlx * mlx)
 			projeta(x, y, z0, &sx0, &sy0, pad, offx, offy);
 
 			// vizinho à direita
-			if (x + 1 < mlx->map->size_x)
+			if (x + 1 < mlx->map->size.x)
 			{
 				z1 = mlx->map->coordinates[y][x + 1];
 				projeta(x + 1, y, z1, &sx1, &sy1, pad, offx, offy);
@@ -134,7 +134,7 @@ void render(t_mlx * mlx)
 						  sx0, sy0, sx1, sy1, 0xFF0000);
 			}
 			// vizinho abaixo
-			if (y + 1 < mlx->map->size_y)
+			if (y + 1 < mlx->map->size.y)
 			{
 				z1 = mlx->map->coordinates[y + 1][x];
 				projeta(x, y + 1, z1, &sx1, &sy1, pad, offx, offy);
