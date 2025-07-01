@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/24 22:53:36 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/01 11:33:31 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ typedef struct s_axis
 
 typedef struct s_draw
 {
-	t_axis dot;
-	t_axis line;
+	t_axis _;
+	t_axis s0;
+	t_axis s1;
 	t_axis off;
 	int	   color;
 	int	   pad;
@@ -45,7 +46,7 @@ typedef struct s_map
 
 typedef struct s_window
 {
-	void * content;
+	void * _;
 	t_axis size;
 } t_window;
 
@@ -57,7 +58,13 @@ typedef struct s_mlx
 	t_draw *   draw;
 } t_mlx;
 
-void render(t_mlx * mlx);
+// load_map.c
 void load_map(t_map ** map);
+
+// render.c
+void render(t_mlx * mlx);
+
+// draw.c
+void draw(t_mlx * mlx, t_draw *dw);
 
 #endif

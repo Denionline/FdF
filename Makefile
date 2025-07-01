@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/06/24 15:17:47 by dximenes         ###   ########.fr        #
+#    Updated: 2025/06/29 14:02:48 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,9 @@ MLX_PATH		= $(INC)/minilibx-linux/
 # **************************************************************************** #
 
 FILES			+= main
-FILES			+= render
 FILES			+= load_map
+FILES			+= render
+FILES			+= draw
 
 SRC	= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJ	= $(addprefix ./, $(addsuffix .o, $(FILES)))

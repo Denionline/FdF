@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/29 12:21:20 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/06/29 16:46:38 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(int argc, char * argv[])
 	mlx->window->size.x = 1000;
 	mlx->window->size.y = 800;
 	mlx->connection = mlx_init();
-	mlx->window->content = mlx_new_window(
+	mlx->window->_ = mlx_new_window(
 		mlx->connection,
 		mlx->window->size.x,
 		mlx->window->size.y,
