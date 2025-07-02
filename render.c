@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/01 14:21:01 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/02 16:08:53 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,25 @@
 
 void render(t_mlx * mlx)
 {
-	t_draw drw;
+	t_draw draw;
+	int	   d;
 
-	drw.pad = 20;
-	drw.off.x = mlx->window->size.x / 3;
-	drw.off.y = mlx->window->size.y / 3;
-	drw._.y = 0;
-	while (drw._.y < mlx->map->size.y)
+	ft_bzero(&draw, sizeof(draw));
+	draw.pad = 30;
+	draw._.y = 0;
+	while (draw._.y <= mlx->map->size.y * draw.pad)
 	{
-		drw._.x = 0;
-		while (drw._.x < mlx->map->size.x)
+		draw._.x = 0;
+		while (draw._.x <= mlx->map->size.x * draw.pad)
 		{
-			draw(mlx, &drw);
-			drw._.x++;
+			if (!(draw._.y % draw.pad))
+				d = 0;
+			d = mlx->map->coordinates[draw._.y / draw.pad][draw._.x / draw.pad];
+			if (!(draw._.y % draw.pad) || !(draw._.x % draw.pad))
+				mlx_pixel_put(mlx->connection, mlx->window->_, draw._.x, draw._.y, 0x00ff00);
+			draw._.x++;
 		}
-		drw._.y++;
+		draw._.y++;
 	}
 	mlx_loop(mlx->connection);
 }
