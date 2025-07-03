@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/03 11:53:17 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/03 12:13:48 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int main(int argc, char * argv[])
 		return (0);
 	init(&mlx);
 	load_map(&mlx->map, argv[1]);
+	hooks(mlx);
 	render(mlx);
 	return (free(mlx->window), free(mlx->map), free(mlx), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/03 11:39:23 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/03 12:07:49 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,12 @@ typedef struct s_draw
 	int	   pad;
 } t_draw;
 
+typedef struct s_hook
+{
+	void * mlx;
+	void * win;
+} t_hook;
+
 typedef struct s_point
 {
 	int z;
@@ -65,9 +71,12 @@ typedef struct s_mlx
 } t_mlx;
 
 // load_map.c
-void load_map(t_map ** map, char *path);
+void load_map(t_map ** map, char * path);
 
 // render.c
 void render(t_mlx * mlx);
+
+// hooks.c
+void hooks(t_mlx * mlx);
 
 #endif
