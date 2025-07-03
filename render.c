@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/02 18:24:06 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:52:27 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void render(t_mlx * mlx)
 		while (x < mlx->map->size.x)
 		{
 			z0 = mlx->map->coordinates[y][x].z;
-			// color = mlx->map->coordinates[y][x].color;
+			color = mlx->map->coordinates[y][x].color;
 			projeta(x, y, z0, &sx0, &sy0, pad, offx, offy);
 			mlx_pixel_put(
 				mlx->connection,
@@ -72,7 +72,7 @@ void render(t_mlx * mlx)
 			{
 				z1 = mlx->map->coordinates[y][x + 1].z;
 				projeta(x + 1, y, z1, &sx1, &sy1, pad, offx, offy);
-				// color = mlx->map->coordinates[y][x + 1].color;
+				color = mlx->map->coordinates[y][x + 1].color;
 				bresenham(
 					mlx->connection,
 					mlx->window->_,
@@ -86,7 +86,7 @@ void render(t_mlx * mlx)
 			{
 				z1 = mlx->map->coordinates[y + 1][x].z;
 				projeta(x, y + 1, z1, &sx1, &sy1, pad, offx, offy);
-				// color = mlx->map->coordinates[y + 1][x].color;
+				color = mlx->map->coordinates[y + 1][x].color;
 				bresenham(
 					mlx->connection,
 					mlx->window->_,
@@ -95,10 +95,10 @@ void render(t_mlx * mlx)
 					sx1,
 					sy1,
 					color);
-				x++;
 			}
-			y++;
+			x++;
 		}
-		mlx_loop(mlx->connection);
+		y++;
 	}
+	mlx_loop(mlx->connection);
 }

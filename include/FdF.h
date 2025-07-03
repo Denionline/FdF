@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/02 17:39:40 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:39:23 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,5 @@ void load_map(t_map ** map, char *path);
 
 // render.c
 void render(t_mlx * mlx);
-
-// draw.c
-void draw(t_mlx * mlx, t_draw * dw);
 
 #endif

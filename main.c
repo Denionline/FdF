@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/02 18:17:59 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/03 11:53:17 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@ static void init(t_mlx ** mlx)
 		return;
 	(*mlx)->window->size.x = 1000;
 	(*mlx)->window->size.y = 800;
+	(*mlx)->connection = mlx_init();
+	(*mlx)->window->_ = mlx_new_window(
+		(*mlx)->connection,
+		(*mlx)->window->size.x,
+		(*mlx)->window->size.y,
+		"FdF");
 }
 
 int main(int argc, char * argv[])
@@ -35,12 +41,6 @@ int main(int argc, char * argv[])
 		return (0);
 	init(&mlx);
 	load_map(&mlx->map, argv[1]);
-	mlx->connection = mlx_init();
-	mlx->window->_ = mlx_new_window(
-		mlx->connection,
-		mlx->window->size.x,
-		mlx->window->size.y,
-		"New window");
 	render(mlx);
 	return (free(mlx->window), free(mlx->map), free(mlx), 0);
 }
