@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/03 12:11:38 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/03 12:25:25 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -137,11 +137,11 @@ get_gnl:
 
 # minilibx processes
 verify_mlx:
-	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_mlx; \
+	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_head; \
 		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
 	@$(MAKE) update_modules
 
-get_mlx:
+get_head:
 	@printf "Cloning get_next_line\n"
 	@git clone $(MLX_URL) $(MLX_PATH)
 	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"

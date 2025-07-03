@@ -6,16 +6,25 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/03 12:02:00 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/03 19:03:58 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static void projeta(int x, int y, int z, int * sx, int * sy, int pad, int offx, int offy)
+static void projeta(t_head * head, int x, int y, int z, int * sx, int * sy, int pad, int offx, int offy)
 {
-	*sx = offx + x * pad;
-	*sy = offy + y * pad - z;
+	int position_y;
+	int position_x;
+	int	ang_x;
+	int	ang_y;
+
+	position_y = head->draw->position.y;
+	position_x = head->draw->position.x;
+	*sx = offx + x * pad + position_x;
+	*sy = (offy + y * pad - position_y) - z;
+	if (z > 0)
+		*sy -= head->draw->z;
 }
 
 static void bresenham(void * conn, void * win, int x0, int y0, int x1, int y1, int color)
@@ -43,53 +52,53 @@ static void bresenham(void * conn, void * win, int x0, int y0, int x1, int y1, i
 	}
 }
 
-void render(t_mlx * mlx)
+static void draw_lines(t_head * head)
 {
-	int pad = 20;
-	int offx = mlx->window->size.x / 3;
-	int offy = mlx->window->size.y / 3;
+	int pad = head->draw->pad;
+	int offx = (head->window->size.x / 2) - ((head->map->size.x * pad) / 2);
+	int offy = (head->window->size.y / 2) - ((head->map->size.y * pad) / 2);
 	int x, y;
 	int sx0, sy0, sx1, sy1;
 	int z0, z1;
 	int color;
 
 	y = 0;
-	while (y < mlx->map->size.y)
+	while (y < head->map->size.y)
 	{
 		x = 0;
-		while (x < mlx->map->size.x)
+		while (x < head->map->size.x)
 		{
-			z0 = mlx->map->coordinates[y][x].z;
-			color = mlx->map->coordinates[y][x].color;
-			projeta(x, y, z0, &sx0, &sy0, pad, offx, offy);
+			z0 = head->map->coordinates[y][x].z;
+			color = head->map->coordinates[y][x].color;
+			projeta(head, x, y, z0, &sx0, &sy0, pad, offx, offy);
 			mlx_pixel_put(
-				mlx->connection,
-				mlx->window->_,
+				head->vars.mlx,
+				head->vars.win,
 				sx0,
 				sy0,
 				color);
-			if (x + 1 < mlx->map->size.x)
+			if (x + 1 < head->map->size.x)
 			{
-				z1 = mlx->map->coordinates[y][x + 1].z;
-				projeta(x + 1, y, z1, &sx1, &sy1, pad, offx, offy);
-				color = mlx->map->coordinates[y][x + 1].color;
+				z1 = head->map->coordinates[y][x + 1].z;
+				projeta(head, x + 1, y, z1, &sx1, &sy1, pad, offx, offy);
+				color = head->map->coordinates[y][x + 1].color;
 				bresenham(
-					mlx->connection,
-					mlx->window->_,
+					head->vars.mlx,
+					head->vars.win,
 					sx0,
 					sy0,
 					sx1,
 					sy1,
 					color);
 			}
-			if (y + 1 < mlx->map->size.y)
+			if (y + 1 < head->map->size.y)
 			{
-				z1 = mlx->map->coordinates[y + 1][x].z;
-				projeta(x, y + 1, z1, &sx1, &sy1, pad, offx, offy);
-				color = mlx->map->coordinates[y + 1][x].color;
+				z1 = head->map->coordinates[y + 1][x].z;
+				projeta(head, x, y + 1, z1, &sx1, &sy1, pad, offx, offy);
+				color = head->map->coordinates[y + 1][x].color;
 				bresenham(
-					mlx->connection,
-					mlx->window->_,
+					head->vars.mlx,
+					head->vars.win,
 					sx0,
 					sy0,
 					sx1,
@@ -100,5 +109,10 @@ void render(t_mlx * mlx)
 		}
 		y++;
 	}
-	mlx_loop(mlx->connection);
+}
+
+void render(t_head * head)
+{
+	draw_lines(head);
+	mlx_loop(head->vars.mlx);
 }

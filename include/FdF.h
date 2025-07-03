@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/03 12:07:49 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:42:06 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,24 @@
 
 #define abs(value) ((value) < 0 ? -(value) : (value))
 
+#define KEY_ESC 65307
+
+#define KEY_PLUS 65451
+#define KEY_MINUS 65453
+
+#define KEY_ARROW_UP 65362
+#define KEY_ARROW_DOWN 65364
+#define KEY_ARROW_LEFT 65361
+#define KEY_ARROW_RIGHT 65363
+
+#define KEY_A 97
+#define KEY_B 98
+#define KEY_C 99
+#define KEY_D 100
+
+#define KEY_COL_LEFT 91
+#define KEY_COL_RIGHT 93
+
 typedef struct s_axis
 {
 	int x;
@@ -33,15 +51,12 @@ typedef struct s_draw
 	t_axis s0;
 	t_axis s1;
 	t_axis off;
+	t_axis position;
 	int	   color;
 	int	   pad;
+	int	   z;
+	int	   loop;
 } t_draw;
-
-typedef struct s_hook
-{
-	void * mlx;
-	void * win;
-} t_hook;
 
 typedef struct s_point
 {
@@ -58,25 +73,30 @@ typedef struct s_map
 
 typedef struct s_window
 {
-	void * _;
 	t_axis size;
 } t_window;
 
-typedef struct s_mlx
+typedef struct s_vars
 {
-	void *	   connection;
+	void * mlx;
+	void * win;
+} t_vars;
+
+typedef struct s_head
+{
+	t_vars	   vars;
 	t_map *	   map;
 	t_window * window;
 	t_draw *   draw;
-} t_mlx;
+} t_head;
 
 // load_map.c
 void load_map(t_map ** map, char * path);
 
 // render.c
-void render(t_mlx * mlx);
+void render(t_head * mlx);
 
 // hooks.c
-void hooks(t_mlx * mlx);
+void hooks(t_head * head);
 
 #endif

@@ -6,42 +6,63 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/03 12:13:48 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/03 15:50:02 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static void init(t_mlx ** mlx)
+static void init(t_head ** head)
 {
-	(*mlx) = malloc(sizeof(t_mlx));
-	if (!(*mlx))
+	(*head) = malloc(sizeof(t_head));
+	if (!(*head))
 		return;
-	(*mlx)->window = malloc(sizeof(t_window));
-	if (!(*mlx)->window)
+	(*head)->window = malloc(sizeof(t_window));
+	if (!(*head)->window)
 		return;
-	(*mlx)->map = malloc(sizeof(t_map));
-	if (!(*mlx)->map)
+	(*head)->map = malloc(sizeof(t_map));
+	if (!(*head)->map)
 		return;
-	(*mlx)->window->size.x = 1000;
-	(*mlx)->window->size.y = 800;
-	(*mlx)->connection = mlx_init();
-	(*mlx)->window->_ = mlx_new_window(
-		(*mlx)->connection,
-		(*mlx)->window->size.x,
-		(*mlx)->window->size.y,
+	(*head)->draw = malloc(sizeof(t_draw));
+	if (!(*head)->draw)
+		return;
+	(*head)->window->size.x = 1000;
+	(*head)->window->size.y = 800;
+	(*head)->vars.mlx = mlx_init();
+	(*head)->vars.win = mlx_new_window(
+		(*head)->vars.mlx,
+		(*head)->window->size.x,
+		(*head)->window->size.y,
 		"FdF");
+	(*head)->draw->pad = 20;
+	(*head)->draw->z = 0;
+	(*head)->draw->position.x = 0;
+	(*head)->draw->position.y = 0;
+	(*head)->draw->loop = TRUE;
+}
+
+static void look_map(t_point ** coor, int size_y, int size_x)
+{
+	for (int y = 0; y < size_y; y++)
+	{
+		for (int x = 0; x < size_x; x++)
+		{
+			ft_printf("%3d", coor[y][x].z);
+		}
+		ft_printf("\n");
+	}
 }
 
 int main(int argc, char * argv[])
 {
-	t_mlx * mlx;
+	t_head * head;
 
 	if (argc != 2)
 		return (0);
-	init(&mlx);
-	load_map(&mlx->map, argv[1]);
-	hooks(mlx);
-	render(mlx);
-	return (free(mlx->window), free(mlx->map), free(mlx), 0);
+	init(&head);
+	load_map(&head->map, argv[1]);
+	hooks(head);
+	look_map(head->map->coordinates, head->map->size.y, head->map->size.x);
+	render(head);
+	return (free(head->window), free(head->map), free(head), 0);
 }

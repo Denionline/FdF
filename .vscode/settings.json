@@ -67,6 +67,7 @@
     "libft.h": "c",
     "get_next_line.h": "c",
     "format": "c",
-    "sstream": "c"
+    "sstream": "c",
+    "mlx.h": "c"
   }
 }
