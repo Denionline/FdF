@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/24 13:12:04 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/02 18:26:16 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ static int get_size(char ** values)
 	return (len);
 }
 
-static int ** realloc_coordinates(int ** oldarray, int newlen)
+static t_point ** realloc_coordinates(t_point ** oldarray, int newlen)
 {
-	int ** newarray;
-	int	   i;
+	t_point ** newarray;
+	int		   i;
 
 	newarray = malloc((newlen + 1) * sizeof(int *));
 	if (!newarray)
@@ -41,12 +41,29 @@ static int ** realloc_coordinates(int ** oldarray, int newlen)
 	return (newarray);
 }
 
-static int ** get_values(t_map * map, char ** values)
+static t_point get_point(char * value)
+{
+	t_point point;
+	char ** values;
+
+	if (ft_strchr(value, ','))
+	{
+		values = ft_split(value, ',');
+		point.z = ft_atoi(values[0]);
+		point.color = ft_basetoi(values[1]+2, "0123456789ABCDEF");
+		return (free(values[0]), free(values[1]), free(values), point);
+	}
+	point.color = 0xFFFFFF;
+	point.z = ft_atoi(value);
+	return (point);
+}
+
+static t_point ** get_values(t_map * map, char ** values)
 {
 	int i;
 
 	map->coordinates = realloc_coordinates(map->coordinates, map->size.y);
-	map->coordinates[map->size.y] = malloc(get_size(values) * sizeof(int));
+	map->coordinates[map->size.y] = malloc(get_size(values) * sizeof(t_point));
 	if (!map->coordinates || !map->coordinates[map->size.y])
 		return (free(map->coordinates), free(map->coordinates[map->size.y]), NULL);
 	if (map->size.x < get_size(values))
@@ -54,7 +71,7 @@ static int ** get_values(t_map * map, char ** values)
 	i = 0;
 	while (values[i])
 	{
-		map->coordinates[map->size.y][i] = ft_atoi(values[i]);
+		map->coordinates[map->size.y][i] = get_point(values[i]);
 		free(values[i++]);
 	}
 	free(values);
@@ -62,22 +79,19 @@ static int ** get_values(t_map * map, char ** values)
 	return (map->coordinates);
 }
 
-void load_map(t_map ** map)
+void load_map(t_map ** map, char * path)
 {
-	char * row;
-	int	   fd;
+	const int fd = open(path, O_RDONLY);
+	char *	  row;
 
-	fd = open((*map)->path, O_RDONLY);
-	(*map)->size.x = 0;
-	(*map)->size.y = 0;
-	row = get_next_line(fd);
-	while (row)
+	ft_bzero(*map, sizeof(**map));
+	while (TRUE)
 	{
+		row = get_next_line(fd);
 		if (!row)
 			break;
 		(*map)->coordinates = get_values(*map, ft_split(row, ' '));
 		free(row);
-		row = get_next_line(fd);
 	}
 	close(fd);
 }

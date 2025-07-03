@@ -6,11 +6,26 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/06/29 16:46:38 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/02 18:17:59 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
+
+static void init(t_mlx ** mlx)
+{
+	(*mlx) = malloc(sizeof(t_mlx));
+	if (!(*mlx))
+		return;
+	(*mlx)->window = malloc(sizeof(t_window));
+	if (!(*mlx)->window)
+		return;
+	(*mlx)->map = malloc(sizeof(t_map));
+	if (!(*mlx)->map)
+		return;
+	(*mlx)->window->size.x = 1000;
+	(*mlx)->window->size.y = 800;
+}
 
 int main(int argc, char * argv[])
 {
@@ -18,25 +33,14 @@ int main(int argc, char * argv[])
 
 	if (argc != 2)
 		return (0);
-	mlx = malloc(sizeof(t_mlx));
-	if (!mlx)
-		return (0);
-	mlx->window = malloc(sizeof(t_window));
-	if (!mlx->window)
-		return (0);
-	mlx->map = malloc(sizeof(t_map));
-	if (!mlx->map)
-		return (0);
-	mlx->window->size.x = 1000;
-	mlx->window->size.y = 800;
+	init(&mlx);
+	load_map(&mlx->map, argv[1]);
 	mlx->connection = mlx_init();
 	mlx->window->_ = mlx_new_window(
 		mlx->connection,
 		mlx->window->size.x,
 		mlx->window->size.y,
 		"New window");
-	mlx->map->path = ft_strdup(argv[1]);
-	load_map(&mlx->map);
 	render(mlx);
-	return (free(mlx->window), free(mlx), 0);
+	return (free(mlx->window), free(mlx->map), free(mlx), 0);
 }

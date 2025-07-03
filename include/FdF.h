@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/01 11:33:31 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/02 17:39:40 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include "minilibx-linux/mlx.h"
 #include <stdlib.h>
 
-# define abs(value) ((value) < 0 ? -(value) : (value))
+#define abs(value) ((value) < 0 ? -(value) : (value))
 
 typedef struct s_axis
 {
@@ -37,11 +37,17 @@ typedef struct s_draw
 	int	   pad;
 } t_draw;
 
+typedef struct s_point
+{
+	int z;
+	int color;
+} t_point;
+
 typedef struct s_map
 {
-	int ** coordinates;
-	char * path;
-	t_axis size;
+	t_point ** coordinates;
+	char *	   path;
+	t_axis	   size;
 } t_map;
 
 typedef struct s_window
@@ -59,12 +65,12 @@ typedef struct s_mlx
 } t_mlx;
 
 // load_map.c
-void load_map(t_map ** map);
+void load_map(t_map ** map, char *path);
 
 // render.c
 void render(t_mlx * mlx);
 
 // draw.c
-void draw(t_mlx * mlx, t_draw *dw);
+void draw(t_mlx * mlx, t_draw * dw);
 
 #endif
