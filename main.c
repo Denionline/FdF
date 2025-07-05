@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/03 15:50:02 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/05 18:59:45 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ static void init(t_head ** head)
 		(*head)->window->size.x,
 		(*head)->window->size.y,
 		"FdF");
-	(*head)->draw->pad = 20;
+	(*head)->draw->pad_x = 20;
+	(*head)->draw->pad_y = 20;
 	(*head)->draw->z = 0;
 	(*head)->draw->position.x = 0;
 	(*head)->draw->position.y = 0;
 	(*head)->draw->loop = TRUE;
+	(*head)->draw->ang = 0;
 }
 
 static void look_map(t_point ** coor, int size_y, int size_x)

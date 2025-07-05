@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/03 12:25:25 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/05 17:27:32 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ MAKE		= make --no-print-directory
 # **************************************************************************** #
 #                                  Commands                                    #
 # **************************************************************************** #
+
 
 all: verify_ftprintf $(FTPRINTF) verify_gnl $(GNL) verify_mlx $(MLX) $(EXEC)
 	@printf "\n$(C_GREEN)Program is ready :D$(C_STD)\n"

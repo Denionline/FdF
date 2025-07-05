@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/03 19:03:58 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/05 19:00:29 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,26 +16,26 @@ static void projeta(t_head * head, int x, int y, int z, int * sx, int * sy, int 
 {
 	int position_y;
 	int position_x;
-	int	ang_x;
-	int	ang_y;
+	int ang_x;
+	int ang_y;
 
 	position_y = head->draw->position.y;
 	position_x = head->draw->position.x;
-	*sx = offx + x * pad + position_x;
-	*sy = (offy + y * pad - position_y) - z;
+	*sx = offx + x * head->draw->pad_x + position_x;
+	*sy = (offy + y * head->draw->pad_y - position_y) - z;
 	if (z > 0)
 		*sy -= head->draw->z;
 }
 
-static void bresenham(void * conn, void * win, int x0, int y0, int x1, int y1, int color)
+static void bresenham(t_head * head, int x0, int y0, int x1, int y1, int color)
 {
 	int dx = abs(x1 - x0), sx = x0 < x1 ? 1 : -1;
 	int dy = -abs(y1 - y0), sy = y0 < y1 ? 1 : -1;
 	int err = dx + dy, e2;
 
-	while (1)
+	while (TRUE)
 	{
-		mlx_pixel_put(conn, win, x0, y0, color);
+		mlx_pixel_put(head->vars.mlx, head->vars.win, x0 + , y0, color);
 		if (x0 == x1 && y0 == y1)
 			break;
 		e2 = 2 * err;
@@ -54,7 +54,7 @@ static void bresenham(void * conn, void * win, int x0, int y0, int x1, int y1, i
 
 static void draw_lines(t_head * head)
 {
-	int pad = head->draw->pad;
+	int pad = head->draw->pad_x;
 	int offx = (head->window->size.x / 2) - ((head->map->size.x * pad) / 2);
 	int offy = (head->window->size.y / 2) - ((head->map->size.y * pad) / 2);
 	int x, y;
@@ -83,8 +83,7 @@ static void draw_lines(t_head * head)
 				projeta(head, x + 1, y, z1, &sx1, &sy1, pad, offx, offy);
 				color = head->map->coordinates[y][x + 1].color;
 				bresenham(
-					head->vars.mlx,
-					head->vars.win,
+					head,
 					sx0,
 					sy0,
 					sx1,
@@ -97,8 +96,7 @@ static void draw_lines(t_head * head)
 				projeta(head, x, y + 1, z1, &sx1, &sy1, pad, offx, offy);
 				color = head->map->coordinates[y + 1][x].color;
 				bresenham(
-					head->vars.mlx,
-					head->vars.win,
+					head,
 					sx0,
 					sy0,
 					sx1,
