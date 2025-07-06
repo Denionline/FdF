@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/05 18:59:45 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/06 14:55:17 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@ static void init(t_head ** head)
 		(*head)->window->size.x,
 		(*head)->window->size.y,
 		"FdF");
-	(*head)->draw->pad_x = 20;
-	(*head)->draw->pad_y = 20;
+	(*head)->draw->pad_x = 5;
+	(*head)->draw->pad_y = 5;
 	(*head)->draw->z = 0;
 	(*head)->draw->position.x = 0;
 	(*head)->draw->position.y = 0;
 	(*head)->draw->loop = TRUE;
-	(*head)->draw->ang = 0;
+	(*head)->draw->ang_x = 0.1;
+	(*head)->draw->ang_y = 0.1;
 }
 
 static void look_map(t_point ** coor, int size_y, int size_x)
@@ -64,7 +65,7 @@ int main(int argc, char * argv[])
 	init(&head);
 	load_map(&head->map, argv[1]);
 	hooks(head);
-	look_map(head->map->coordinates, head->map->size.y, head->map->size.x);
+	// look_map(head->map->coordinates, head->map->size.y, head->map->size.x);
 	render(head);
 	return (free(head->window), free(head->map), free(head), 0);
 }

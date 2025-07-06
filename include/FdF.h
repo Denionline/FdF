@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/05 18:59:26 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/06 15:28:50 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include "ft_printf/include/libft/include/libft.h"
 #include "get_next_line/include/get_next_line.h"
 #include "minilibx-linux/mlx.h"
-#include <stdlib.h>
+#include <math.h>
 
 #define abs(value) ((value) < 0 ? -(value) : (value))
 
@@ -35,6 +35,16 @@
 #define KEY_B 98
 #define KEY_C 99
 #define KEY_D 100
+
+#define KEY_NUMPAD_1 65436
+#define KEY_NUMPAD_2 65433
+#define KEY_NUMPAD_3 65435
+#define KEY_NUMPAD_4 65430
+#define KEY_NUMPAD_5 65437
+#define KEY_NUMPAD_6 65432
+#define KEY_NUMPAD_7 65429
+#define KEY_NUMPAD_8 65431
+#define KEY_NUMPAD_9 65434
 
 #define KEY_COL_LEFT 91
 #define KEY_COL_RIGHT 93
@@ -55,10 +65,11 @@ typedef struct s_draw
 	t_axis s1;
 	t_axis off;
 	t_axis position;
+	double ang_y;
+	double ang_x;
 	int	   color;
 	int	   pad_y;
 	int	   pad_x;
-	int	   ang;
 	int	   z;
 	int	   loop;
 } t_draw;

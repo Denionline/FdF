@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/05 17:27:32 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/06 10:47:27 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,12 +107,14 @@ fclean: clean
 
 re: fclean all
 
-t:
-	@./FdF maps/test_maps/42.fdf
-tc:
-	@./FdF maps/test_maps/elem-col.fdf
+t0:
+	@./FdF maps/42.fdf
+t1:
+	@./FdF maps/elem-col.fdf
+t2:
+	@./FdF maps/10-2.fdf
 v:
-	@valgrind ./FdF maps/test_maps/42.fdf
+	@valgrind ./FdF maps/42.fdf
 
 # libft processes
 verify_ftprintf:
