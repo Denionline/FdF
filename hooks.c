@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/06 18:39:43 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/07 00:02:44 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,20 @@ static int key_press(int keycode, t_head * head)
 	if (keycode == KEY_NUMPAD_8)
 	{
 		head->draw->ang_x += 0.1;
-		head->draw->ang_y -= 0.1;
 	}
-	if (keycode == KEY_NUMPAD_5)
+	if (keycode == KEY_NUMPAD_2)
 		head->draw->ang_x -= 0.1;
 
-	if (keycode == KEY_NUMPAD_9)
+	if (keycode == KEY_NUMPAD_4)
 		head->draw->ang_y += 0.1;
 	if (keycode == KEY_NUMPAD_6)
 		head->draw->ang_y -= 0.1;
 
+	if (keycode == KEY_NUMPAD_7)
+		head->draw->ang_2d += 0.1;
+	if (keycode == KEY_NUMPAD_9)
+		head->draw->ang_2d -= 0.1;
+	printf("Ang2d => %f\n", head->draw->ang_2d);
 	if (keycode == KEY_PLUS) // Zoom in
 	{
 		head->draw->pad_y += 1;

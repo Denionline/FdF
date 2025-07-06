@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/06 15:28:50 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/06 23:35:16 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@
 #define KEY_DOT 44
 #define KEY_COMMA 46
 
+#define PI 3.14159
+
 typedef struct s_axis
 {
 	int x;
@@ -67,6 +69,7 @@ typedef struct s_draw
 	t_axis position;
 	double ang_y;
 	double ang_x;
+	double ang_2d; // ângulo de rotação 2D
 	int	   color;
 	int	   pad_y;
 	int	   pad_x;
