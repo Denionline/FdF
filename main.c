@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/08 09:37:33 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:42:41 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,15 @@ static void init(t_head ** head)
 	(*head)->draw->z = 0;
 	(*head)->draw->position.x = 0;
 	(*head)->draw->position.y = 0;
-	(*head)->draw->loop = TRUE;
-	(*head)->draw->ang_x = PI / -4; // 30 graus
-	(*head)->draw->ang_y = PI / -6; // 45 graus
-	(*head)->draw->ang_2d = 0.7;	   // sem rotação 2D
+	(*head)->draw->ang_x = PI / -4;
+	(*head)->draw->ang_y = PI / -6;
+	(*head)->draw->ang_2d = 0.7;
+	(*head)->draw->projection[0][0] = 2;
+	(*head)->draw->projection[0][1] = 0;
+	(*head)->draw->projection[0][2] = 0;
+	(*head)->draw->projection[1][0] = 0;
+	(*head)->draw->projection[1][1] = 1;
+	(*head)->draw->projection[1][2] = 0;
 }
 
 static void show_map(t_point ** coor, int size_y, int size_x)

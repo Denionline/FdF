@@ -68,6 +68,16 @@
     "get_next_line.h": "c",
     "format": "c",
     "sstream": "c",
-    "mlx.h": "c"
+    "mlx.h": "c",
+    "charconv": "c",
+    "chrono": "c",
+    "optional": "c",
+    "ratio": "c",
+    "system_error": "c",
+    "array": "c",
+    "functional": "c",
+    "tuple": "c",
+    "type_traits": "c",
+    "utility": "c"
   }
 }

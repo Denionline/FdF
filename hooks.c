@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/07 00:02:44 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:15:16 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int key_press(int keycode, t_head * head)
 		head->draw->ang_2d += 0.1;
 	if (keycode == KEY_NUMPAD_9)
 		head->draw->ang_2d -= 0.1;
-	printf("Ang2d => %f\n", head->draw->ang_2d);
+	// printf("Ang2d => %f\n", head->draw->ang_2d);
 	if (keycode == KEY_PLUS) // Zoom in
 	{
 		head->draw->pad_y += 1;
@@ -66,7 +66,6 @@ static int key_press(int keycode, t_head * head)
 		head->draw->z -= 2;
 	if (keycode == KEY_ESC)
 	{
-		head->draw->loop = FALSE;
 		mlx_loop_end(head->vars.mlx);
 		mlx_destroy_window(head->vars.mlx, head->vars.win);
 		return (0);
