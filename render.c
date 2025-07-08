@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/07 00:02:56 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/08 12:30:13 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,11 +77,9 @@ static void bresenham(t_head * head, int x0, int y0, int x1, int y1, int color)
 	if (y0 > y1)
 		sy = -1;
 	err = dx + dy;
-	while (TRUE)
+	while (x0 != x1 || y0 != y1)
 	{
 		mlx_pixel_put(head->vars.mlx, head->vars.win, x0, y0, color);
-		if (x0 == x1 && y0 == y1)
-			break;
 		e2 = 2 * err;
 		if (e2 >= dy)
 		{
@@ -119,7 +117,6 @@ static void draw_lines(t_head * head)
 	double center_y = (head->map->size.y - 1) * head->draw->pad_y / 2.0;
 
 	pad = head->draw->pad_x;
-	// Recalcula o centro a cada frame para manter centralizado com zoom
 	center_x = (head->map->size.x - 1) * head->draw->pad_x / 2.0;
 	center_y = (head->map->size.y - 1) * head->draw->pad_y / 2.0;
 	offx = head->window->size.x / 2;
@@ -138,7 +135,6 @@ static void draw_lines(t_head * head)
 			rot_2d(&ang_x, &ang_y, head->draw->ang_2d);
 			rot_x(&ang_y, &ang_z, head->draw->ang_x);
 			rot_y(&ang_x, &ang_z, head->draw->ang_y);
-			// Não some mais position.x/y aqui, só use offx/offy para centralizar
 			proj_persp(ang_x, ang_y, ang_z, &sx0, &sy0, 60, head->window->size.x, head->window->size.y);
 			sx0 += head->draw->position.x;
 			sy0 -= head->draw->position.y;
@@ -152,7 +148,6 @@ static void draw_lines(t_head * head)
 				rot_2d(&ang_x, &ang_y, head->draw->ang_2d);
 				rot_x(&ang_y, &ang_z, head->draw->ang_x);
 				rot_y(&ang_x, &ang_z, head->draw->ang_y);
-				// Não some mais position.x/y aqui, só use offx/offy para centralizar
 				proj_persp(ang_x, ang_y, ang_z, &sx1, &sy1, 60, head->window->size.x, head->window->size.y);
 				sx1 += head->draw->position.x;
 				sy1 -= head->draw->position.y;
@@ -168,7 +163,6 @@ static void draw_lines(t_head * head)
 				rot_2d(&ang_x, &ang_y, head->draw->ang_2d);
 				rot_x(&ang_y, &ang_z, head->draw->ang_x);
 				rot_y(&ang_x, &ang_z, head->draw->ang_y);
-				// Não some mais position.x/y aqui, só use offx/offy para centralizar
 				proj_persp(ang_x, ang_y, ang_z, &sx1, &sy1, 60, head->window->size.x, head->window->size.y);
 				sx1 += head->draw->position.x;
 				sy1 -= head->draw->position.y;

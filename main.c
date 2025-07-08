@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/07 00:05:15 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/08 09:37:33 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void init(t_head ** head)
 	(*head)->draw->ang_2d = 0.7;	   // sem rotação 2D
 }
 
-static void look_map(t_point ** coor, int size_y, int size_x)
+static void show_map(t_point ** coor, int size_y, int size_x)
 {
 	for (int y = 0; y < size_y; y++)
 	{
@@ -66,7 +66,7 @@ int main(int argc, char * argv[])
 	init(&head);
 	load_map(&head->map, argv[1]);
 	hooks(head);
-	// look_map(head->map->coordinates, head->map->size.y, head->map->size.x);
+	// show_map(head->map->coordinates, head->map->size.y, head->map->size.x);
 	render(head);
 	return (free(head->window), free(head->map), free(head), 0);
 }
