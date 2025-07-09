@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/08 17:45:24 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/09 11:59:31 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-typedef struct s_axis
+typedef struct s_pixel
 {
 	int x;
 	int y;
 	int z;
 	int color;
-} t_axis;
+} t_pixel;
 
 typedef struct s_draw
 {
-	t_axis _;
-	t_axis s0;
-	t_axis s1;
-	t_axis start;
-	t_axis position;
+	t_pixel _;
+	t_pixel s0;
+	t_pixel s1;
+	t_pixel start;
+	t_pixel position;
 	double ang_y;
 	double ang_x;
 	double ang_2d;
@@ -41,22 +41,16 @@ typedef struct s_draw
 	double values[3];
 } t_draw;
 
-typedef struct s_point
-{
-	int z;
-	int color;
-} t_point;
-
 typedef struct s_map
 {
-	t_point ** coordinates;
+	t_pixel ** coordinates;
 	char *	   path;
-	t_axis	   size;
+	t_pixel	   size;
 } t_map;
 
 typedef struct s_window
 {
-	t_axis size;
+	t_pixel size;
 } t_window;
 
 typedef struct s_vars

@@ -6,13 +6,13 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:35:34 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/08 15:11:04 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/09 12:19:47 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-t_axis mat_mult(double projection[2][3], t_axis values)
+t_pixel mat_mult(double projection[2][3], t_pixel values)
 {
 	double numbers[3];
 	double buff[2];

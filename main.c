@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/08 17:42:41 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/09 09:39:01 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,17 +50,17 @@ static void init(t_head ** head)
 	(*head)->draw->projection[1][2] = 0;
 }
 
-static void show_map(t_point ** coor, int size_y, int size_x)
-{
-	for (int y = 0; y < size_y; y++)
-	{
-		for (int x = 0; x < size_x; x++)
-		{
-			ft_printf("%3d", coor[y][x].z);
-		}
-		ft_printf("\n");
-	}
-}
+// static void show_map(t_point ** coor, int size_y, int size_x)
+// {
+// 	for (int y = 0; y < size_y; y++)
+// 	{
+// 		for (int x = 0; x < size_x; x++)
+// 		{
+// 			ft_printf("%3d", coor[y][x].z);
+// 		}
+// 		ft_printf("\n");
+// 	}
+// }
 
 int main(int argc, char * argv[])
 {

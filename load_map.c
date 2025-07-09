@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/02 18:26:16 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/09 12:01:36 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@ static int get_size(char ** values)
 	return (len);
 }
 
-static t_point ** realloc_coordinates(t_point ** oldarray, int newlen)
+static t_pixel ** realloc_coordinates(t_pixel ** oldarray, int newlen)
 {
-	t_point ** newarray;
+	t_pixel ** newarray;
 	int		   i;
 
 	newarray = malloc((newlen + 1) * sizeof(int *));
@@ -41,29 +41,29 @@ static t_point ** realloc_coordinates(t_point ** oldarray, int newlen)
 	return (newarray);
 }
 
-static t_point get_point(char * value)
+static t_pixel get_point(char * value)
 {
-	t_point point;
+	t_pixel pixel;
 	char ** values;
 
 	if (ft_strchr(value, ','))
 	{
 		values = ft_split(value, ',');
-		point.z = ft_atoi(values[0]);
-		point.color = ft_basetoi(values[1]+2, "0123456789ABCDEF");
-		return (free(values[0]), free(values[1]), free(values), point);
+		pixel.z = ft_atoi(values[0]);
+		pixel.color = ft_basetoi(values[1]+2, "0123456789ABCDEF");
+		return (free(values[0]), free(values[1]), free(values), pixel);
 	}
-	point.color = 0xFFFFFF;
-	point.z = ft_atoi(value);
-	return (point);
+	pixel.color = 0xFFFFFF;
+	pixel.z = ft_atoi(value);
+	return (pixel);
 }
 
-static t_point ** get_values(t_map * map, char ** values)
+static t_pixel ** get_values(t_map * map, char ** values)
 {
 	int i;
 
 	map->coordinates = realloc_coordinates(map->coordinates, map->size.y);
-	map->coordinates[map->size.y] = malloc(get_size(values) * sizeof(t_point));
+	map->coordinates[map->size.y] = malloc(get_size(values) * sizeof(t_pixel));
 	if (!map->coordinates || !map->coordinates[map->size.y])
 		return (free(map->coordinates), free(map->coordinates[map->size.y]), NULL);
 	if (map->size.x < get_size(values))
