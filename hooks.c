@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/08 18:15:16 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:07:25 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,14 @@ static int key_press(int keycode, t_head * head)
 
 	if (keycode == KEY_NUMPAD_8)
 	{
-		head->draw->ang_x += 0.1;
+		head->draw->ang += 0.1;
+		rotate_z(head);
 	}
-	if (keycode == KEY_NUMPAD_2)
-		head->draw->ang_x -= 0.1;
+	if (keycode == KEY_NUMPAD_5)
+	{
+		head->draw->ang -= 0.1;
+		rotate_z(head);
+	}
 
 	if (keycode == KEY_NUMPAD_4)
 		head->draw->ang_y += 0.1;
@@ -50,7 +54,7 @@ static int key_press(int keycode, t_head * head)
 		head->draw->pad_y -= 1;
 
 	// Move
-	if (keycode == KEY_ARROW_UP) 
+	if (keycode == KEY_ARROW_UP)
 		head->draw->position.y += 2;
 	if (keycode == KEY_ARROW_DOWN)
 		head->draw->position.y -= 2;

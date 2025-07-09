@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/09 12:23:13 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:03:45 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ void bresenham(t_head * head, t_pixel s0, t_pixel s1);
 void hooks(t_head * head);
 
 // math.c
-t_pixel mat_mult(double projection[2][3], t_pixel values);
+t_pixel mat_mult(double projection[3][3], t_pixel values);
+void rotate_x(t_head * head);
+void rotate_y(t_head * head);
+void rotate_z(t_head * head);
 
 #endif

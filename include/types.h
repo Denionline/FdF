@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/09 11:59:31 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:53:50 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_draw
 	t_pixel s1;
 	t_pixel start;
 	t_pixel position;
+	double ang;
 	double ang_y;
 	double ang_x;
 	double ang_2d;
@@ -37,7 +38,7 @@ typedef struct s_draw
 	int	   pad_y;
 	int	   pad_x;
 	int	   z;
-	double projection[2][3];
+	double projection[3][3];
 	double values[3];
 } t_draw;
 

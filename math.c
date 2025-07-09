@@ -6,16 +6,59 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:35:34 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/09 12:19:47 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:10:14 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-t_pixel mat_mult(double projection[2][3], t_pixel values)
+void rotate_x(t_head * head)
+{
+	head->draw->projection[0][0] = 1;
+	head->draw->projection[0][1] = 0;
+	head->draw->projection[0][2] = 0;
+
+	head->draw->projection[1][0] = 0;
+	head->draw->projection[1][1] = 1;
+	head->draw->projection[1][2] = 0;
+
+	head->draw->projection[2][0] = 0;
+	head->draw->projection[2][1] = 0;
+	head->draw->projection[2][2] = 1;
+}
+void rotate_y(t_head * head)
+{
+	head->draw->projection[0][0] = 1;
+	head->draw->projection[0][1] = 0;
+	head->draw->projection[0][2] = 0;
+
+	head->draw->projection[1][0] = 0;
+	head->draw->projection[1][1] = 1;
+	head->draw->projection[1][2] = 0;
+
+	head->draw->projection[2][0] = 0;
+	head->draw->projection[2][1] = 0;
+	head->draw->projection[2][2] = 1;
+}
+void rotate_z(t_head * head)
+{
+	head->draw->projection[0][0] = cos(head->draw->ang);
+	head->draw->projection[0][1] = -sin(head->draw->ang);
+	head->draw->projection[0][2] = 0;
+
+	head->draw->projection[1][0] = sin(head->draw->ang);
+	head->draw->projection[1][1] = cos(head->draw->ang);
+	head->draw->projection[1][2] = 0;
+
+	head->draw->projection[2][0] = 0;
+	head->draw->projection[2][1] = 0;
+	head->draw->projection[2][2] = 1;
+}
+
+t_pixel mat_mult(double projection[3][3], t_pixel values)
 {
 	double numbers[3];
-	double buff[2];
+	double buff[3];
 	int	   x;
 	int	   y;
 
@@ -23,7 +66,7 @@ t_pixel mat_mult(double projection[2][3], t_pixel values)
 	numbers[1] = values.y;
 	numbers[2] = values.z;
 	y = 0;
-	while (y < 2)
+	while (y < 3)
 	{
 		buff[y] = 0;
 		x = 0;
@@ -36,5 +79,6 @@ t_pixel mat_mult(double projection[2][3], t_pixel values)
 	}
 	values.x = buff[0];
 	values.y = buff[1];
+	values.z = buff[2];
 	return (values);
 }
