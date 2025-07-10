@@ -6,11 +6,29 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/10 16:25:42 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:26:21 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
+
+static void end(t_head * head)
+{
+	int i;
+
+	mlx_destroy_window(head->vars.mlx, head->vars.win);
+	mlx_destroy_display(head->vars.mlx);
+	i = 0;
+	while (i < head->map->size.y)
+		free(head->map->coordinates[i++]);
+	free(head->map->coordinates);
+	free(head->vars.mlx);
+	free(head->window);
+	free(head->map);
+	free(head->draw);
+	free(head);
+	exit(1);
+}
 
 static int key_press(int keycode, t_head * head)
 {
@@ -88,7 +106,7 @@ static int key_press(int keycode, t_head * head)
 	if (keycode == KEY_ESC)
 	{
 		mlx_loop_end(head->vars.mlx);
-		mlx_destroy_window(head->vars.mlx, head->vars.win);
+		end(head);
 		return (0);
 	}
 	mlx_clear_window(head->vars.mlx, head->vars.win);
