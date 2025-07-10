@@ -6,53 +6,48 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:35:34 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/09 17:10:14 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:35:06 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-void rotate_x(t_head * head)
+double	(*rotate_x(t_head * head))[3]
 {
-	head->draw->projection[0][0] = 1;
-	head->draw->projection[0][1] = 0;
-	head->draw->projection[0][2] = 0;
+	const double c = cos(head->draw->ang_x);
+	const double s = sin(head->draw->ang_x);
 
-	head->draw->projection[1][0] = 0;
-	head->draw->projection[1][1] = 1;
-	head->draw->projection[1][2] = 0;
-
-	head->draw->projection[2][0] = 0;
-	head->draw->projection[2][1] = 0;
-	head->draw->projection[2][2] = 1;
+	ft_memcpy(head->draw->projection, (double[3][3]){\
+		{1, 0, 0},\
+		{0, c, -s},\
+		{0, s, c}\
+	}, sizeof(double) * 9);
+	return (head->draw->projection);
 }
-void rotate_y(t_head * head)
+
+double	(*rotate_y(t_head * head))[3]
 {
-	head->draw->projection[0][0] = 1;
-	head->draw->projection[0][1] = 0;
-	head->draw->projection[0][2] = 0;
+	const double c = cos(head->draw->ang_y);
+	const double s = sin(head->draw->ang_y);
 
-	head->draw->projection[1][0] = 0;
-	head->draw->projection[1][1] = 1;
-	head->draw->projection[1][2] = 0;
-
-	head->draw->projection[2][0] = 0;
-	head->draw->projection[2][1] = 0;
-	head->draw->projection[2][2] = 1;
+	ft_memcpy(head->draw->projection, (double[3][3]){\
+		{c, 0, s},\
+		{0, 1, 0},\
+		{-s, 0, c}\
+	}, sizeof(double) * 9);
+	return (head->draw->projection);
 }
-void rotate_z(t_head * head)
+double	(*rotate_z(t_head * head))[3]
 {
-	head->draw->projection[0][0] = cos(head->draw->ang);
-	head->draw->projection[0][1] = -sin(head->draw->ang);
-	head->draw->projection[0][2] = 0;
+	const double c = cos(head->draw->ang_z);
+	const double s = sin(head->draw->ang_z);
 
-	head->draw->projection[1][0] = sin(head->draw->ang);
-	head->draw->projection[1][1] = cos(head->draw->ang);
-	head->draw->projection[1][2] = 0;
-
-	head->draw->projection[2][0] = 0;
-	head->draw->projection[2][1] = 0;
-	head->draw->projection[2][2] = 1;
+	ft_memcpy(head->draw->projection, (double[3][3]){\
+		{c, -s, 0},\
+		{s, c, 0},\
+		{0, 0, 1}\
+	}, sizeof(double) * 9);
+	return (head->draw->projection);
 }
 
 t_pixel mat_mult(double projection[3][3], t_pixel values)

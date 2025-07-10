@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/09 16:54:40 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/10 16:29:27 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ static void init(t_head ** head)
 	(*head)->draw->z = 0;
 	(*head)->draw->position.x = 0;
 	(*head)->draw->position.y = 0;
-	(*head)->draw->ang_x = PI / -4;
+	(*head)->draw->ang_x = PI / 8;
 	(*head)->draw->ang_y = PI / -6;
-	(*head)->draw->ang = PI / -6;
+	(*head)->draw->ang_z = PI / 5;
 	(*head)->draw->ang_2d = 0.7;
 
 	(*head)->draw->projection[0][0] = 1;
