@@ -6,82 +6,36 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/10 18:26:21 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/12 18:52:47 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static void end(t_head * head)
-{
-	int i;
-
-	mlx_destroy_window(head->vars.mlx, head->vars.win);
-	mlx_destroy_display(head->vars.mlx);
-	i = 0;
-	while (i < head->map->size.y)
-		free(head->map->coordinates[i++]);
-	free(head->map->coordinates);
-	free(head->vars.mlx);
-	free(head->window);
-	free(head->map);
-	free(head->draw);
-	free(head);
-	exit(1);
-}
-
 static int key_press(int keycode, t_head * head)
 {
-	// ft_printf("Keycode => %d\n", keycode);
+	// printf("Keycode => %d\n", keycode);
 
 	// Rotate x
 	if (keycode == KEY_NUMPAD_7)
-	{
 		head->draw->ang_x += 0.1;
-		rotate_x(head);
-	}
 	if (keycode == KEY_NUMPAD_4)
-	{
 		head->draw->ang_x -= 0.1;
-		rotate_x(head);
-	}
 	// Rotate y
 	if (keycode == KEY_NUMPAD_8)
-	{
 		head->draw->ang_y += 0.1;
-		rotate_y(head);
-		// rotate_x(head);
-		// rotate_z(head);
-	}
 	if (keycode == KEY_NUMPAD_5)
-	{
 		head->draw->ang_y -= 0.1;
-		rotate_y(head);
-		// rotate_x(head);
-		// rotate_z(head);
-	}
 	// Rotate z
 	if (keycode == KEY_NUMPAD_9)
-	{
 		head->draw->ang_z += 0.1;
-		rotate_z(head);
-	}
 	if (keycode == KEY_NUMPAD_6)
-	{
 		head->draw->ang_z -= 0.1;
-		rotate_z(head);
-	}
 
 	if (keycode == KEY_PLUS) // Zoom in
-	{
-		head->draw->pad_y += 1;
-		head->draw->pad_x += 1;
-	}
+		head->draw->distance -= 0.1;
 	if (keycode == KEY_MINUS && (head->draw->pad_y > 1 && head->draw->pad_x > 1)) // Zoom out
-	{
-		head->draw->pad_y -= 1;
-		head->draw->pad_x -= 1;
-	}
+		head->draw->distance += 0.1;
 
 	if (keycode == KEY_DOT)
 		head->draw->pad_y += 1;
@@ -106,7 +60,6 @@ static int key_press(int keycode, t_head * head)
 	if (keycode == KEY_ESC)
 	{
 		mlx_loop_end(head->vars.mlx);
-		end(head);
 		return (0);
 	}
 	mlx_clear_window(head->vars.mlx, head->vars.win);
@@ -114,7 +67,14 @@ static int key_press(int keycode, t_head * head)
 	return (0);
 }
 
+static int hook_window(int keycode, t_head * head)
+{
+	mlx_loop_end(head->vars.mlx);
+	return (0);
+}
+
 void hooks(t_head * head)
 {
+	mlx_hook(head->vars.win, 17, 0L, hook_window, head);
 	mlx_hook(head->vars.win, 2, 1L << 0, key_press, head);
 }

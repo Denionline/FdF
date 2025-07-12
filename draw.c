@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/10 17:23:46 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/12 18:54:49 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,20 @@ static void calc_axis(t_head * head, int y, int x, t_pixel * s)
 
 static void draw_lines(t_head *head, int y, int x, t_pixel *pixel)
 {
+	double projection[3][3];
+	double z;
+
 	calc_axis(head, y, x, pixel);
 	*pixel = mat_mult(rotate_x(head), *pixel);
 	*pixel = mat_mult(rotate_y(head), *pixel);
 	*pixel = mat_mult(rotate_z(head), *pixel);
+	z = 1 / (head->draw->distance - pixel->z);
+	ft_memcpy(projection, (double[3][3]){\
+		{z, 0, 0},\
+		{0, z, 0},\
+		{0, 0, z},\
+	}, sizeof(double) * 9);
+	*pixel = mat_mult(projection, *pixel);
 	pixel->x += head->draw->start.x;
 	pixel->y += head->draw->start.y;
 	bresenham(head, head->draw->s0, *pixel);

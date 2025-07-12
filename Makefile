@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/09 12:20:48 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/11 17:37:16 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ FILES			+= draw
 FILES			+= bresenham
 FILES			+= hooks
 FILES			+= math
+FILES			+= verify
 
 SRC	= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJ	= $(addprefix ./, $(addsuffix .o, $(FILES)))

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/10 18:22:31 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/12 18:52:05 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void init(t_head ** head)
 		(*head)->window->size.x,
 		(*head)->window->size.y,
 		"FdF");
-	(*head)->draw->pad_x = 10;
-	(*head)->draw->pad_y = 10;
+	(*head)->draw->pad_x = 5;
+	(*head)->draw->pad_y = 5;
 	(*head)->draw->z = 0;
 	(*head)->draw->position.x = 0;
 	(*head)->draw->position.y = 0;
@@ -43,6 +43,7 @@ static void init(t_head ** head)
 	(*head)->draw->ang_y = PI / -6;
 	(*head)->draw->ang_z = PI / 5;
 	(*head)->draw->ang_2d = 0.7;
+	(*head)->draw->distance = 1.0;
 
 	(*head)->draw->projection[0][0] = 1;
 	(*head)->draw->projection[0][1] = 0;
@@ -80,5 +81,6 @@ int main(int argc, char * argv[])
 	hooks(head);
 	show_map(head->map->coordinates, head->map->size.y, head->map->size.x);
 	render(head);
+	end(head);
 	return (0);
 }

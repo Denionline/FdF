@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/10 14:23:15 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/11 17:32:53 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,9 @@ void bresenham(t_head * head, t_pixel s0, t_pixel s1);
 
 // hooks.c
 void hooks(t_head * head);
+
+// verify.c
+void end(t_head * head);
 
 // math.c
 t_pixel	  mat_mult(double projection[3][3], t_pixel values);
