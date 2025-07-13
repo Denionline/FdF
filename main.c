@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/12 18:52:05 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/13 20:56:05 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,17 @@ static void init(t_head ** head)
 	(*head)->draw->projection[2][2] = 1;
 }
 
-static void show_map(t_pixel ** coor, int size_y, int size_x)
-{
-	for (int y = 0; y < size_y; y++)
-	{
-		for (int x = 0; x < size_x; x++)
-		{
-			printf("%3d", coor[y][x].z);
-		}
-		printf("\n");
-	}
-}
+// static void show_map(t_pixel ** coor, int size_y, int size_x)
+// {
+// 	for (int y = 0; y < size_y; y++)
+// 	{
+// 		for (int x = 0; x < size_x; x++)
+// 		{
+// 			printf("%3d", coor[y][x].z);
+// 		}
+// 		printf("\n");
+// 	}
+// }
 
 int main(int argc, char * argv[])
 {
@@ -79,7 +79,7 @@ int main(int argc, char * argv[])
 	init(&head);
 	load_map(&head->map, argv[1]);
 	hooks(head);
-	show_map(head->map->coordinates, head->map->size.y, head->map->size.x);
+	// show_map(head->map->coordinates, head->map->size.y, head->map->size.x);
 	render(head);
 	end(head);
 	return (0);
