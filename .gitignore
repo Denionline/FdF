@@ -4,3 +4,5 @@ include/get_next_line
 include/minilibx-linux
 build/
 build/*
+*.o
+FdF

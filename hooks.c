@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/12 18:52:47 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:11:44 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static int key_press(int keycode, t_head * head)
 		head->draw->ang_z -= 0.1;
 
 	if (keycode == KEY_PLUS) // Zoom in
-		head->draw->distance -= 0.1;
+		head->draw->zoom *= 1.1;
 	if (keycode == KEY_MINUS && (head->draw->pad_y > 1 && head->draw->pad_x > 1)) // Zoom out
-		head->draw->distance += 0.1;
+		head->draw->zoom /= 1.1;
 
 	if (keycode == KEY_DOT)
 		head->draw->pad_y += 1;

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:35:34 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/10 16:35:06 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:44:15 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ t_pixel mat_mult(double projection[3][3], t_pixel values)
 	int	   x;
 	int	   y;
 
-	numbers[0] = values.x;
-	numbers[1] = values.y;
-	numbers[2] = values.z;
+	ft_memcpy(numbers, (double[3]){
+		values.x, values.y, values.z
+	}, sizeof(double) * 3);
 	y = 0;
 	while (y < 3)
 	{

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/13 20:56:05 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:30:33 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,13 @@ static void init(t_head ** head)
 	(*head)->draw->ang_z = PI / 5;
 	(*head)->draw->ang_2d = 0.7;
 	(*head)->draw->distance = 1.0;
+	(*head)->draw->zoom = 3.0;
 
-	(*head)->draw->projection[0][0] = 1;
-	(*head)->draw->projection[0][1] = 0;
-	(*head)->draw->projection[0][2] = 0;
-
-	(*head)->draw->projection[1][0] = 0;
-	(*head)->draw->projection[1][1] = 1;
-	(*head)->draw->projection[1][2] = 0;
-
-	(*head)->draw->projection[2][0] = 0;
-	(*head)->draw->projection[2][1] = 0;
-	(*head)->draw->projection[2][2] = 1;
+	ft_memcpy((*head)->draw->projection, (double[3][3]){
+		{1, 0, 0},
+		{0, 1, 0},
+		{0, 0, 1}
+	}, sizeof(double) * 9);
 }
 
 // static void show_map(t_pixel ** coor, int size_y, int size_x)
