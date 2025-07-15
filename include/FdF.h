@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/11 17:32:53 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 21:07:39 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@
 #include "minilibx-linux/mlx.h"
 #include "types.h"
 #include <math.h>
-
-#define abs(value) ((value) < 0 ? -(value) : (value))
 
 #define PI 3.14159
 

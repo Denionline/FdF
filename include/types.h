@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 10:54:12 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 21:04:58 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct s_draw
 	int		z;
 	double	projection[3][3];
 	double	values[3];
+	void *	image;
 } t_draw;
 
 typedef struct s_map
