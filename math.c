@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:35:34 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 10:44:15 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:51:10 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ double	(*rotate_y(t_head * head))[3]
 	}, sizeof(double) * 9);
 	return (head->draw->projection);
 }
+
 double	(*rotate_z(t_head * head))[3]
 {
 	const double c = cos(head->draw->ang_z);

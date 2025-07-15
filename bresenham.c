@@ -6,16 +6,16 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:54:15 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 09:46:04 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:46:19 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static void calc_err(int * err_curr, int * pos, int sum_err, int sum_pos)
+static void calc_err(int * err_curr, int * pos, int sum_err, int step)
 {
 	*err_curr += sum_err;
-	*pos += sum_pos;
+	*pos += step;
 }
 
 void bresenham(t_head * head, t_pixel s0, t_pixel s1)
