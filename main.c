@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 10:30:33 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:32:03 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,23 +34,18 @@ static void init(t_head ** head)
 		(*head)->window->size.x,
 		(*head)->window->size.y,
 		"FdF");
-	(*head)->draw->pad_x = 5;
-	(*head)->draw->pad_y = 5;
+	(*head)->draw->pad_x = 10;
+	(*head)->draw->pad_y = 10;
 	(*head)->draw->z = 0;
 	(*head)->draw->position.x = 0;
 	(*head)->draw->position.y = 0;
 	(*head)->draw->ang_x = PI / 8;
 	(*head)->draw->ang_y = PI / -6;
 	(*head)->draw->ang_z = PI / 5;
-	(*head)->draw->ang_2d = 0.7;
 	(*head)->draw->distance = 1.0;
-	(*head)->draw->zoom = 3.0;
+	(*head)->draw->margin = 0.8;
 
-	ft_memcpy((*head)->draw->projection, (double[3][3]){
-		{1, 0, 0},
-		{0, 1, 0},
-		{0, 0, 1}
-	}, sizeof(double) * 9);
+	ft_memcpy((*head)->draw->projection, (double[3][3]){{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, sizeof(double) * 9);
 }
 
 // static void show_map(t_pixel ** coor, int size_y, int size_x)
@@ -75,6 +70,8 @@ int main(int argc, char * argv[])
 	load_map(&head->map, argv[1]);
 	hooks(head);
 	// show_map(head->map->coordinates, head->map->size.y, head->map->size.x);
+	head->draw->zoom = 1;
+	// head->draw->zoom = ((head->window->size.x * 0.8) / head->map->size.x);
 	render(head);
 	end(head);
 	return (0);

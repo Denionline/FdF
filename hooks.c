@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 10:11:44 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:27:45 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,19 @@ static int key_press(int keycode, t_head * head)
 	// printf("Keycode => %d\n", keycode);
 
 	// Rotate x
-	if (keycode == KEY_NUMPAD_7)
+	if (keycode == KEY_W)
 		head->draw->ang_x += 0.1;
-	if (keycode == KEY_NUMPAD_4)
+	if (keycode == KEY_S)
 		head->draw->ang_x -= 0.1;
 	// Rotate y
-	if (keycode == KEY_NUMPAD_8)
+	if (keycode == KEY_D)
 		head->draw->ang_y += 0.1;
-	if (keycode == KEY_NUMPAD_5)
+	if (keycode == KEY_A)
 		head->draw->ang_y -= 0.1;
 	// Rotate z
-	if (keycode == KEY_NUMPAD_9)
+	if (keycode == KEY_E)
 		head->draw->ang_z += 0.1;
-	if (keycode == KEY_NUMPAD_6)
+	if (keycode == KEY_Q)
 		head->draw->ang_z -= 0.1;
 
 	if (keycode == KEY_PLUS) // Zoom in

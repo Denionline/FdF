@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 10:51:00 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:30:54 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void get_pixel_values(t_head * head, int y, int x, t_pixel * s)
 
 	s->x = (head->draw->pad_x * head->draw->zoom) * px;
 	s->y = (head->draw->pad_y * head->draw->zoom) * py;
-	s->z = pixel.z * head->draw->zoom;
+	s->z = ((head->draw->pad_y / 2) * head->draw->zoom) * pixel.z;
 	s->color = pixel.color;
 }
 

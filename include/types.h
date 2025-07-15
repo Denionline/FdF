@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 09:54:48 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 10:54:12 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct s_draw
 	double	distance;
 	double	zoom;
 	double	zoom_z;
+	double	margin;
 	int		color;
 	int		pad_y;
 	int		pad_x;

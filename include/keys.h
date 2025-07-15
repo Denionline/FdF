@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:55:24 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/08 14:23:57 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/15 14:27:29 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@
 #define KEY_B 98
 #define KEY_C 99
 #define KEY_D 100
+#define KEY_E 101
+#define KEY_Q 113
+#define KEY_S 115
+#define KEY_W 119
 
 #define KEY_NUMPAD_1 65436
 #define KEY_NUMPAD_2 65433
