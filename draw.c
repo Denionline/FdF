@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/16 11:27:17 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:02:45 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,16 @@ static void get_pixel_values(t_head * head, int y, int x, t_pixel * s)
 	const t_pixel pixel = head->map->coordinates[y][x];
 	const double  center_x = (head->map->size.x) / 2.0;
 	const double  center_y = (head->map->size.y) / 2.0;
-	const int	  px = x - center_x;
-	const int	  py = y - center_y;
+	const int	  pixel_x = x - center_x;
+	const int	  pixel_y = y - center_y;
+	int			  pad_z;
 
-	s->x = (head->draw->pad_x * head->draw->zoom) * px;
-	s->y = (head->draw->pad_y * head->draw->zoom) * py;
-	s->z = ((head->draw->pad_y / 2) * head->draw->zoom) * pixel.z;
+	pad_z = 100 / head->map->size.x;
+	if (pad_z < 1)
+		pad_z = 1;
+	s->x = (head->draw->pad_x * head->draw->zoom) * pixel_x;
+	s->y = (head->draw->pad_y * head->draw->zoom) * pixel_y;
+	s->z = (pad_z * head->draw->zoom) * pixel.z;
 	s->color = pixel.color;
 }
 

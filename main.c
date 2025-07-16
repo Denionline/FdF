@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/16 12:07:49 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/16 17:03:05 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void init(t_head ** head)
 		(*head)->window->size.x,
 		(*head)->window->size.y,
 		"FdF");
-	(*head)->draw->pad_x = 10;
-	(*head)->draw->pad_y = 10;
+	(*head)->draw->pad_x = 20;
+	(*head)->draw->pad_y = 20;
 	(*head)->draw->position.x = 0;
 	(*head)->draw->position.y = 0;
 	(*head)->draw->ang_x = PI / 8;
@@ -72,6 +72,7 @@ int main(int argc, char * argv[])
 		return (0);
 	init(&head);
 	load_map(&head->map, argv[1]);
+	printf("Map %s loaded with size (%d, %d)\n", argv[1], head->map->size.x, head->map->size.y);
 	hooks(head);
 	// show_map(head->map->coordinates, head->map->size.y, head->map->size.x);
 	head->draw->zoom = 1;

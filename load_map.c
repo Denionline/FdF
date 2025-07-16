@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/10 17:59:50 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/16 16:59:48 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int get_size(char ** values)
 	int len;
 
 	len = 0;
-	while (values[len] != NULL)
+	while (values[len] && values[len][0] != '\n')
 		len++;
 	return (len);
 }
@@ -50,26 +50,31 @@ static t_pixel get_point(char * value)
 	{
 		values = ft_split(value, ',');
 		pixel.z = ft_atoi(values[0]);
-		pixel.color = ft_basetoi(values[1]+2, "0123456789ABCDEF");
+		pixel.color = ft_basetoi(values[1] + 2, "0123456789ABCDEF");
+		if (pixel.color == 0)
+			pixel.color = 0x009fd9;
+		printf("%d\n", pixel.color);
 		return (free(values[0]), free(values[1]), free(values), pixel);
 	}
-	pixel.color = 0xFFFFFF;
+	pixel.color = 0x009fd9;
 	pixel.z = ft_atoi(value);
 	return (pixel);
 }
 
 static t_pixel ** get_values(t_map * map, char ** values)
 {
+	int line_size;
 	int i;
 
+	line_size = get_size(values);
 	map->coordinates = realloc_coordinates(map->coordinates, map->size.y);
-	map->coordinates[map->size.y] = malloc(get_size(values) * sizeof(t_pixel));
+	map->coordinates[map->size.y] = malloc(line_size * sizeof(t_pixel));
 	if (!map->coordinates || !map->coordinates[map->size.y])
 		return (free(map->coordinates), free(map->coordinates[map->size.y]), NULL);
-	if (map->size.x < get_size(values))
-		map->size.x = get_size(values);
+	if (map->size.x < line_size)
+		map->size.x = line_size;
 	i = 0;
-	while (values[i])
+	while (i < line_size)
 	{
 		map->coordinates[map->size.y][i] = get_point(values[i]);
 		free(values[i++]);
