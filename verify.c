@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 17:31:48 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/12 16:11:41 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:18:11 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void end(t_head * head)
 {
 	int i;
 
+	mlx_destroy_image(head->vars.mlx, head->draw->image.img);
 	mlx_destroy_window(head->vars.mlx, head->vars.win);
 	mlx_destroy_display(head->vars.mlx);
 	i = 0;

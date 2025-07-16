@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 21:04:58 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/16 11:56:31 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,28 +23,32 @@ typedef struct s_pixel
 	int color;
 } t_pixel;
 
+typedef struct s_img
+{
+	void * img;
+	int	   pixel_bits;
+	int	   line_bytes;
+	int	   endian;
+	char * buffer;
+} t_img;
+
 typedef struct s_draw
 {
-	t_pixel _;
-	t_pixel s0;
-	t_pixel s1;
 	t_pixel start;
 	t_pixel position;
 	double	ang_x;
 	double	ang_y;
 	double	ang_z;
-	double	ang_2d;
 	double	distance;
 	double	zoom;
-	double	zoom_z;
 	double	margin;
 	int		color;
 	int		pad_y;
 	int		pad_x;
-	int		z;
 	double	projection[3][3];
 	double	values[3];
-	void *	image;
+	t_img	image;
+
 } t_draw;
 
 typedef struct s_map

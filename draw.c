@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 14:30:54 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/16 11:27:17 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ static t_pixel get_reference(t_head * head, int y, int x)
 
 void draw(t_head * head, int y, int x)
 {
-	t_pixel point;
-	t_pixel line;
+	t_pixel s0;
+	t_pixel s1;
 
-	point = get_reference(head, y, x);
+	s0 = get_reference(head, y, x);
 	if (x + 1 < head->map->size.x)
 	{
-		line = get_reference(head, y, x + 1);
-		bresenham(head, point, line);
+		s1 = get_reference(head, y, x + 1);
+		bresenham(head, s0, s1);
 	}
 	if (y + 1 < head->map->size.y)
 	{
-		line = get_reference(head, y + 1, x);
-		bresenham(head, point, line);
+		s1 = get_reference(head, y + 1, x);
+		bresenham(head, s0, s1);
 	}
 }

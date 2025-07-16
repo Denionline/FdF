@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 14:32:03 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:07:49 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ static void init(t_head ** head)
 	(*head)->draw = malloc(sizeof(t_draw));
 	if (!(*head)->draw)
 		return;
-	(*head)->window->size.x = 1000;
-	(*head)->window->size.y = 800;
+	(*head)->window->size.x = VW;
+	(*head)->window->size.y = VH;
 	(*head)->vars.mlx = mlx_init();
 	(*head)->vars.win = mlx_new_window(
 		(*head)->vars.mlx,
@@ -36,7 +36,6 @@ static void init(t_head ** head)
 		"FdF");
 	(*head)->draw->pad_x = 10;
 	(*head)->draw->pad_y = 10;
-	(*head)->draw->z = 0;
 	(*head)->draw->position.x = 0;
 	(*head)->draw->position.y = 0;
 	(*head)->draw->ang_x = PI / 8;
@@ -45,7 +44,12 @@ static void init(t_head ** head)
 	(*head)->draw->distance = 1.0;
 	(*head)->draw->margin = 0.8;
 
-	ft_memcpy((*head)->draw->projection, (double[3][3]){{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}, sizeof(double) * 9);
+	ft_memcpy((*head)->draw->projection,
+			  (double[3][3]){
+				  {1, 0, 0},
+				  {0, 1, 0},
+				  {0, 0, 1}},
+			  sizeof(double) * 9);
 }
 
 // static void show_map(t_pixel ** coor, int size_y, int size_x)

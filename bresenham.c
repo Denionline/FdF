@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:54:15 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 21:06:29 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/16 11:59:25 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void bresenham(t_head * head, t_pixel s0, t_pixel s1)
 {
 	const int delta_x = abs(s1.x - s0.x);
 	const int delta_y = -abs(s1.y - s0.y);
-	int err_init;
-	int err_curr;
-	int step_x;
-	int step_y;
+	int		  err_init;
+	int		  err_curr;
+	int		  step_x;
+	int		  step_y;
 
 	step_x = 1;
 	if (s0.x > s1.x)
@@ -36,7 +36,7 @@ void bresenham(t_head * head, t_pixel s0, t_pixel s1)
 	err_init = delta_x + delta_y;
 	while (s0.x != s1.x || s0.y != s1.y)
 	{
-		mlx_pixel_put(head->vars.mlx, head->vars.win, s0.x, s0.y, s0.color);
+		put_pixel_image(&head->draw->image, s0.x, s0.y, s0.color);
 		err_curr = 2 * err_init;
 		if (err_curr >= delta_y)
 			calc_err(&err_init, &s0.x, delta_y, step_x);

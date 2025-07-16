@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/11 17:37:16 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/16 12:16:25 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ C_WHITE = \033[0;97m
 #                                    Names                                     #
 # **************************************************************************** #
 
-EXEC			= FdF
+EXEC			= fdf
 FTPRINTF		= $(FTPRINTF_PATH)libftprintf.a
 LIBFT			= $(LIBFT_PATH)libft.a
 GNL				= $(GNL_PATH)get_next_line.a
@@ -57,6 +57,7 @@ FILES			+= bresenham
 FILES			+= hooks
 FILES			+= math
 FILES			+= verify
+FILES			+= image
 
 SRC	= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJ	= $(addprefix ./, $(addsuffix .o, $(FILES)))
@@ -112,13 +113,13 @@ fclean: clean
 re: fclean all
 
 t0:
-	@./FdF maps/42.fdf
+	@./$(EXEC) maps/42.fdf
 t1:
-	@./FdF maps/elem-col.fdf
+	@./$(EXEC) maps/elem-col.fdf
 t2:
-	@./FdF maps/10-2.fdf
+	@./$(EXEC) maps/10-2.fdf
 v:
-	@valgrind ./FdF maps/42.fdf
+	@valgrind ./$(EXEC) maps/42.fdf
 
 # libft processes
 verify_ftprintf:
