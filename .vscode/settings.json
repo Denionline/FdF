@@ -85,6 +85,7 @@
     "utility": "c",
     "fdf.h": "c",
     "random": "c",
-    "cmath": "c"
+    "cmath": "c",
+    "types.h": "c"
   }
 }

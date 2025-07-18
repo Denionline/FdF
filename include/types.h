@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/16 11:56:31 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:32:01 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,14 @@ typedef struct s_img
 	int	   endian;
 	char * buffer;
 } t_img;
+
+typedef struct s_bresenham
+{
+	t_pixel delta;
+	t_pixel direction;
+	int		base_decision;
+	int		decision;
+} t_bresenham;
 
 typedef struct s_draw
 {

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/16 17:02:45 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:20:42 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,27 @@ static void get_pixel_values(t_head * head, int y, int x, t_pixel * s)
 	const double  center_y = (head->map->size.y) / 2.0;
 	const int	  pixel_x = x - center_x;
 	const int	  pixel_y = y - center_y;
-	int			  pad_z;
+	const double  MIN_SIDE = 10.0;
+	const double  MAX_SIDE = 250.0;
+	const double  PAD_Z_MAX = 10.0;
+	const double  PAD_Z_MIN = 1.0;
+	double		  big_side;
+	double		  value;
+	double		  pad_z;
 
-	pad_z = 100 / head->map->size.x;
-	if (pad_z < 1)
-		pad_z = 1;
+	big_side = head->map->size.x > head->map->size.y
+				   ? head->map->size.x
+				   : head->map->size.y;
+	value = (big_side - MIN_SIDE) / (MAX_SIDE - MIN_SIDE);
+	if (value < 0.0)
+		value = 0.0;
+	if (value > 1.0)
+		value = 1.0;
+	pad_z = PAD_Z_MAX + (PAD_Z_MIN - PAD_Z_MAX) * value;
+
+	s->z = pad_z * head->draw->zoom * pixel.z;
 	s->x = (head->draw->pad_x * head->draw->zoom) * pixel_x;
 	s->y = (head->draw->pad_y * head->draw->zoom) * pixel_y;
-	s->z = (pad_z * head->draw->zoom) * pixel.z;
 	s->color = pixel.color;
 }
 
@@ -38,8 +51,8 @@ static t_pixel get_reference(t_head * head, int y, int x)
 	pixel = mat_mult(rotate_x(head), pixel);
 	pixel = mat_mult(rotate_y(head), pixel);
 	pixel = mat_mult(rotate_z(head), pixel);
-	pixel.x += head->draw->start.x + head->draw->position.x;
-	pixel.y += head->draw->start.y + head->draw->position.y;
+	pixel.x += head->draw->start.x + (head->draw->position.x * (1 / head->draw->zoom));
+	pixel.y += head->draw->start.y + (head->draw->position.y * (1 / head->draw->zoom));
 	return (pixel);
 }
 

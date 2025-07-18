@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/16 12:16:25 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/18 10:07:08 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,6 +58,8 @@ FILES			+= hooks
 FILES			+= math
 FILES			+= verify
 FILES			+= image
+FILES			+= color
+FILES			+= rotate
 
 SRC	= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJ	= $(addprefix ./, $(addsuffix .o, $(FILES)))

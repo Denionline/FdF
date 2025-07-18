@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/16 12:02:03 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:22:01 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,17 @@ static int key_press(int keycode, t_head * head)
 		head->draw->ang_z -= 0.1;
 
 	if (keycode == KEY_PLUS) // Zoom in
+	{
 		head->draw->zoom *= 1.1;
-	if (keycode == KEY_MINUS && (head->draw->pad_y > 1 && head->draw->pad_x > 1)) // Zoom out
+		if (head->draw->zoom > 5.0)
+			head->draw->zoom = 5.0;
+	}
+	if (keycode == KEY_MINUS) // Zoom out
+	{
 		head->draw->zoom /= 1.1;
-
+		if (head->draw->zoom < 0.1)
+			head->draw->zoom = 0.1;
+	}
 	if (keycode == KEY_DOT)
 		head->draw->pad_y += 1;
 	if (keycode == KEY_COMMA)
@@ -44,20 +51,20 @@ static int key_press(int keycode, t_head * head)
 
 	// Move
 	if (keycode == KEY_ARROW_UP)
-		head->draw->position.y += 2;
+		head->draw->position.y -= 5;
 	if (keycode == KEY_ARROW_DOWN)
-		head->draw->position.y -= 2;
+		head->draw->position.y += 5;
 	if (keycode == KEY_ARROW_RIGHT)
-		head->draw->position.x += 2;
+		head->draw->position.x += 5;
 	if (keycode == KEY_ARROW_LEFT)
-		head->draw->position.x -= 2;
+		head->draw->position.x -= 5;
 
 	if (keycode == KEY_ESC)
 	{
 		mlx_loop_end(head->vars.mlx);
 		return (0);
 	}
-	// mlx_clear_window(head->vars.mlx, head->vars.win);
+	printf("%f\n", head->draw->zoom);
 	render(head);
 	return (0);
 }

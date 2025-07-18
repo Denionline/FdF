@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/16 16:59:48 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/17 10:11:18 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ static t_pixel get_point(char * value)
 		pixel.color = ft_basetoi(values[1] + 2, "0123456789ABCDEF");
 		if (pixel.color == 0)
 			pixel.color = 0x009fd9;
-		printf("%d\n", pixel.color);
 		return (free(values[0]), free(values[1]), free(values), pixel);
 	}
 	pixel.color = 0x009fd9;

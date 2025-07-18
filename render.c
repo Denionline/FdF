@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/16 14:20:19 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/18 16:37:46 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,24 +23,24 @@ static void init_render(t_head * head)
 	// printf("%f\n", newzoom);
 }
 
-void render(t_head * head)
+void render(t_head * h)
 {
 	int y;
 	int x;
 
-	create_new_image(head);
-	init_render(head);
+	create_new_image(h);
+	init_render(h);
 	y = 0;
-	while (y < head->map->size.y)
+	while (y < h->map->size.y)
 	{
 		x = 0;
-		while (x < head->map->size.x)
+		while (x < h->map->size.x)
 		{
-			draw(head, y, x);
+			draw(h, y, x);
 			x++;
 		}
 		y++;
 	}
-	mlx_put_image_to_window(head->vars.mlx, head->vars.win, head->draw->image.img, 0, 0);
-	mlx_loop(head->vars.mlx);
+	mlx_put_image_to_window(h->vars.mlx, h->vars.win, h->draw->image.img, 0, 0);
+	mlx_loop(h->vars.mlx);
 }
