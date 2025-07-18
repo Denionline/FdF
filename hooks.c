@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/18 18:22:01 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/18 18:25:33 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ static int key_press(int keycode, t_head * head)
 		mlx_loop_end(head->vars.mlx);
 		return (0);
 	}
-	printf("%f\n", head->draw->zoom);
 	render(head);
 	return (0);
 }
