@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/18 16:32:01 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/20 11:06:30 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,14 @@ typedef struct s_pixel
 	int z;
 	int color;
 } t_pixel;
+
+typedef struct s_fps
+{
+	clock_t last_time;
+	int		frame_count;
+	int		current_fps;
+	char	fps_str[20];
+} t_fps;
 
 typedef struct s_img
 {

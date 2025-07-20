@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/18 17:21:53 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:09:39 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 #include "minilibx-linux/mlx.h"
 #include "types.h"
 #include <math.h>
+#include <sys/time.h>
 
 #define PI 3.14159
 #define VW 1440
