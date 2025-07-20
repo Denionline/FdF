@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/18 16:37:46 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/20 10:56:22 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,7 @@ static void init_render(t_head * head)
 	double newzoom;
 	head->draw->start.x = (head->window->size.x / 2);
 	head->draw->start.y = (head->window->size.y / 2);
-	// newzoom = ;m
 	newzoom = head->draw->zoom;
-	// newzoom = head->map->size.x;
-	// printf("%f\n", newzoom);
 }
 
 void render(t_head * h)

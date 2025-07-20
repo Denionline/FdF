@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/18 18:37:28 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/19 10:14:30 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,7 @@ static void init(t_head ** head, char * path)
 		i++;
 	}
 	free(path_sep);
-	(*head)->vars.win = mlx_new_window(
-		(*head)->vars.mlx,
-		(*head)->window->size.x,
-		(*head)->window->size.y,
-		fdf_file);
+	(*head)->vars.win = mlx_new_window((*head)->vars.mlx, VW, VH, fdf_file);
 	(*head)->draw->pad_x = 20;
 	(*head)->draw->pad_y = 20;
 	(*head)->draw->position.x = 0;
@@ -59,7 +55,7 @@ static void init(t_head ** head, char * path)
 	(*head)->draw->distance = 1.0;
 	(*head)->draw->margin = 0.8;
 	(*head)->draw->zoom = 1.0;
-
+	free(fdf_file);
 	ft_memcpy((*head)->draw->projection,
 			  (double[3][3]){
 				  {1, 0, 0},
