@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/18 10:07:08 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/20 15:57:21 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,8 @@ FILES			+= verify
 FILES			+= image
 FILES			+= color
 FILES			+= rotate
+FILES			+= fps
+FILES			+= transform
 
 SRC	= $(addprefix ./, $(addsuffix .c, $(FILES)))
 OBJ	= $(addprefix ./, $(addsuffix .o, $(FILES)))

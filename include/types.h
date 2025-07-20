@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/20 11:06:30 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/20 19:16:44 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 #ifndef TYPES_H
 #define TYPES_H
+
+typedef struct s_double_axis
+{
+	double x;
+	double y;
+	double z;
+} t_double_axis;
 
 typedef struct s_pixel
 {
@@ -25,10 +32,10 @@ typedef struct s_pixel
 
 typedef struct s_fps
 {
-	clock_t last_time;
-	int		frame_count;
-	int		current_fps;
-	char	fps_str[20];
+	struct timeval last_time;
+	int			   frame_count;
+	int			   current_fps;
+	char		   fps_str[20];
 } t_fps;
 
 typedef struct s_img
@@ -39,6 +46,15 @@ typedef struct s_img
 	int	   endian;
 	char * buffer;
 } t_img;
+
+typedef struct s_control
+{
+	t_double_axis rotation;
+	t_double_axis position;
+	t_pixel		  pad;
+	double		  zoom;
+	t_keys		  is_on;
+} t_control;
 
 typedef struct s_bresenham
 {
@@ -91,6 +107,8 @@ typedef struct s_head
 	t_map *	   map;
 	t_window * window;
 	t_draw *   draw;
+	t_fps	   fps;
+	t_control  controls;
 } t_head;
 
 #endif

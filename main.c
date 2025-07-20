@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/19 10:14:30 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/20 15:58:39 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static void init(t_head ** head, char * path)
 	(*head)->draw->distance = 1.0;
 	(*head)->draw->margin = 0.8;
 	(*head)->draw->zoom = 1.0;
+	ft_bzero(&(*head)->controls, sizeof((*head)->controls));
 	free(fdf_file);
 	ft_memcpy((*head)->draw->projection,
 			  (double[3][3]){

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:55:24 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/15 14:27:29 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/20 19:16:18 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 #ifndef KEYS_H
 #define KEYS_H
 
+typedef struct s_keys
+{
+	int mouse_left_click;
+	int key_ctrl;
+} t_keys;
+
 #define KEY_ESC 65307
+#define KEY_CTRL 65507
 
 #define KEY_PLUS 65451
 #define KEY_MINUS 65453
@@ -49,5 +56,10 @@
 
 #define KEY_DOT 44
 #define KEY_COMMA 46
+
+#define MOUSE_LEFT_CLICK 1
+#define MOUSE_RIGHT_CLICK 2
+#define MOUSE_SCROLL_UP 4
+#define MOUSE_SCROLL_DOWN 5
 
 #endif
