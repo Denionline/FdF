@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/20 16:31:30 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/20 21:23:18 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void end(t_head * head);
 
 // fps.c
 void init_fps(t_fps * fps);
-void update_fps(t_fps * fps);
+void update_fps(t_head *head, t_fps * fps);
 
 // rotate.c
 double (*rotate_x(t_head * head))[3];

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/20 19:16:44 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/21 10:41:10 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_fps
 	struct timeval last_time;
 	int			   frame_count;
 	int			   current_fps;
-	char		   fps_str[20];
+	char		   fps_str[5];
 } t_fps;
 
 typedef struct s_img

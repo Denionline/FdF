@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/20 15:58:39 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/20 21:15:33 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int main(int argc, char * argv[])
 	printf("Map %s loaded with size (%d, %d)\n", argv[1], head->map->size.x, head->map->size.y);
 	hooks(head);
 	// show_map(head->map->coordinates, head->map->size.y, head->map->size.x);
+	init_fps(&head->fps);
 	render(head);
 	end(head);
 	return (0);
