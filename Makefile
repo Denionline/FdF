@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/22 10:50:37 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/22 14:11:52 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ MLX				= $(MLX_PATH)libmlx.a
 # **************************************************************************** #
 
 INC				= include
+SRC				= src/
 
 FTPRINTF_PATH	= $(INC)/ft_printf/
 LIBFT_PATH		= $(FTPRINTF_PATH)$(INC)/libft/
@@ -50,7 +51,8 @@ MLX_PATH		= $(INC)/minilibx-linux/
 #                                    Files                                     #
 # **************************************************************************** #
 
-FILES			+= main
+MAIN			= main.c
+
 FILES			+= load_map
 FILES			+= render
 FILES			+= draw
@@ -64,8 +66,8 @@ FILES			+= rotate
 FILES			+= fps
 FILES			+= transform
 
-SRC	= $(addprefix ./, $(addsuffix .c, $(FILES)))
-OBJ	= $(addprefix ./, $(addsuffix .o, $(FILES)))
+SRC_FILES		= $(addprefix $(SRC), $(addsuffix .c, $(FILES)))
+OBJ_FILES		= $(addprefix $(SRC), $(addsuffix .o, $(FILES)))
 
 # **************************************************************************** #
 #                                    Git                                       #
@@ -79,10 +81,10 @@ MLX_URL			= https://github.com/42paris/minilibx-linux.git
 #                                  Compiler                                    #
 # **************************************************************************** #
 
-CC			= cc
-CFLAGS		= -Werror -Wextra -Wall
-MLXFLAGS	= -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm -lz
-MAKE		= make --no-print-directory
+CC				= cc
+CFLAGS			= -Werror -Wextra -Wall
+MLXFLAGS		= -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm -lz
+MAKE			= make --no-print-directory
 
 # **************************************************************************** #
 #                                  Commands                                    #
@@ -101,8 +103,8 @@ $(GNL):
 $(MLX):
 	@$(MAKE) -C $(MLX_PATH)
 
-$(EXEC): $(OBJ)
-	@$(CC) $(CFLAGS) $(OBJ) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
+$(EXEC): $(OBJ_FILES)
+	@$(CC) $(CFLAGS) -I$(INC) $(MAIN) $(OBJ_FILES) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 %.o: %.c
@@ -110,11 +112,11 @@ $(EXEC): $(OBJ)
 	@printf "Compiling $(C_YELLOW)$<$(C_STD)...\n"
 
 test:
-	@$(CC) $(CFLAGS) $(OBJ) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(TEST)
+	@$(CC) $(CFLAGS) $(OBJ_FILES) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(TEST)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 clean:
-	@rm -rf $(OBJ)
+	@rm -rf $(OBJ_FILES)
 
 fclean: clean
 	@rm -rf $(EXEC)

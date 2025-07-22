@@ -1,49 +1,47 @@
 {
-	"version": "0.2.0",
-	"configurations": [
-		{
-			"name": "Debug FdF",
-			"type": "cppdbg",
-			"request": "launch",
-			"program": "${workspaceFolder}/FdF",
-			"args": [
-				"maps/mars.fdf"
-			],
-			"stopAtEntry": false,
-			"cwd": "${workspaceFolder}",
-			"environment": [],
-			"externalConsole": false,
-			"MIMode": "gdb",
-			"setupCommands": [
-				{
-					"description": "Enable pretty-printing for gdb",
-					"text": "-enable-pretty-printing",
-					"ignoreFailures": true
-				}
-			],
-			"preLaunchTask": "C Build (FdF)",
-			"miDebuggerPath": "/usr/bin/gdb"
-		},
-		{
-			"name": "C/C++ Runner: Debug Session",
-			"type": "cppdbg",
-			"request": "launch",
-			"args": [
-				"maps/mars.fdf"
-			],
-			"stopAtEntry": false,
-			"externalConsole": false,
-			"cwd": "/home/denionline/x/FdF",
-			"program": "/home/denionline/x/FdF/build/Debug/outDebug",
-			"MIMode": "gdb",
-			"miDebuggerPath": "gdb",
-			"setupCommands": [
-				{
-					"description": "Enable pretty-printing for gdb",
-					"text": "-enable-pretty-printing",
-					"ignoreFailures": true
-				}
-			]
-		}
-	]
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug FdF",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/FdF",
+      "args": [
+        "maps/mars.fdf"
+      ],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": false,
+      "MIMode": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ],
+      "preLaunchTask": "C Build (FdF)",
+      "miDebuggerPath": "/usr/bin/gdb"
+    },
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "cppdbg",
+      "request": "launch",
+      "args": [],
+      "stopAtEntry": false,
+      "externalConsole": false,
+      "cwd": "/home/dximenes/x/m2/FdF",
+      "program": "/home/dximenes/x/m2/FdF/build/Debug/outDebug",
+      "MIMode": "gdb",
+      "miDebuggerPath": "gdb",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    }
+  ]
 }
