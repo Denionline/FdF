@@ -89,6 +89,6 @@
     "types.h": "c",
     "string": "c",
     "string_view": "c"
-},
-"InYourFace.error.usewarnings": true
+  },
+  "InYourFace.error.usewarnings": true
 }
