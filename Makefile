@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/22 10:28:12 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/22 10:50:37 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ C_WHITE = \033[0;97m
 # **************************************************************************** #
 
 EXEC			= fdf
+TEST			= test
 FTPRINTF		= $(FTPRINTF_PATH)libftprintf.a
 LIBFT			= $(LIBFT_PATH)libft.a
 GNL				= $(GNL_PATH)get_next_line.a
@@ -109,7 +110,7 @@ $(EXEC): $(OBJ)
 	@printf "Compiling $(C_YELLOW)$<$(C_STD)...\n"
 
 test:
-	@$(CC) $(CFLAGS) $(OBJ) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
+	@$(CC) $(CFLAGS) $(OBJ) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(TEST)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 clean:

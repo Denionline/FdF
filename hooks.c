@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/20 19:21:50 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:47:27 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ static int mouse_release(int button, int x, int y, t_head * head)
 		head->controls.rotation.x = 0;
 		head->controls.rotation.y = 0;
 	}
+	return (0);
 }
 
 static int mouse_press(int button, int x, int y, t_head * head)
@@ -30,6 +31,7 @@ static int mouse_press(int button, int x, int y, t_head * head)
 		head->controls.zoom = -0.05;
 	if (button == MOUSE_LEFT_CLICK)
 		head->controls.is_on.mouse_left_click = TRUE;
+	return (0);
 }
 
 static int mouse_move(int x, int y, t_head * head)
@@ -47,11 +49,12 @@ static int mouse_move(int x, int y, t_head * head)
 		if (y < 0 && (y * -1) < (head->map->size.y * head->draw->pad_y))
 			head->controls.rotation.y = y * -0.0001;
 	}
+	return (0);
 }
 
 static int key_release(int keycode, t_head * head)
 {
-	if (keycode == KEY_W || keycode == KEY_S)
+	if ((keycode == KEY_W || keycode == KEY_S))
 		head->controls.rotation.x = 0;
 	if (keycode == KEY_D || keycode == KEY_A)
 		head->controls.rotation.y = 0;
@@ -70,29 +73,29 @@ static int key_press(int keycode, t_head * head)
 	// printf("%d\n", keycode);
 	if (keycode == KEY_W)
 		head->controls.rotation.x = 0.01;
-	if (keycode == KEY_S)
+	else if (keycode == KEY_S)
 		head->controls.rotation.x = -0.01;
 	if (keycode == KEY_D)
 		head->controls.rotation.y = 0.01;
-	if (keycode == KEY_A)
+	else if (keycode == KEY_A)
 		head->controls.rotation.y = -0.01;
 	if (keycode == KEY_E)
 		head->controls.rotation.z = 0.01;
-	if (keycode == KEY_Q)
+	else if (keycode == KEY_Q)
 		head->controls.rotation.z = -0.01;
 
 	if (keycode == KEY_PLUS)
 		head->controls.zoom = 0.05;
-	if (keycode == KEY_MINUS)
+	else if (keycode == KEY_MINUS)
 		head->controls.zoom = -0.05;
 
 	if (keycode == KEY_ARROW_UP)
 		head->controls.position.y = -1;
-	if (keycode == KEY_ARROW_DOWN)
+	else if (keycode == KEY_ARROW_DOWN)
 		head->controls.position.y = 1;
 	if (keycode == KEY_ARROW_RIGHT)
 		head->controls.position.x = 1;
-	if (keycode == KEY_ARROW_LEFT)
+	else if (keycode == KEY_ARROW_LEFT)
 		head->controls.position.x = -1;
 
 	if (keycode == KEY_CTRL)
@@ -116,6 +119,5 @@ void hooks(t_head * head)
 	mlx_hook(head->vars.win, 5, 1L << 3, mouse_release, head); // Botões liberados
 	mlx_hook(head->vars.win, 4, 1L << 2, mouse_press, head);   // Botões do mouse
 	mlx_hook(head->vars.win, 6, 1L << 6, mouse_move, head);	   // Movimento do mouse
-
 	mlx_loop_hook(head->vars.mlx, render, head);
 }

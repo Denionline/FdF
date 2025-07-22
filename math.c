@@ -6,13 +6,20 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:35:34 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/18 16:31:52 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:03:51 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
 int absolute(int number)
+{
+	if (number < 0)
+		return (-number);
+	return (number);
+}
+
+double absolute_double(double number)
 {
 	if (number < 0)
 		return (-number);
@@ -26,7 +33,9 @@ t_pixel mat_mult(double projection[3][3], t_pixel values)
 	int	   x;
 	int	   y;
 
-	ft_memcpy(numbers, (double[3]){values.x, values.y, values.z}, sizeof(double) * 3);
+	numbers[0] = values.x;
+	numbers[1] = values.y;
+	numbers[2] = values.z;
 	y = 0;
 	while (y < 3)
 	{

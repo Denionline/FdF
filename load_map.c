@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 10:27:18 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 11:14:38 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ void load_map(t_head * head, char * path)
 
 	if (fd < 3)
 		end(head);
-	ft_bzero(&head->map, sizeof(head->map));
+	// ft_bzero(head->map, sizeof(head->map));
 	while (TRUE)
 	{
 		row = get_next_line(fd);
 		if (!row)
 			break;
-		head->map->coordinates = get_values(&head->map, ft_split(row, ' '));
+		head->map->coordinates = get_values(head->map, ft_split(row, ' '));
 		free(row);
 	}
 	close(fd);

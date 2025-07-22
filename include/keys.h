@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:55:24 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/20 19:16:18 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:18:35 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_keys
 {
 	int mouse_left_click;
 	int key_ctrl;
+	int any;
 } t_keys;
 
 #define KEY_ESC 65307

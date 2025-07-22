@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 10:27:06 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 12:46:07 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ int render(t_head * h)
 {
 	init_render(h);
 	transform(h);
+	// if (h->controls.is_on.any > 0)
 	draw(h);
 	update_fps(h, &h->fps);
 	mlx_loop(h->vars.mlx);
+	return (0);
 }

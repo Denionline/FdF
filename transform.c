@@ -6,11 +6,21 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:32:02 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/20 19:05:53 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 11:56:38 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
+
+static void check_limits(t_head * head)
+{
+	if (absolute_double(head->draw->ang_x) >= 20 * PI)
+		head->draw->ang_x = PI / 8;
+	if (absolute_double(head->draw->ang_y) >= 20 * PI)
+		head->draw->ang_y = PI / -6;
+	if (absolute_double(head->draw->ang_z) >= 20 * PI)
+		head->draw->ang_z = PI / 5;
+}
 
 void transform(t_head * head)
 {
@@ -32,4 +42,5 @@ void transform(t_head * head)
 		head->draw->position.y += head->controls.position.y;
 	if (head->controls.position.x)
 		head->draw->position.x += head->controls.position.x;
+	check_limits(head);
 }

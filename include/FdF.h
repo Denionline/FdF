@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/21 20:50:57 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 11:48:48 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void load_map(t_head * head, char * path);
 int render(t_head * mlx);
 
 // transform.c
-void transform(t_head *head);
+void transform(t_head * head);
 
 // image.c
 void create_new_image(t_head * head);
@@ -62,7 +62,7 @@ void end(t_head * head);
 
 // fps.c
 void init_fps(t_fps * fps);
-void update_fps(t_head *head, t_fps * fps);
+void update_fps(t_head * head, t_fps * fps);
 
 // rotate.c
 double (*rotate_x(t_head * head))[3];
@@ -71,6 +71,7 @@ double (*rotate_z(t_head * head))[3];
 
 // math.c
 int		absolute(int number);
+double	absolute_double(double number);
 t_pixel mat_mult(double projection[3][3], t_pixel values);
 
 #endif
