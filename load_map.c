@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/17 10:11:18 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 10:27:18 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,18 +83,20 @@ static t_pixel ** get_values(t_map * map, char ** values)
 	return (map->coordinates);
 }
 
-void load_map(t_map ** map, char * path)
+void load_map(t_head * head, char * path)
 {
 	const int fd = open(path, O_RDONLY);
 	char *	  row;
 
-	ft_bzero(*map, sizeof(**map));
+	if (fd < 3)
+		end(head);
+	ft_bzero(&head->map, sizeof(head->map));
 	while (TRUE)
 	{
 		row = get_next_line(fd);
 		if (!row)
 			break;
-		(*map)->coordinates = get_values(*map, ft_split(row, ' '));
+		head->map->coordinates = get_values(&head->map, ft_split(row, ' '));
 		free(row);
 	}
 	close(fd);

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/20 21:23:18 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/21 20:50:57 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@
 #define VH 900
 #define MAX_ZOOM 10.0
 #define MIN_ZOOM 0.1
+#define BIGGEST_SIZE 250.00
+#define SMALLEST_SIZE 10.0
+#define MAX_PADZ 10.00
+#define MIN_PADZ 1.0
 
 // load_map.c
-void load_map(t_map ** map, char * path);
+void load_map(t_head * head, char * path);
 
 // render.c
 int render(t_head * mlx);

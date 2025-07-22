@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/20 15:57:21 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/22 10:28:12 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,10 @@ $(EXEC): $(OBJ)
 %.o: %.c
 	@$(CC) -I$(INC) -I/usr/include -I$(MLX_PATH) -O3 -c $< -o $@
 	@printf "Compiling $(C_YELLOW)$<$(C_STD)...\n"
+
+test:
+	@$(CC) $(CFLAGS) $(OBJ) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
+	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 clean:
 	@rm -rf $(OBJ)
