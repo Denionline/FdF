@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/22 15:03:37 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/22 18:20:24 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ MLX				= $(MLX_PATH)libmlx.a
 
 INC				= include
 SRC				= src/
+BUILD_PATH		= .build/
 
 FTPRINTF_PATH	= $(INC)/ft_printf/
 LIBFT_PATH		= $(FTPRINTF_PATH)$(INC)/libft/
@@ -68,8 +69,10 @@ FILES			+= initializers
 FILES			+= controls/hooks
 FILES			+= controls/transform
 
-SRC_FILES		= $(addprefix $(SRC), $(addsuffix .c, $(FILES)))
-OBJ_FILES		= $(addprefix $(SRC), $(addsuffix .o, $(FILES)))
+OBJ_FILES		+= $(FILES)
+
+SRCS		= $(addprefix $(SRC), $(addsuffix .c, $(FILES)))
+OBJS		= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(OBJ_FILES)))
 
 # **************************************************************************** #
 #                                    Git                                       #
@@ -105,20 +108,33 @@ $(GNL):
 $(MLX):
 	@$(MAKE) -C $(MLX_PATH)
 
-$(EXEC): $(OBJ_FILES)
-	@$(CC) $(CFLAGS) -I$(INC) $(MAIN) $(OBJ_FILES) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
+$(EXEC): $(OBJS)
+	@TOTAL=$$(echo $(SRCS) | wc -w); \
+	CUR=1; \
+	for SRC in $(SRCS); do\
+		OBJ=$(BUILD_PATH)$$(basename $$SRC .c).o;\
+		$(CC) $(CFLAGS) -I $(INCLUDE_PATH) -c $$SRC -o $$OBJ;\
+		PERC=$$(printf "%d" $$((100 * CUR / TOTAL))); \
+		FILLED=$$(printf "%0.f" $$((20 * PERC / 100))); \
+		EMPTY=$$((20 - FILLED)); \
+		BAR=$$(printf "$(C_GREEN)%*s$(C_STD)" $$FILLED "" | tr " " "#")$$(printf "%*s" $$EMPTY "" | tr " " "."); \
+		printf "\rCompiling [%s] %3d%%" $$BAR $$PERC; \
+		CUR=$$((CUR + 1)); \
+	done; \
+	printf "\n";
+	@$(CC) $(CFLAGS) -I$(INC) $(MAIN) $(OBJS) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
-%.o: %.c
-	@$(CC) -I$(INC) -I/usr/include -I$(MLX_PATH) -O3 -c $< -o $@
-	@printf "Compiling $(C_YELLOW)$<$(C_STD)...\n"
+# %.o: %.c
+# 	@$(CC) -I$(INC) -I/usr/include -I$(MLX_PATH) -O3 -c $< -o $@
+# 	@printf "Compiling $(C_YELLOW)$<$(C_STD)...\n"
 
 test:
-	@$(CC) $(CFLAGS) $(OBJ_FILES) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(TEST)
+	@$(CC) $(CFLAGS) $(OBJS) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(TEST)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 clean:
-	@rm -rf $(OBJ_FILES)
+	@rm -rf $(OBJS)
 
 fclean: clean
 	@rm -rf $(EXEC)
