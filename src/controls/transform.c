@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:32:02 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 11:56:38 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:42:47 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,22 @@
 
 static void check_limits(t_head * head)
 {
-	if (absolute_double(head->draw->ang_x) >= 20 * PI)
-		head->draw->ang_x = PI / 8;
-	if (absolute_double(head->draw->ang_y) >= 20 * PI)
-		head->draw->ang_y = PI / -6;
-	if (absolute_double(head->draw->ang_z) >= 20 * PI)
-		head->draw->ang_z = PI / 5;
+	if (absolute_double(head->draw->ang.x) >= 20 * PI)
+		head->draw->ang.x = PI / 8;
+	if (absolute_double(head->draw->ang.y) >= 20 * PI)
+		head->draw->ang.y = PI / -6;
+	if (absolute_double(head->draw->ang.z) >= 20 * PI)
+		head->draw->ang.z = PI / 5;
 }
 
 void transform(t_head * head)
 {
 	if (head->controls.rotation.x != 0)
-		head->draw->ang_x += head->controls.rotation.x;
+		head->draw->ang.x += head->controls.rotation.x;
 	if (head->controls.rotation.y != 0)
-		head->draw->ang_y += head->controls.rotation.y;
+		head->draw->ang.y += head->controls.rotation.y;
 	if (head->controls.rotation.z != 0)
-		head->draw->ang_z += head->controls.rotation.z;
+		head->draw->ang.z += head->controls.rotation.z;
 	if (head->controls.zoom != 0)
 	{
 		head->draw->zoom += head->controls.zoom;

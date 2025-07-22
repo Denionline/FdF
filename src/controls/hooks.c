@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 12:47:27 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:50:08 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,14 @@ static int mouse_move(int x, int y, t_head * head)
 	if (head->controls.is_on.mouse_left_click)
 	{
 		x -= (VW / 2);
-		if (x > 0 && x < (head->map->size.x * head->draw->pad_x))
+		if (x > 0 && x < (head->map->size.x * head->draw->pad.x))
 			head->controls.rotation.x = x * 0.0001;
-		if (x < 0 && (x * -1) < (head->map->size.x * head->draw->pad_x))
+		if (x < 0 && (x * -1) < (head->map->size.x * head->draw->pad.x))
 			head->controls.rotation.x = x * -0.0001;
 		y -= (VH / 2);
-		if (y > 0 && y < (head->map->size.y * head->draw->pad_y))
+		if (y > 0 && y < (head->map->size.y * head->draw->pad.y))
 			head->controls.rotation.y = y * 0.0001;
-		if (y < 0 && (y * -1) < (head->map->size.y * head->draw->pad_y))
+		if (y < 0 && (y * -1) < (head->map->size.y * head->draw->pad.y))
 			head->controls.rotation.y = y * -0.0001;
 	}
 	return (0);

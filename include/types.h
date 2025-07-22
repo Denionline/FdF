@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 14:59:47 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 18:03:46 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,20 +66,15 @@ typedef struct s_bresenham
 
 typedef struct s_draw
 {
-	t_pixel start;
-	t_pixel position;
-	double	ang_x;
-	double	ang_y;
-	double	ang_z;
-	double	distance;
-	double	zoom;
-	double	margin;
-	int		color;
-	int		pad_y;
-	int		pad_x;
-	double	projection[3][3];
-	double	values[3];
-	t_img	image;
+	t_double_axis ang;
+	t_pixel		  position;
+	t_pixel		  start;
+	t_pixel		  pad;
+	double		  projection[3][3];
+	double		  values[3];
+	double		  distance;
+	double		  zoom;
+	t_img		  image;
 
 } t_draw;
 
@@ -98,11 +93,11 @@ typedef struct s_vars
 
 typedef struct s_head
 {
-	t_vars	   vars;
-	t_map *	   map;
-	t_draw *   draw;
-	t_fps	   fps;
-	t_control  controls;
+	t_vars	  vars;
+	t_map *	  map;
+	t_draw *  draw;
+	t_fps	  fps;
+	t_control controls;
 } t_head;
 
 #endif
