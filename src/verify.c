@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 17:31:48 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/16 12:18:11 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:03:16 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void end(t_head * head)
 		free(head->map->coordinates);
 	if (head->vars.mlx)
 		free(head->vars.mlx);
-	if (head->window)
-		free(head->window);
 	if (head->map)
 		free(head->map);
 	if (head->draw)

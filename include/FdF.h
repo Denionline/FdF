@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 11:48:48 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 15:01:55 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,14 @@
 #define MAX_PADZ 10.00
 #define MIN_PADZ 1.0
 
+// src/initializers.c
+void init_program(t_head ** head, char * path);
+
 // load_map.c
 void load_map(t_head * head, char * path);
 
 // render.c
 int render(t_head * mlx);
-
-// transform.c
-void transform(t_head * head);
 
 // image.c
 void create_new_image(t_head * head);
@@ -54,7 +54,10 @@ int get_color_between(int color1, int color2, int step, int steps);
 // bresenham.c
 void bresenham(t_head * head, t_pixel s0, t_pixel s1);
 
-// hooks.c
+// src/controls/transform.c
+void transform(t_head * head);
+
+// src/controls/hooks.c
 void hooks(t_head * head);
 
 // verify.c

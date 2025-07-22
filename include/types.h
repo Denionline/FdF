@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/21 10:41:10 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 14:59:47 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,6 @@ typedef struct s_map
 	t_pixel	   size;
 } t_map;
 
-typedef struct s_window
-{
-	t_pixel size;
-} t_window;
-
 typedef struct s_vars
 {
 	void * mlx;
@@ -105,7 +100,6 @@ typedef struct s_head
 {
 	t_vars	   vars;
 	t_map *	   map;
-	t_window * window;
 	t_draw *   draw;
 	t_fps	   fps;
 	t_control  controls;
