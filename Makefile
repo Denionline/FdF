@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/22 14:11:52 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/22 15:03:37 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,14 +57,16 @@ FILES			+= load_map
 FILES			+= render
 FILES			+= draw
 FILES			+= bresenham
-FILES			+= hooks
 FILES			+= math
 FILES			+= verify
 FILES			+= image
 FILES			+= color
 FILES			+= rotate
 FILES			+= fps
-FILES			+= transform
+FILES			+= initializers
+
+FILES			+= controls/hooks
+FILES			+= controls/transform
 
 SRC_FILES		= $(addprefix $(SRC), $(addsuffix .c, $(FILES)))
 OBJ_FILES		= $(addprefix $(SRC), $(addsuffix .o, $(FILES)))
