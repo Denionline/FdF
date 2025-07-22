@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 10:27:00 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/22 17:50:08 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static void get_pixel_values(t_head * head, int y, int x, t_pixel * s)
 	pad_z = MAX_PADZ + (MIN_PADZ - MAX_PADZ) * value;
 
 	s->z = pad_z * head->draw->zoom * pixel.z;
-	s->x = (head->draw->pad_x * head->draw->zoom) * pixel_x;
-	s->y = (head->draw->pad_y * head->draw->zoom) * pixel_y;
+	s->x = (head->draw->pad.x * head->draw->zoom) * pixel_x;
+	s->y = (head->draw->pad.y * head->draw->zoom) * pixel_y;
 	s->color = pixel.color;
 }
 
