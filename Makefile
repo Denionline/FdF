@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/23 09:54:52 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/23 14:24:46 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,10 @@ INCLUDE_PATH	= include
 BUILD_PATH		= .build/
 SRC				= src/
 
+PARSE_PATH		+= parse/
+CONTROLS_PATH	+= controls/
+EVENTS_PATH		+= $(CONTROLS_PATH)events/
+
 FTPRINTF_PATH	= $(INCLUDE_PATH)/ft_printf/
 LIBFT_PATH		= $(FTPRINTF_PATH)$(INCLUDE_PATH)/libft/
 GNL_PATH		= $(INCLUDE_PATH)/get_next_line/
@@ -52,26 +56,39 @@ MLX_PATH		= $(INCLUDE_PATH)/minilibx-linux/
 #                                    Files                                     #
 # **************************************************************************** #
 
-MAIN			= main.c
+MAIN			= fdf.c
 
-FILES			+= load_map
 FILES			+= render
 FILES			+= draw
 FILES			+= bresenham
 FILES			+= math
-FILES			+= verify
 FILES			+= image
 FILES			+= color
 FILES			+= rotate
 FILES			+= fps
-FILES			+= initializers
 
-CONTROLS_FILES			+= hooks
-CONTROLS_FILES			+= transform
+PARSE_FILES		+= initializers
+PARSE_FILES		+= load_map
+PARSE_FILES		+= verify
 
+CONTROLS_FILES	+= hooks
+CONTROLS_FILES	+= transform
+
+EVENTS_FILES	+= keyboard
+EVENTS_FILES	+= mouse
+EVENTS_FILES	+= window
+
+SRC_FILES		+= $(FILES)
+SRC_FILES		+= $(addprefix $(PARSE_PATH), $(PARSE_FILES))
+SRC_FILES		+= $(addprefix $(EVENTS_PATH), $(EVENTS_FILES))
+SRC_FILES		+= $(addprefix $(CONTROLS_PATH), $(CONTROLS_FILES))
+
+OBJ_FILES		+= $(FILES)
+OBJ_FILES		+= $(PARSE_FILES)
+OBJ_FILES		+= $(EVENTS_FILES)
 OBJ_FILES		+= $(CONTROLS_FILES)
 
-SRCS		= $(addprefix $(SRC), $(addsuffix .c, $(FILES)))
+SRCS		= $(addprefix $(SRC), $(addsuffix .c, $(SRC_FILES)))
 OBJS		= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(OBJ_FILES)))
 
 # **************************************************************************** #
@@ -113,7 +130,7 @@ $(EXEC): | $(BUILD_PATH)
 	CUR=1; \
 	for SRC in $(SRCS); do\
 		OBJ=$(BUILD_PATH)$$(basename $$SRC .c).o;\
-		$(CC) $(CFLAGS) -I $(INCLUDE_PATH) -c $$SRC -o $$OBJ;\
+		$(CC) $(CFLAGS) -I$(INCLUDE_PATH) -I/usr/include -I$(MLX_PATH) -O3 -c $$SRC -o $$OBJ;\
 		PERC=$$(printf "%d" $$((100 * CUR / TOTAL))); \
 		FILLED=$$(printf "%0.f" $$((20 * PERC / 100))); \
 		EMPTY=$$((20 - FILLED)); \
@@ -122,15 +139,15 @@ $(EXEC): | $(BUILD_PATH)
 		CUR=$$((CUR + 1)); \
 	done; \
 	printf "\n";
-	@$(CC) $(CFLAGS) -I$(INCLUDE_PATH) $(MAIN) $(OBJS) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
+	@$(CC) $(CFLAGS) -I$(INCLUDE_PATH) $(OBJS) $(MAIN) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 $(BUILD_PATH):
-	@printf "\n$(C_CYAN)Building library...$(C_STD)\n"
+	@printf "\n$(C_CYAN)Building project...$(C_STD)\n"
 	@mkdir $(BUILD_PATH)
 
 # %.o: %.c
-# 	@$(CC) -I$(INCLUDE_PATH) -I/usr/include -I$(MLX_PATH) -O3 -c $< -o $@
+# 	@$(CC) -I$(INCLUDE_PATH) -c $< -o $@
 # 	@printf "Compiling $(C_YELLOW)$<$(C_STD)...\n"
 
 test:
@@ -138,7 +155,7 @@ test:
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 clean:
-	@rm -rf $(OBJS)
+	@rm -rf $(BUILD_PATH)
 
 fclean: clean
 	@rm -rf $(EXEC)
