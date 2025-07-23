@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 15:01:55 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/23 14:24:48 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@
 #define SMALLEST_SIZE 10.0
 #define MAX_PADZ 10.00
 #define MIN_PADZ 1.0
+#define COLOR 0x0f9fd9
+#define HIGH_COLOR 0xff0000
 
 // src/initializers.c
 void init_program(t_head ** head, char * path);
@@ -49,16 +51,23 @@ void put_pixel_image(t_img * img, int x, int y, int color);
 void draw(t_head * head);
 
 // color.c
-int get_color_between(int color1, int color2, int step, int steps);
+int	 get_color_between(int color1, int color2, int step, int steps);
+void set_color_top(t_pixel **pixels, int size_x, int size_y);
 
 // bresenham.c
 void bresenham(t_head * head, t_pixel s0, t_pixel s1);
 
-// src/controls/transform.c
+// src/controls/
 void transform(t_head * head);
-
-// src/controls/hooks.c
 void hooks(t_head * head);
+
+// src/controls/events/
+int hook_window(int keycode, t_head * head);
+int mouse_move(int x, int y, t_head * head);
+int mouse_press(int button, int x, int y, t_head * head);
+int mouse_release(int button, int x, int y, t_head * head);
+int key_release(int keycode, t_head * head);
+int key_press(int keycode, t_head * head);
 
 // verify.c
 void end(t_head * head);

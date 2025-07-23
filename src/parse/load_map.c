@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 15:33:05 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/23 14:19:24 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,12 @@ static t_pixel get_point(char * value)
 	{
 		values = ft_split(value, ',');
 		pixel.z = ft_atoi(values[0]);
-		pixel.color = ft_basetoi(values[1] + 2, "0123456789ABCDEF");
+		pixel.color = ft_basetoi(values[1] + 2, "0123456789abcdef");
 		if (pixel.color == 0)
-			pixel.color = 0x009fd9;
+			pixel.color = COLOR;
 		return (free(values[0]), free(values[1]), free(values), pixel);
 	}
-	pixel.color = 0x009fd9;
+	pixel.color = COLOR;
 	pixel.z = ft_atoi(value);
 	return (pixel);
 }
@@ -99,5 +99,6 @@ void load_map(t_head * head, char * path)
 		head->map->coordinates = get_values(head->map, ft_split(row, ' '));
 		free(row);
 	}
+	set_color_top(head->map->coordinates, head->map->size.x, head->map->size.y);
 	close(fd);
 }
