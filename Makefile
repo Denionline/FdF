@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/22 18:20:24 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/23 09:54:52 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,14 +39,14 @@ MLX				= $(MLX_PATH)libmlx.a
 #                                    Path's                                    #
 # **************************************************************************** #
 
-INC				= include
-SRC				= src/
+INCLUDE_PATH	= include
 BUILD_PATH		= .build/
+SRC				= src/
 
-FTPRINTF_PATH	= $(INC)/ft_printf/
-LIBFT_PATH		= $(FTPRINTF_PATH)$(INC)/libft/
-GNL_PATH		= $(INC)/get_next_line/
-MLX_PATH		= $(INC)/minilibx-linux/
+FTPRINTF_PATH	= $(INCLUDE_PATH)/ft_printf/
+LIBFT_PATH		= $(FTPRINTF_PATH)$(INCLUDE_PATH)/libft/
+GNL_PATH		= $(INCLUDE_PATH)/get_next_line/
+MLX_PATH		= $(INCLUDE_PATH)/minilibx-linux/
 
 # **************************************************************************** #
 #                                    Files                                     #
@@ -66,10 +66,10 @@ FILES			+= rotate
 FILES			+= fps
 FILES			+= initializers
 
-FILES			+= controls/hooks
-FILES			+= controls/transform
+CONTROLS_FILES			+= hooks
+CONTROLS_FILES			+= transform
 
-OBJ_FILES		+= $(FILES)
+OBJ_FILES		+= $(CONTROLS_FILES)
 
 SRCS		= $(addprefix $(SRC), $(addsuffix .c, $(FILES)))
 OBJS		= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(OBJ_FILES)))
@@ -108,7 +108,7 @@ $(GNL):
 $(MLX):
 	@$(MAKE) -C $(MLX_PATH)
 
-$(EXEC): $(OBJS)
+$(EXEC): | $(BUILD_PATH)
 	@TOTAL=$$(echo $(SRCS) | wc -w); \
 	CUR=1; \
 	for SRC in $(SRCS); do\
@@ -122,11 +122,15 @@ $(EXEC): $(OBJS)
 		CUR=$$((CUR + 1)); \
 	done; \
 	printf "\n";
-	@$(CC) $(CFLAGS) -I$(INC) $(MAIN) $(OBJS) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
+	@$(CC) $(CFLAGS) -I$(INCLUDE_PATH) $(MAIN) $(OBJS) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
+$(BUILD_PATH):
+	@printf "\n$(C_CYAN)Building library...$(C_STD)\n"
+	@mkdir $(BUILD_PATH)
+
 # %.o: %.c
-# 	@$(CC) -I$(INC) -I/usr/include -I$(MLX_PATH) -O3 -c $< -o $@
+# 	@$(CC) -I$(INCLUDE_PATH) -I/usr/include -I$(MLX_PATH) -O3 -c $< -o $@
 # 	@printf "Compiling $(C_YELLOW)$<$(C_STD)...\n"
 
 test:
