@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 18:03:46 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:43:21 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ typedef struct s_draw
 
 typedef struct s_map
 {
-	t_pixel ** coordinates;
+	t_pixel ** points;
 	char *	   path;
 	t_pixel	   size;
 } t_map;

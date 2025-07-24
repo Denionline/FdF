@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/23 14:24:46 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/24 11:57:53 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ INCLUDE_PATH	= include
 BUILD_PATH		= .build/
 SRC				= src/
 
+RENDERER_PATH	+= renderer/
 PARSE_PATH		+= parse/
 CONTROLS_PATH	+= controls/
 EVENTS_PATH		+= $(CONTROLS_PATH)events/
@@ -58,14 +59,15 @@ MLX_PATH		= $(INCLUDE_PATH)/minilibx-linux/
 
 MAIN			= fdf.c
 
-FILES			+= render
-FILES			+= draw
-FILES			+= bresenham
 FILES			+= math
-FILES			+= image
 FILES			+= color
-FILES			+= rotate
 FILES			+= fps
+
+RENDERER_FILES			+= draw
+RENDERER_FILES			+= render
+RENDERER_FILES			+= bresenham
+RENDERER_FILES			+= image
+RENDERER_FILES			+= rotate
 
 PARSE_FILES		+= initializers
 PARSE_FILES		+= load_map
@@ -79,11 +81,13 @@ EVENTS_FILES	+= mouse
 EVENTS_FILES	+= window
 
 SRC_FILES		+= $(FILES)
+SRC_FILES		+= $(addprefix $(RENDERER_PATH), $(RENDERER_FILES))
 SRC_FILES		+= $(addprefix $(PARSE_PATH), $(PARSE_FILES))
 SRC_FILES		+= $(addprefix $(EVENTS_PATH), $(EVENTS_FILES))
 SRC_FILES		+= $(addprefix $(CONTROLS_PATH), $(CONTROLS_FILES))
 
 OBJ_FILES		+= $(FILES)
+OBJ_FILES		+= $(RENDERER_FILES)
 OBJ_FILES		+= $(PARSE_FILES)
 OBJ_FILES		+= $(EVENTS_FILES)
 OBJ_FILES		+= $(CONTROLS_FILES)
