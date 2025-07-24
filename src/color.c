@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 09:13:00 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/23 11:30:24 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:44:08 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,13 @@ void set_color_top(t_pixel ** pixels, int size_x, int size_y)
 		while (x < size_x)
 		{
 			if (pixels[y][x].z == max_z)
+			{
+				// printf("Sim\n");
 				if (pixels[y][x].color == COLOR)
+				{
 					pixels[y][x].color = HIGH_COLOR;
+				}
+			}
 			x++;
 		}
 		y++;

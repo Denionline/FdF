@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 17:50:08 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:43:14 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void get_pixel_values(t_head * head, int y, int x, t_pixel * s)
 {
-	const t_pixel pixel = head->map->coordinates[y][x];
+	const t_pixel pixel = head->map->points[y][x];
 	const double  center_x = (head->map->size.x) / 2.0;
 	const double  center_y = (head->map->size.y) / 2.0;
 	const int	  pixel_x = x - center_x;

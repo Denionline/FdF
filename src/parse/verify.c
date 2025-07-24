@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 17:31:48 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 15:03:16 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:43:14 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ void end(t_head * head)
 	mlx_destroy_window(head->vars.mlx, head->vars.win);
 	mlx_destroy_display(head->vars.mlx);
 	i = 0;
-	while (head->map->coordinates[0] && i < head->map->size.y)
-		free(head->map->coordinates[i++]);
-	if (head->map->coordinates)
-		free(head->map->coordinates);
+	while (head->map->points[0] && i < head->map->size.y)
+		free(head->map->points[i++]);
+	if (head->map->points)
+		free(head->map->points);
 	if (head->vars.mlx)
 		free(head->vars.mlx);
 	if (head->map)

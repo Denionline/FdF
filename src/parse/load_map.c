@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/23 14:19:24 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:45:52 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,21 +66,21 @@ static t_pixel ** get_values(t_map * map, char ** values)
 	int i;
 
 	line_size = get_size(values);
-	map->coordinates = realloc_coordinates(map->coordinates, map->size.y);
-	map->coordinates[map->size.y] = malloc(line_size * sizeof(t_pixel));
-	if (!map->coordinates || !map->coordinates[map->size.y])
-		return (free(map->coordinates), free(map->coordinates[map->size.y]), NULL);
+	map->points = realloc_coordinates(map->points, map->size.y);
+	map->points[map->size.y] = malloc(line_size * sizeof(t_pixel));
+	if (!map->points || !map->points[map->size.y])
+		return (free(map->points), free(map->points[map->size.y]), NULL);
 	if (map->size.x < line_size)
 		map->size.x = line_size;
 	i = 0;
 	while (i < line_size)
 	{
-		map->coordinates[map->size.y][i] = get_point(values[i]);
+		map->points[map->size.y][i] = get_point(values[i]);
 		free(values[i++]);
 	}
 	free(values);
 	map->size.y += 1;
-	return (map->coordinates);
+	return (map->points);
 }
 
 void load_map(t_head * head, char * path)
@@ -96,9 +96,9 @@ void load_map(t_head * head, char * path)
 		row = get_next_line(fd);
 		if (!row)
 			break;
-		head->map->coordinates = get_values(head->map, ft_split(row, ' '));
+		head->map->points = get_values(head->map, ft_split(row, ' '));
 		free(row);
 	}
-	set_color_top(head->map->coordinates, head->map->size.x, head->map->size.y);
+	set_color_top(head->map->points, head->map->size.x, head->map->size.y);
 	close(fd);
 }

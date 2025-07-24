@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/23 14:24:48 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 11:39:09 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 #define SMALLEST_SIZE 10.0
 #define MAX_PADZ 10.00
 #define MIN_PADZ 1.0
-#define COLOR 0x0f9fd9
-#define HIGH_COLOR 0xff0000
+#define COLOR 1023961
+#define HIGH_COLOR 16711680
 
 // src/initializers.c
 void init_program(t_head ** head, char * path);
