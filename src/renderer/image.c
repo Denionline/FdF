@@ -6,23 +6,23 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 11:54:56 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/18 18:27:44 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 13:58:11 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-void create_new_image(t_head * head)
+void create_new_image(void *mlx, t_img * image, int width, int height)
 {
-	if (head->draw->image.img)
-		mlx_destroy_image(head->vars.mlx, head->draw->image.img);
-	ft_bzero(&head->draw->image, sizeof(head->draw->image));
-	head->draw->image.img = mlx_new_image(head->vars.mlx, VW, VH);
-	head->draw->image.buffer = mlx_get_data_addr(
-		head->draw->image.img,
-		&head->draw->image.pixel_bits,
-		&head->draw->image.line_bytes,
-		&head->draw->image.endian);
+	if (image->img)
+		mlx_destroy_image(mlx, image->img);
+	ft_bzero(image, sizeof(*image));
+	image->img = mlx_new_image(mlx, width, height);
+	image->buffer = mlx_get_data_addr(
+		image->img,
+		&image->pixel_bits,
+		&image->line_bytes,
+		&image->endian);
 }
 
 void put_pixel_image(t_img * img, int x, int y, int color)

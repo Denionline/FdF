@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/24 11:57:53 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/24 14:05:09 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,10 +43,12 @@ INCLUDE_PATH	= include
 BUILD_PATH		= .build/
 SRC				= src/
 
-RENDERER_PATH	+= renderer/
-PARSE_PATH		+= parse/
-CONTROLS_PATH	+= controls/
+RENDERER_PATH	+= $(SRC)renderer/
+PARSE_PATH		+= $(SRC)parse/
+UI_PATH			+= $(SRC)ui/
+CONTROLS_PATH	+= $(SRC)controls/
 EVENTS_PATH		+= $(CONTROLS_PATH)events/
+ACTIONS_PATH	+= $(EVENTS_PATH)actions/
 
 FTPRINTF_PATH	= $(INCLUDE_PATH)/ft_printf/
 LIBFT_PATH		= $(FTPRINTF_PATH)$(INCLUDE_PATH)/libft/
@@ -57,17 +59,19 @@ MLX_PATH		= $(INCLUDE_PATH)/minilibx-linux/
 #                                    Files                                     #
 # **************************************************************************** #
 
-MAIN			= fdf.c
+MAIN			= main
 
 FILES			+= math
 FILES			+= color
 FILES			+= fps
 
-RENDERER_FILES			+= draw
-RENDERER_FILES			+= render
-RENDERER_FILES			+= bresenham
-RENDERER_FILES			+= image
-RENDERER_FILES			+= rotate
+UI_FILES		+= menu
+
+RENDERER_FILES	+= draw
+RENDERER_FILES	+= render
+RENDERER_FILES	+= bresenham
+RENDERER_FILES	+= image
+RENDERER_FILES	+= rotate
 
 PARSE_FILES		+= initializers
 PARSE_FILES		+= load_map
@@ -80,19 +84,29 @@ EVENTS_FILES	+= keyboard
 EVENTS_FILES	+= mouse
 EVENTS_FILES	+= window
 
-SRC_FILES		+= $(FILES)
+ACTIONS_FILES	+= rotate_action
+ACTIONS_FILES	+= move_action
+ACTIONS_FILES	+= zoom_action
+
+SRC_FILES		+= $(MAIN)
+SRC_FILES		+= $(addprefix $(SRC), $(FILES))
+SRC_FILES		+= $(addprefix $(UI_PATH), $(UI_FILES))
 SRC_FILES		+= $(addprefix $(RENDERER_PATH), $(RENDERER_FILES))
 SRC_FILES		+= $(addprefix $(PARSE_PATH), $(PARSE_FILES))
-SRC_FILES		+= $(addprefix $(EVENTS_PATH), $(EVENTS_FILES))
 SRC_FILES		+= $(addprefix $(CONTROLS_PATH), $(CONTROLS_FILES))
+SRC_FILES		+= $(addprefix $(EVENTS_PATH), $(EVENTS_FILES))
+SRC_FILES		+= $(addprefix $(ACTIONS_PATH), $(ACTIONS_FILES))
 
+OBJ_FILES		+= $(MAIN)
 OBJ_FILES		+= $(FILES)
+OBJ_FILES		+= $(UI_FILES)
 OBJ_FILES		+= $(RENDERER_FILES)
 OBJ_FILES		+= $(PARSE_FILES)
-OBJ_FILES		+= $(EVENTS_FILES)
 OBJ_FILES		+= $(CONTROLS_FILES)
+OBJ_FILES		+= $(EVENTS_FILES)
+OBJ_FILES		+= $(ACTIONS_FILES)
 
-SRCS		= $(addprefix $(SRC), $(addsuffix .c, $(SRC_FILES)))
+SRCS		= $(addprefix ./, $(addsuffix .c, $(SRC_FILES)))
 OBJS		= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(OBJ_FILES)))
 
 # **************************************************************************** #
@@ -143,7 +157,7 @@ $(EXEC): | $(BUILD_PATH)
 		CUR=$$((CUR + 1)); \
 	done; \
 	printf "\n";
-	@$(CC) $(CFLAGS) -I$(INCLUDE_PATH) $(OBJS) $(MAIN) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
+	@$(CC) $(CFLAGS) -I$(INCLUDE_PATH) $(OBJS) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
 
 $(BUILD_PATH):

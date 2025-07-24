@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 11:39:09 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 14:51:54 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,26 @@
 #define PI 3.14159
 #define VW 1440
 #define VH 900
+
+#define MENU_W 200
+#define MENU_H 900
+
 #define MAX_ZOOM 10.0
 #define MIN_ZOOM 0.1
 #define BIGGEST_SIZE 250.00
 #define SMALLEST_SIZE 10.0
 #define MAX_PADZ 10.00
 #define MIN_PADZ 1.0
+
 #define COLOR 1023961
 #define HIGH_COLOR 16711680
+#define MENU_COLOR 2236962
 
 // src/initializers.c
 void init_program(t_head ** head, char * path);
+
+// src/ui/menu.c
+void menu(t_head * head);
 
 // load_map.c
 void load_map(t_head * head, char * path);
@@ -44,7 +53,7 @@ void load_map(t_head * head, char * path);
 int render(t_head * mlx);
 
 // image.c
-void create_new_image(t_head * head);
+void create_new_image(void *mlx, t_img * image, int width, int height);
 void put_pixel_image(t_img * img, int x, int y, int color);
 
 // draw.c
@@ -52,7 +61,7 @@ void draw(t_head * head);
 
 // color.c
 int	 get_color_between(int color1, int color2, int step, int steps);
-void set_color_top(t_pixel **pixels, int size_x, int size_y);
+void set_color_top(t_pixel ** pixels, int size_x, int size_y);
 
 // bresenham.c
 void bresenham(t_head * head, t_pixel s0, t_pixel s1);
@@ -68,6 +77,11 @@ int mouse_press(int button, int x, int y, t_head * head);
 int mouse_release(int button, int x, int y, t_head * head);
 int key_release(int keycode, t_head * head);
 int key_press(int keycode, t_head * head);
+
+// src/controls/events/actions
+void rotate_action(int keycode, t_control * control);
+void move_action(int keycode, t_control * control);
+void zoom_action(int keycode, t_control * control);
 
 // verify.c
 void end(t_head * head);

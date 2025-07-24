@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   move_action.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 14:35:30 by dximenes         ###   ########.fr       */
+/*   Created: 2025/07/24 12:10:02 by dximenes          #+#    #+#             */
+/*   Updated: 2025/07/24 12:13:03 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-int render(t_head * h)
+void move_action(int keycode, t_control * control)
 {
-	h->draw->start.x = VW / 2;
-	h->draw->start.y = VH / 2;
-	transform(h);
-	draw(h);
-	update_fps(h, &h->fps);
-	mlx_loop(h->vars.mlx);
-	return (0);
+	if (keycode == KEY_ARROW_UP)
+		control->position.y = -1;
+	else if (keycode == KEY_ARROW_DOWN)
+		control->position.y = 1;
+	if (keycode == KEY_ARROW_RIGHT)
+		control->position.x = 1;
+	else if (keycode == KEY_ARROW_LEFT)
+		control->position.x = -1;
 }

@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   zoom_action.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 14:35:30 by dximenes         ###   ########.fr       */
+/*   Created: 2025/07/24 12:09:29 by dximenes          #+#    #+#             */
+/*   Updated: 2025/07/24 12:12:32 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-int render(t_head * h)
+void zoom_action(int keycode, t_control * control)
 {
-	h->draw->start.x = VW / 2;
-	h->draw->start.y = VH / 2;
-	transform(h);
-	draw(h);
-	update_fps(h, &h->fps);
-	mlx_loop(h->vars.mlx);
-	return (0);
+	if (keycode == KEY_PLUS)
+		control->zoom = 0.05;
+	else if (keycode == KEY_MINUS)
+		control->zoom = -0.05;
 }
