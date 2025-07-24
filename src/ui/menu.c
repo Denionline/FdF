@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:29:48 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 15:46:07 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 16:31:38 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@ static void paint_background(t_img * img)
 		}
 		y++;
 	}
+}
+
+static draw_art(t_head *head, int line, char *str)
+{
+
 }
 
 void menu(t_head * h)
@@ -58,13 +63,21 @@ void menu(t_head * h)
 	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "| A |  | S |  | D |");
 	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "+---+  +---+  +---+");
 	line += 5;
-	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "       +----+");
-	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "       | /\\ |");
-	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "       | || |");
-	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "       +----+");
-	line++;
-	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "+----+ +----+ +----+");
-	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "| <= | | || | | => |");
-	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "+----+ | \\/ | +----+");
-	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "       +----+");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "      +------+");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "      |  /\\  |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "      |  ||  |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "      |  ||  |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "+-----+      +-----+");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "|                  |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "| <==          ==> |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "|                  |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "+-----+      +-----+");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "      |  ||  |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "      |  ||  |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "      |  \\/  |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "      +------+");
+	line += 5;
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "    +---+   +---+");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "    | + |   | - |");
+	mlx_string_put(h->vars.mlx, h->vars.win, 4 * letter_size, ++line * letter_size, 0xFFFFFF, "    +---+   +---+");
 }
