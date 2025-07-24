@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 14:51:54 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 18:08:03 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,16 @@
 #define HIGH_COLOR 16711680
 #define MENU_COLOR 2236962
 
+#define LETTER_SIZE 10
+
 // src/initializers.c
 void init_program(t_head ** head, char * path);
 
 // src/ui/menu.c
 void menu(t_head * head);
+
+// src/ui/draw_art_menu.c
+void draw_art_menu(t_head * h);
 
 // load_map.c
 void load_map(t_head * head, char * path);
