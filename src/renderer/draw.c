@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 11:43:14 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/24 14:33:46 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void draw(t_head * h)
 	int		x;
 	int		y;
 
-	create_new_image(h);
+	create_new_image(h->vars.mlx, &h->draw->image, VW - MENU_W, VH);
 	y = -1;
 	while (++y < h->map->size.y)
 	{
@@ -72,5 +72,5 @@ void draw(t_head * h)
 				bresenham(h, s0, get_reference(h, y + 1, x));
 		}
 	}
-	mlx_put_image_to_window(h->vars.mlx, h->vars.win, h->draw->image.img, 0, 0);
+	mlx_put_image_to_window(h->vars.mlx, h->vars.win, h->draw->image.img, MENU_W, 0);
 }
