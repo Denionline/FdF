@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 16:24:37 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/25 17:48:38 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int main(int argc, char * argv[])
 	init_program(&head, argv[1]);
 	load_map(head, argv[1]);
 	hooks(head);
+	init_menu(head);
 	init_fps(&head->fps);
 	render(head);
 	end(head);

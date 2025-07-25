@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/25 10:50:01 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/25 18:39:28 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,12 +44,13 @@
 
 // src/initializers.c
 void init_program(t_head ** head, char * path);
+void init_menu(t_head * head);
 
 // src/ui/menu.c
 void menu(t_head * head);
 
 // src/ui/menu_arts.c
-void get_menu_art_logo(t_arts * arts);
+void get_logo_art(t_head * head);
 
 // src/ui/draw_art_menu.c
 void draw_art_menu(t_head * h);

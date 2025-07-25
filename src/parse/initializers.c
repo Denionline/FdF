@@ -6,15 +6,26 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:57:54 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/25 10:50:16 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/25 18:39:44 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-void init_menu(t_head *head)
+void init_menu(t_head * head)
 {
-	get_menu_art_logo(&head->menu.arts);
+    get_logo_art(head);
+	// int			 i;
+
+	// head->menu.arts.logo = ft_calloc(6, sizeof(char *));
+	// if (!head->menu.arts.logo)
+	// 	return;
+	// i = 0;
+	// while (logo[i])
+	// {
+	// 	head->menu.arts.logo[i] = ft_strdup(logo[i]);
+	// 	i++;
+	// }
 }
 
 void init_draw(t_head * head)
