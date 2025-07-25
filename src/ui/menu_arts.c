@@ -6,19 +6,21 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 09:32:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/25 10:49:59 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/25 18:48:34 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-void get_menu_art_logo(t_arts *arts)
+void get_logo_art(t_head * head)
 {
-	const char * logo[] = {" _____ ____  _____ ",
-						   "|  ___|  _ \\|  ___|",
-						   "| |_  | | | | |_   ",
-						   "|  _| | |_| |  _|  ",
-						   "|_|   |____/|_|    ",
-						   NULL};
-	ft_memcpy(arts->logo, logo, sizeof(char) * (6 * 20));
+	static const char * const logo_src[6] = {
+		" _____ ____  _____ ",
+		"|  ___|  _ \\|  ___|",
+		"| |_  | | | | |_   ",
+		"|  _| | |_| |  _|  ",
+		"|_|   |____/|_|    ",
+		NULL};
+
+	ft_memcpy(head->menu.arts.logo, logo_src, sizeof(logo_src));
 }
