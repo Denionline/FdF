@@ -6,11 +6,16 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:57:54 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 18:05:34 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/25 10:50:16 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
+
+void init_menu(t_head *head)
+{
+	get_menu_art_logo(&head->menu.arts);
+}
 
 void init_draw(t_head * head)
 {

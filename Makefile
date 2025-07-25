@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/24 18:02:31 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/25 09:37:12 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ FILES			+= fps
 
 UI_FILES		+= menu
 UI_FILES		+= draw_art_menu
+UI_FILES		+= menu_arts
 
 RENDERER_FILES	+= draw
 RENDERER_FILES	+= render

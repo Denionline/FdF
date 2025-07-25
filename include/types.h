@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 11:43:21 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/25 10:43:10 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,16 @@ typedef struct s_img
 	int	   endian;
 	char * buffer;
 } t_img;
+
+typedef struct s_arts
+{
+	char logo[6][20];
+} t_arts;
+
+typedef struct s_menu
+{
+	t_arts arts;
+} t_menu;
 
 typedef struct s_control
 {
@@ -97,6 +107,7 @@ typedef struct s_head
 	t_map *	  map;
 	t_draw *  draw;
 	t_fps	  fps;
+	t_menu	  menu;
 	t_control controls;
 } t_head;
 

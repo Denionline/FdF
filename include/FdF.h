@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 18:08:03 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/25 10:50:01 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,9 @@ void init_program(t_head ** head, char * path);
 // src/ui/menu.c
 void menu(t_head * head);
 
+// src/ui/menu_arts.c
+void get_menu_art_logo(t_arts * arts);
+
 // src/ui/draw_art_menu.c
 void draw_art_menu(t_head * h);
 
@@ -58,7 +61,7 @@ void load_map(t_head * head, char * path);
 int render(t_head * mlx);
 
 // image.c
-void create_new_image(void *mlx, t_img * image, int width, int height);
+void create_new_image(void * mlx, t_img * image, int width, int height);
 void put_pixel_image(t_img * img, int x, int y, int color);
 
 // draw.c

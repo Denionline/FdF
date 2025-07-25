@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 18:01:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 18:18:18 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/25 09:58:32 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,7 @@
 
 static void draw_logo(t_head * h, int * line)
 {
-	const char * logo[] = {" _____ ____  _____ ",
-						   "|  ___|  _ \\|  ___|",
-						   "| |_  | | | | |_   ",
-						   "|  _| | |_| |  _|  ",
-						   "|_|   |____/|_|    ",
-						   NULL};
+	const char * logo[] = menu_art_logo();
 	int			 i;
 
 	i = 0;
@@ -41,7 +36,7 @@ void draw_art_menu(t_head * h)
 
 	line = 2;
 	draw_logo(h, &line);
-	draw_button(h, );
+	// draw_button(h, );
 }
 
 	// line += 5;
