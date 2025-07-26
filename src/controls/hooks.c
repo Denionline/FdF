@@ -6,13 +6,13 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 12:06:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/23 14:24:42 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 18:10:05 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-void hooks(t_head * head)
+void	hooks(t_head *head)
 {
 	mlx_hook(head->vars.win, 2, 1L << 0, key_press, head);
 	mlx_hook(head->vars.win, 3, 1L << 1, key_release, head);

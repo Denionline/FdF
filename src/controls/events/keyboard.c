@@ -6,13 +6,13 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 12:08:14 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 12:13:18 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 18:11:25 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-int key_release(int keycode, t_head * head)
+int	key_release(int keycode, t_head *head)
 {
 	if ((keycode == KEY_W || keycode == KEY_S))
 		head->controls.rotation.x = 0;
@@ -31,7 +31,7 @@ int key_release(int keycode, t_head * head)
 	return (0);
 }
 
-int key_press(int keycode, t_head * head)
+int	key_press(int keycode, t_head *head)
 {
 	rotate_action(keycode, &head->controls);
 	move_action(keycode, &head->controls);

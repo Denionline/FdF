@@ -6,15 +6,15 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/25 17:48:38 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:04:14 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-int main(int argc, char * argv[])
+int	main(int argc, char *argv[])
 {
-	t_head * head;
+	t_head	*head;
 
 	if (argc != 2)
 		return (0);

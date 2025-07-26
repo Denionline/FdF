@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw.c                                             :+:      :+:    :+:   */
+/*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 12:58:02 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 18:41:42 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static void get_pixel_values(t_head * head, int y, int x, t_pixel * s)
+static void	get_pixel_values(t_head *head, int y, int x, t_pixel *s)
 {
-	const t_pixel pixel = head->map->points[y][x];
-	const double  center_x = (head->map->size.x) / 2.0;
-	const double  center_y = (head->map->size.y) / 2.0;
-	const int	  pixel_x = x - center_x;
-	const int	  pixel_y = y - center_y;
-	double		  big_side;
-	double		  value;
-	double		  pad_z;
+	const t_pixel	pixel = head->map->points[y][x];
+	const double	center_x = (head->map->size.x) / 2.0;
+	const double	center_y = (head->map->size.y) / 2.0;
+	const int		pixel_x = x - center_x;
+	const int		pixel_y = y - center_y;
+	double			big_side;
+	double			value;
+	double			pad_z;
 
 	big_side = head->map->size.y;
 	if (head->map->size.x > head->map->size.y)
@@ -32,29 +32,32 @@ static void get_pixel_values(t_head * head, int y, int x, t_pixel * s)
 	if (value > 1.0)
 		value = 1.0;
 	pad_z = MAX_PADZ + (MIN_PADZ - MAX_PADZ) * value;
-
 	s->z = pad_z * head->draw->zoom * pixel.z;
 	s->x = (head->draw->pad.x * head->draw->zoom) * pixel_x;
 	s->y = (head->draw->pad.y * head->draw->zoom) * pixel_y;
 	s->color = pixel.color;
 }
 
-static t_pixel get_reference(t_head * head, int y, int x)
+static t_pixel	get_reference(t_head *head, int y, int x)
 {
-	t_pixel pixel;
+	int		ref_pos_x;
+	int		ref_pos_y;
+	t_pixel	pixel;
 
 	get_pixel_values(head, y, x, &pixel);
 	pixel = mat_mult(rotate_x(head), pixel);
 	pixel = mat_mult(rotate_y(head), pixel);
 	pixel = mat_mult(rotate_z(head), pixel);
-	pixel.x += head->draw->start.x + (head->draw->position.x * (1 / head->draw->zoom));
-	pixel.y += head->draw->start.y + (head->draw->position.y * (1 / head->draw->zoom));
+	ref_pos_x = head->draw->position.x * (1 / head->draw->zoom);
+	ref_pos_y = head->draw->position.y * (1 / head->draw->zoom);
+	pixel.x += head->draw->start.x + ref_pos_x;
+	pixel.y += head->draw->start.y + ref_pos_y;
 	return (pixel);
 }
 
-void draw_map(t_head * h)
+void	draw_map(t_head *h)
 {
-	t_pixel s0;
+	t_pixel	s0;
 	int		x;
 	int		y;
 
@@ -72,5 +75,9 @@ void draw_map(t_head * h)
 				bresenham(h, s0, get_reference(h, y + 1, x));
 		}
 	}
-	mlx_put_image_to_window(h->vars.mlx, h->vars.win, h->draw->image.img, MENU_W, 0);
+	mlx_put_image_to_window(h->vars.mlx,
+		h->vars.win,
+		h->draw->image.img,
+		MENU_W,
+		0);
 }

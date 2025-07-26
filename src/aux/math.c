@@ -6,32 +6,32 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:35:34 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 12:03:51 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:14:57 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-int absolute(int number)
+int	absolute(int number)
 {
 	if (number < 0)
 		return (-number);
 	return (number);
 }
 
-double absolute_double(double number)
+double	absolute_double(double number)
 {
 	if (number < 0)
 		return (-number);
 	return (number);
 }
 
-t_pixel mat_mult(double projection[3][3], t_pixel values)
+t_pixel	mat_mult(double projection[3][3], t_pixel values)
 {
-	double numbers[3];
-	double buff[3];
-	int	   x;
-	int	   y;
+	double	numbers[3];
+	double	buff[3];
+	int		x;
+	int		y;
 
 	numbers[0] = values.x;
 	numbers[1] = values.y;

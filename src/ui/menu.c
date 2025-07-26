@@ -6,16 +6,16 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:29:48 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 12:01:07 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 18:13:48 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static void paint_background(t_img * img)
+static void	paint_background(t_img *img)
 {
-	int x;
-	int y;
+	int	x;
+	int	y;
 
 	y = 0;
 	while (y < MENU_H)
@@ -30,9 +30,9 @@ static void paint_background(t_img * img)
 	}
 }
 
-void menu(t_head * h)
+void	menu(t_head *h)
 {
-	t_img menu_img;
+	t_img	menu_img;
 
 	ft_bzero(&menu_img, sizeof(menu_img));
 	create_new_image(h->vars.mlx, &menu_img, MENU_W, MENU_H);

@@ -5,32 +5,32 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/24 18:01:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 15:52:50 by dximenes         ###   ########.fr       */
+/*   Created: 2025/07/26 18:33:14 by dximenes          #+#    #+#             */
+/*   Updated: 2025/07/26 18:38:04 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static int draw_art(t_head * h, int column, int row, t_vars_art art)
+static int	draw_art(t_head *h, int column, int row, t_vars_art art)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (art.str[i])
 	{
 		mlx_string_put(h->vars.mlx,
-					   h->vars.win,
-					   column * LETTER_SIZE,
-					   (row + i) * LETTER_SIZE,
-					   art.color,
-					   (char *)art.str[i]);
+			h->vars.win,
+			column * LETTER_SIZE,
+			(row + i) * LETTER_SIZE,
+			art.color,
+			(char *)art.str[i]);
 		i++;
 	}
 	return (row + i);
 }
 
-static void draw_zoom_arts(t_head * h, int default_column, int * row)
+static void	draw_zoom_arts(t_head *h, int default_column, int *row)
 {
 	*row = draw_art(h, default_column + 4, *row, h->menu.arts.zoom_title);
 	*row += 1;
@@ -38,7 +38,7 @@ static void draw_zoom_arts(t_head * h, int default_column, int * row)
 	draw_art(h, default_column + 6, *row, h->menu.arts.key_minus);
 }
 
-static void draw_rotation_arts(t_head * h, int default_column, int * row)
+static void	draw_rotation_arts(t_head *h, int default_column, int *row)
 {
 	*row = draw_art(h, default_column + 3, *row, h->menu.arts.rotation_title);
 	*row += 1;
@@ -50,7 +50,7 @@ static void draw_rotation_arts(t_head * h, int default_column, int * row)
 	draw_art(h, default_column + 8, *row, h->menu.arts.key_d);
 }
 
-static void draw_move_arts(t_head * h, int default_column, int * row)
+static void	draw_move_arts(t_head *h, int default_column, int *row)
 {
 	*row = draw_art(h, default_column + 4, *row, h->menu.arts.move_title);
 	*row += 1;
@@ -60,10 +60,10 @@ static void draw_move_arts(t_head * h, int default_column, int * row)
 	draw_art(h, default_column + 8, *row, h->menu.arts.key_right);
 }
 
-void draw_art_menu(t_head * h)
+void	draw_art_menu(t_head *h)
 {
-	const int default_column = 4;
-	int		  row;
+	const int	default_column = 4;
+	int			row;
 
 	row = 0;
 	row = draw_art(h, default_column - 3, row + 1, h->menu.arts.key_esc);

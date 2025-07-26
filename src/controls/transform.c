@@ -6,13 +6,13 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:32:02 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 11:43:05 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 18:10:41 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static int get_art_color(double value, int active_when)
+static int	get_art_color(double value, int active_when)
 {
 	if (active_when > 0 && value > 0.0)
 		return (ACTIVE_KEY_COLOR);
@@ -21,7 +21,7 @@ static int get_art_color(double value, int active_when)
 	return (DEFAULT_KEY_COLOR);
 }
 
-static void update_art_color(t_control * controls, t_arts * arts)
+static void	update_art_color(t_control *controls, t_arts *arts)
 {
 	arts->key_up.color = get_art_color(controls->position.y, -1);
 	arts->key_down.color = get_art_color(controls->position.y, 1);
@@ -37,7 +37,7 @@ static void update_art_color(t_control * controls, t_arts * arts)
 	arts->key_minus.color = get_art_color(controls->zoom, -1);
 }
 
-static void check_limits(t_head * head)
+static void	check_limits(t_head *head)
 {
 	if (absolute_double(head->draw->ang.x) >= 20 * PI)
 		head->draw->ang.x = PI / 8;
@@ -47,7 +47,7 @@ static void check_limits(t_head * head)
 		head->draw->ang.z = PI / 5;
 }
 
-void transform(t_head * head)
+void	transform(t_head *head)
 {
 	if (head->controls.rotation.x != 0)
 		head->draw->ang.x += head->controls.rotation.x;
