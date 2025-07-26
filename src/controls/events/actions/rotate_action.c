@@ -6,13 +6,13 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 12:09:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 12:09:57 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 18:12:48 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-void rotate_action(int keycode, t_control * control)
+void	rotate_action(int keycode, t_control *control)
 {
 	if (keycode == KEY_W)
 		control->rotation.x = 0.01;

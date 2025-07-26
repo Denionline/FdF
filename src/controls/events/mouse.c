@@ -6,13 +6,13 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 12:08:27 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/23 12:13:19 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 18:12:27 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-int mouse_release(int button, int x, int y, t_head * head)
+int	mouse_release(int button, int x, int y, t_head *head)
 {
 	if (button == MOUSE_LEFT_CLICK && x && y)
 	{
@@ -23,7 +23,7 @@ int mouse_release(int button, int x, int y, t_head * head)
 	return (0);
 }
 
-int mouse_press(int button, int x, int y, t_head * head)
+int	mouse_press(int button, int x, int y, t_head *head)
 {
 	if (button == MOUSE_SCROLL_UP && head->controls.is_on.key_ctrl)
 	{
@@ -42,7 +42,7 @@ int mouse_press(int button, int x, int y, t_head * head)
 	return (0);
 }
 
-int mouse_move(int x, int y, t_head * head)
+int	mouse_move(int x, int y, t_head *head)
 {
 	if (head->controls.is_on.mouse_left_click)
 	{
@@ -51,7 +51,6 @@ int mouse_move(int x, int y, t_head * head)
 			head->draw->ang.x -= x * 0.0001;
 		else if (x < 0)
 			head->draw->ang.x += x * 0.0001;
-
 		y -= (VH / 2);
 		if (y > 0)
 			head->draw->ang.y -= y * 0.0001;

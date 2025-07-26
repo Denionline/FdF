@@ -6,15 +6,15 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 11:59:00 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 12:09:06 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:16:05 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static int fh_get_itoa_size(int number)
+static int	fh_get_itoa_size(int number)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (number > 0 && ++i)
@@ -22,10 +22,10 @@ static int fh_get_itoa_size(int number)
 	return (i);
 }
 
-static void itoa_fps(t_fps * fps, int number)
+static void	itoa_fps(t_fps *fps, int number)
 {
-	const int size = fh_get_itoa_size(number);
-	int		  i;
+	const int	size = fh_get_itoa_size(number);
+	int			i;
 
 	i = 0;
 	while (i <= size)
@@ -40,7 +40,7 @@ static void itoa_fps(t_fps * fps, int number)
 		fps->fps_str[i++] = '\0';
 }
 
-void init_fps(t_fps * fps)
+void	init_fps(t_fps *fps)
 {
 	gettimeofday(&fps->last_time, NULL);
 	fps->frame_count = 0;
@@ -48,10 +48,10 @@ void init_fps(t_fps * fps)
 	ft_bzero(fps->fps_str, 5);
 }
 
-void update_fps(t_head * h, t_fps * fps)
+void	update_fps(t_head *h, t_fps *fps)
 {
-	struct timeval current_time;
-	double		   elapsed;
+	struct timeval	current_time;
+	double			elapsed;
 
 	fps->frame_count += 1;
 	gettimeofday(&current_time, NULL);
@@ -66,10 +66,10 @@ void update_fps(t_head * h, t_fps * fps)
 		itoa_fps(fps, fps->current_fps);
 	}
 	mlx_string_put(h->vars.mlx, h->vars.win, VW - 60, 15, 0xFFFFFF, "FPS:");
-	mlx_string_put(h->vars.mlx,
-				   h->vars.win,
-				   VW - 25,
-				   15,
-				   0xFFFF00,
-				   fps->fps_str);
+	mlx_string_put(h->vars.mlx,\
+		h->vars.win,\
+		VW - 25,\
+		15,\
+		0xFFFF00,\
+		fps->fps_str);
 }

@@ -6,13 +6,13 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:54:15 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/18 16:31:12 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:11:46 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static void init_bresenham(t_bresenham * brese, t_pixel s0, t_pixel s1)
+static void	init_bresenham(t_bresenham *brese, t_pixel s0, t_pixel s1)
 {
 	brese->delta.x = absolute(s1.x - s0.x);
 	brese->delta.y = -absolute(s1.y - s0.y);
@@ -25,15 +25,15 @@ static void init_bresenham(t_bresenham * brese, t_pixel s0, t_pixel s1)
 	brese->base_decision = brese->delta.x + brese->delta.y;
 }
 
-static void calc_decision(int * err_curr, int * pos, int sum_err, int step)
+static void	calc_decision(int *err_curr, int *pos, int sum_err, int step)
 {
 	*err_curr += sum_err;
 	*pos += step;
 }
 
-void bresenham(t_head * h, t_pixel s0, t_pixel s1)
+void	bresenham(t_head *h, t_pixel s0, t_pixel s1)
 {
-	t_bresenham b;
+	t_bresenham	b;
 	int			steps;
 	int			step;
 	int			color;

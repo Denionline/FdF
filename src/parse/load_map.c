@@ -6,15 +6,15 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:29:36 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 11:45:52 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:23:44 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-static int get_size(char ** values)
+static int	get_size(char **values)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (values[len] && values[len][0] != '\n')
@@ -22,10 +22,10 @@ static int get_size(char ** values)
 	return (len);
 }
 
-static t_pixel ** realloc_coordinates(t_pixel ** oldarray, int newlen)
+static t_pixel	**realloc_coordinates(t_pixel **oldarray, int newlen)
 {
-	t_pixel ** newarray;
-	int		   i;
+	t_pixel	**newarray;
+	int		i;
 
 	newarray = malloc((newlen + 1) * sizeof(int *));
 	if (!newarray)
@@ -41,10 +41,10 @@ static t_pixel ** realloc_coordinates(t_pixel ** oldarray, int newlen)
 	return (newarray);
 }
 
-static t_pixel get_point(char * value)
+static t_pixel	get_point(char *value)
 {
-	t_pixel pixel;
-	char ** values;
+	t_pixel	pixel;
+	char	**values;
 
 	if (ft_strchr(value, ','))
 	{
@@ -60,10 +60,10 @@ static t_pixel get_point(char * value)
 	return (pixel);
 }
 
-static t_pixel ** get_values(t_map * map, char ** values)
+static t_pixel	**get_values(t_map *map, char **values)
 {
-	int line_size;
-	int i;
+	int	line_size;
+	int	i;
 
 	line_size = get_size(values);
 	map->points = realloc_coordinates(map->points, map->size.y);
@@ -83,10 +83,10 @@ static t_pixel ** get_values(t_map * map, char ** values)
 	return (map->points);
 }
 
-void load_map(t_head * head, char * path)
+void	load_map(t_head *head, char *path)
 {
-	const int fd = open(path, O_RDONLY);
-	char *	  row;
+	const int	fd = open(path, O_RDONLY);
+	char		*row;
 
 	if (fd < 3)
 		end(head);
@@ -95,7 +95,7 @@ void load_map(t_head * head, char * path)
 	{
 		row = get_next_line(fd);
 		if (!row)
-			break;
+			break ;
 		head->map->points = get_values(head->map, ft_split(row, ' '));
 		free(row);
 	}

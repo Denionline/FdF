@@ -6,15 +6,15 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 17:31:48 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 11:43:14 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 17:22:59 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-void end(t_head * head)
+void	end(t_head *head)
 {
-	int i;
+	int	i;
 
 	mlx_destroy_image(head->vars.mlx, head->draw->image.img);
 	mlx_destroy_window(head->vars.mlx, head->vars.win);
