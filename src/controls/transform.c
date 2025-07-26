@@ -6,11 +6,36 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:32:02 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/22 17:42:47 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 11:43:05 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
+
+static int get_art_color(double value, int active_when)
+{
+	if (active_when > 0 && value > 0.0)
+		return (ACTIVE_KEY_COLOR);
+	if (active_when < 0 && value < 0.0)
+		return (ACTIVE_KEY_COLOR);
+	return (DEFAULT_KEY_COLOR);
+}
+
+static void update_art_color(t_control * controls, t_arts * arts)
+{
+	arts->key_up.color = get_art_color(controls->position.y, -1);
+	arts->key_down.color = get_art_color(controls->position.y, 1);
+	arts->key_left.color = get_art_color(controls->position.x, -1);
+	arts->key_right.color = get_art_color(controls->position.x, 1);
+	arts->key_q.color = get_art_color(controls->rotation.z, -1);
+	arts->key_e.color = get_art_color(controls->rotation.z, 1);
+	arts->key_a.color = get_art_color(controls->rotation.y, -1);
+	arts->key_d.color = get_art_color(controls->rotation.y, 1);
+	arts->key_s.color = get_art_color(controls->rotation.x, -1);
+	arts->key_w.color = get_art_color(controls->rotation.x, 1);
+	arts->key_plus.color = get_art_color(controls->zoom, 1);
+	arts->key_minus.color = get_art_color(controls->zoom, -1);
+}
 
 static void check_limits(t_head * head)
 {
@@ -43,4 +68,5 @@ void transform(t_head * head)
 	if (head->controls.position.x)
 		head->draw->position.x += head->controls.position.x;
 	check_limits(head);
+	update_art_color(&head->controls, &head->menu.arts);
 }

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:57:54 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/25 18:39:44 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 13:27:26 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,14 @@
 
 void init_menu(t_head * head)
 {
-    get_logo_art(head);
-	// int			 i;
-
-	// head->menu.arts.logo = ft_calloc(6, sizeof(char *));
-	// if (!head->menu.arts.logo)
-	// 	return;
-	// i = 0;
-	// while (logo[i])
-	// {
-	// 	head->menu.arts.logo[i] = ft_strdup(logo[i]);
-	// 	i++;
-	// }
+	ft_bzero(&head->menu, sizeof(head->menu));
+	get_logo_art(&head->menu.arts);
+	get_aux_arts(&head->menu.arts);
+	get_title_art(&head->menu.arts);
+	get_zoom_arts(&head->menu.arts);
+	get_move_arts(&head->menu.arts);
+	get_rotation_arts_1(&head->menu.arts);
+	get_rotation_arts_2(&head->menu.arts);
 }
 
 void init_draw(t_head * head)
@@ -43,10 +39,11 @@ void init_draw(t_head * head)
 
 void init_program(t_head ** head, char * path)
 {
-	char ** path_sep;
-	char *	fdf_file;
-	int		i;
+	char * fdf_file;
 
+	fdf_file = get_map_name(path);
+	if (!fdf_file)
+		end(*head);
 	(*head) = ft_calloc(1, sizeof(t_head));
 	if (!head)
 		return;
@@ -57,23 +54,9 @@ void init_program(t_head ** head, char * path)
 	if (!(*head)->draw)
 		return;
 	(*head)->vars.mlx = mlx_init();
-	path_sep = ft_split(path, '/');
-	fdf_file = NULL;
-	i = 0;
-	while (path_sep[i])
-	{
-		if (ft_strnstr(path_sep[i], ".fdf", ft_strlen(path_sep[i])))
-			fdf_file = path_sep[i];
-		else
-			free(path_sep[i]);
-		i++;
-	}
-	free(path_sep);
-	if (!fdf_file)
-		end(*head);
 	(*head)->vars.win = mlx_new_window((*head)->vars.mlx, VW, VH, fdf_file);
-	ft_bzero(&(*head)->controls, sizeof((*head)->controls));
 	free(fdf_file);
+	ft_bzero(&(*head)->controls, sizeof((*head)->controls));
 	init_draw(*head);
 	ft_memcpy((*head)->draw->projection,
 			  (double[3][3]){

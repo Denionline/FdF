@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/24 14:33:46 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 12:58:02 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,13 @@ static t_pixel get_reference(t_head * head, int y, int x)
 	return (pixel);
 }
 
-void draw(t_head * h)
+void draw_map(t_head * h)
 {
 	t_pixel s0;
 	int		x;
 	int		y;
 
-	create_new_image(h->vars.mlx, &h->draw->image, VW - MENU_W, VH);
+	create_new_image(h->vars.mlx, &h->draw->image, VW, VH);
 	y = -1;
 	while (++y < h->map->size.y)
 	{

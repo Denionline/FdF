@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   menu_arts.c                                        :+:      :+:    :+:   */
+/*   get_map_name.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/25 09:32:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/25 18:48:34 by dximenes         ###   ########.fr       */
+/*   Created: 2025/07/26 13:04:09 by dximenes          #+#    #+#             */
+/*   Updated: 2025/07/26 13:08:58 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-void get_logo_art(t_head * head)
+char * get_map_name(char * path)
 {
-	static const char * const logo_src[6] = {
-		" _____ ____  _____ ",
-		"|  ___|  _ \\|  ___|",
-		"| |_  | | | | |_   ",
-		"|  _| | |_| |  _|  ",
-		"|_|   |____/|_|    ",
-		NULL};
+	char ** path_sep;
+	char *	fdf_file;
+	int		i;
 
-	ft_memcpy(head->menu.arts.logo, logo_src, sizeof(logo_src));
+	path_sep = ft_split(path, '/');
+	fdf_file = NULL;
+	i = 0;
+	while (path_sep[i])
+	{
+		if (ft_strnstr(path_sep[i], ".fdf", ft_strlen(path_sep[i])))
+			fdf_file = path_sep[i];
+		else
+			free(path_sep[i]);
+		i++;
+	}
+	free(path_sep);
+	return (fdf_file);
 }

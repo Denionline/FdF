@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/25 18:40:21 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 12:49:32 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,31 @@ typedef struct s_img
 	char * buffer;
 } t_img;
 
+typedef struct s_vars_art
+{
+	const char * str[20];
+	int			 color;
+} t_vars_art;
+
 typedef struct s_arts
 {
-	const char * logo[20];
+	t_vars_art logo;
+	t_vars_art zoom_title;
+	t_vars_art rotation_title;
+	t_vars_art move_title;
+	t_vars_art key_esc;
+	t_vars_art key_up;
+	t_vars_art key_down;
+	t_vars_art key_left;
+	t_vars_art key_right;
+	t_vars_art key_q;
+	t_vars_art key_w;
+	t_vars_art key_e;
+	t_vars_art key_a;
+	t_vars_art key_s;
+	t_vars_art key_d;
+	t_vars_art key_plus;
+	t_vars_art key_minus;
 } t_arts;
 
 typedef struct s_menu
