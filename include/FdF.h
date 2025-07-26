@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/25 18:39:28 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/26 13:26:23 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,13 @@
 #define COLOR 1023961
 #define HIGH_COLOR 16711680
 #define MENU_COLOR 2236962
+#define DEFAULT_KEY_COLOR 16777215
+#define ACTIVE_KEY_COLOR 718102
 
 #define LETTER_SIZE 10
+
+// src/aux/
+char * get_map_name(char * path);
 
 // src/initializers.c
 void init_program(t_head ** head, char * path);
@@ -50,7 +55,15 @@ void init_menu(t_head * head);
 void menu(t_head * head);
 
 // src/ui/menu_arts.c
-void get_logo_art(t_head * head);
+void get_logo_art(t_arts * arts);
+void get_title_art(t_arts * arts);
+
+// src/ui/control_arts.c
+void get_aux_arts(t_arts * arts);
+void get_zoom_arts(t_arts * arts);
+void get_move_arts(t_arts * arts);
+void get_rotation_arts_1(t_arts * arts);
+void get_rotation_arts_2(t_arts * arts);
 
 // src/ui/draw_art_menu.c
 void draw_art_menu(t_head * h);
@@ -66,7 +79,7 @@ void create_new_image(void * mlx, t_img * image, int width, int height);
 void put_pixel_image(t_img * img, int x, int y, int color);
 
 // draw.c
-void draw(t_head * head);
+void draw_map(t_head * head);
 
 // color.c
 int	 get_color_between(int color1, int color2, int step, int steps);

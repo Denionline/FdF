@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/25 09:37:12 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/26 13:25:45 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,119 +14,142 @@
 #                                    Colors                                    #
 # **************************************************************************** #
 
-C_STD = \033[0;39m
-C_GRAY = \033[0;90m
-C_RED = \033[0;91m
-C_GREEN = \033[0;92m
-C_YELLOW = \033[0;93m
-C_BLUE = \033[0;94m
-C_MAGENTA = \033[0;95m
-C_CYAN = \033[0;96m
-C_WHITE = \033[0;97m
+C_STD						= \033[0;39m
+C_GRAY						= \033[0;90m
+C_RED						= \033[0;91m
+C_GREEN						= \033[0;92m
+C_YELLOW					= \033[0;93m
+C_BLUE						= \033[0;94m
+C_MAGENTA					= \033[0;95m
+C_CYAN						= \033[0;96m
+C_WHITE						= \033[0;97m
 
 # **************************************************************************** #
 #                                    Names                                     #
 # **************************************************************************** #
 
-EXEC			= fdf
-TEST			= test
-FTPRINTF		= $(FTPRINTF_PATH)libftprintf.a
-LIBFT			= $(LIBFT_PATH)libft.a
-GNL				= $(GNL_PATH)get_next_line.a
-MLX				= $(MLX_PATH)libmlx.a
+EXEC						= fdf
+TEST						= test
+FTPRINTF					= $(FTPRINTF_PATH)libftprintf.a
+LIBFT						= $(LIBFT_PATH)libft.a
+GNL							= $(GNL_PATH)get_next_line.a
+MLX							= $(MLX_PATH)libmlx.a
 
 # **************************************************************************** #
 #                                    Path's                                    #
 # **************************************************************************** #
 
-INCLUDE_PATH	= include
-BUILD_PATH		= .build/
-SRC				= src/
+INCLUDE_PATH				= include
+BUILD_PATH					= .build/
+SRC							= src/
 
-RENDERER_PATH	+= $(SRC)renderer/
-PARSE_PATH		+= $(SRC)parse/
-UI_PATH			+= $(SRC)ui/
-CONTROLS_PATH	+= $(SRC)controls/
-EVENTS_PATH		+= $(CONTROLS_PATH)events/
-ACTIONS_PATH	+= $(EVENTS_PATH)actions/
+RENDERER_PATH				+= $(SRC)renderer/
+RENDERER_DRAW_PATH			+= $(RENDERER_PATH)draw/
+RENDERER_DRAW_AUX_PATH		+= $(RENDERER_DRAW_PATH)aux/
+PARSE_PATH					+= $(SRC)parse/
+PARSE_INITIALIZERS_PATH		+= $(PARSE_PATH)initializers/
+UI_PATH						+= $(SRC)ui/
+UI_ARTS_PATH				+= $(UI_PATH)arts/
+AUX_PATH					+= $(SRC)aux/
+AUX_GET_PATH				+= $(AUX_PATH)get/
+CONTROLS_PATH				+= $(SRC)controls/
+CONTROLS_EVENTS_PATH		+= $(CONTROLS_PATH)events/
+CONTROLS_ACTIONS_PATH		+= $(CONTROLS_EVENTS_PATH)actions/
 
-FTPRINTF_PATH	= $(INCLUDE_PATH)/ft_printf/
-LIBFT_PATH		= $(FTPRINTF_PATH)$(INCLUDE_PATH)/libft/
-GNL_PATH		= $(INCLUDE_PATH)/get_next_line/
-MLX_PATH		= $(INCLUDE_PATH)/minilibx-linux/
+FTPRINTF_PATH				= $(INCLUDE_PATH)/ft_printf/
+LIBFT_PATH					= $(FTPRINTF_PATH)$(INCLUDE_PATH)/libft/
+GNL_PATH					= $(INCLUDE_PATH)/get_next_line/
+MLX_PATH					= $(INCLUDE_PATH)/minilibx-linux/
 
 # **************************************************************************** #
 #                                    Files                                     #
 # **************************************************************************** #
 
-MAIN			= main
+MAIN						= main
 
-FILES			+= math
-FILES			+= color
-FILES			+= fps
+AUX_FILES					+= math
+AUX_FILES					+= color
+AUX_FILES					+= fps
 
-UI_FILES		+= menu
-UI_FILES		+= draw_art_menu
-UI_FILES		+= menu_arts
+AUX_GET_FILES				+= get_map_name
 
-RENDERER_FILES	+= draw
-RENDERER_FILES	+= render
-RENDERER_FILES	+= bresenham
-RENDERER_FILES	+= image
-RENDERER_FILES	+= rotate
+UI_FILES					+= menu
 
-PARSE_FILES		+= initializers
-PARSE_FILES		+= load_map
-PARSE_FILES		+= verify
+UI_ARTS_FILES				+= menu_arts
+UI_ARTS_FILES				+= control_arts
 
-CONTROLS_FILES	+= hooks
-CONTROLS_FILES	+= transform
+RENDERER_FILES				+= render
 
-EVENTS_FILES	+= keyboard
-EVENTS_FILES	+= mouse
-EVENTS_FILES	+= window
+RENDERER_DRAW_FILES			+= draw_map
+RENDERER_DRAW_FILES			+= draw_art_menu
 
-ACTIONS_FILES	+= rotate_action
-ACTIONS_FILES	+= move_action
-ACTIONS_FILES	+= zoom_action
+RENDERER_DRAW_AUX_FILES		+= bresenham
+RENDERER_DRAW_AUX_FILES		+= image
+RENDERER_DRAW_AUX_FILES		+= rotate
 
-SRC_FILES		+= $(MAIN)
-SRC_FILES		+= $(addprefix $(SRC), $(FILES))
-SRC_FILES		+= $(addprefix $(UI_PATH), $(UI_FILES))
-SRC_FILES		+= $(addprefix $(RENDERER_PATH), $(RENDERER_FILES))
-SRC_FILES		+= $(addprefix $(PARSE_PATH), $(PARSE_FILES))
-SRC_FILES		+= $(addprefix $(CONTROLS_PATH), $(CONTROLS_FILES))
-SRC_FILES		+= $(addprefix $(EVENTS_PATH), $(EVENTS_FILES))
-SRC_FILES		+= $(addprefix $(ACTIONS_PATH), $(ACTIONS_FILES))
+PARSE_FILES					+= load_map
+PARSE_FILES					+= verify
 
-OBJ_FILES		+= $(MAIN)
-OBJ_FILES		+= $(FILES)
-OBJ_FILES		+= $(UI_FILES)
-OBJ_FILES		+= $(RENDERER_FILES)
-OBJ_FILES		+= $(PARSE_FILES)
-OBJ_FILES		+= $(CONTROLS_FILES)
-OBJ_FILES		+= $(EVENTS_FILES)
-OBJ_FILES		+= $(ACTIONS_FILES)
+PARSE_INITIALIZERS_FILES	+= initializers
 
-SRCS		= $(addprefix ./, $(addsuffix .c, $(SRC_FILES)))
-OBJS		= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(OBJ_FILES)))
+CONTROLS_FILES				+= hooks
+CONTROLS_FILES				+= transform
+
+CONTROLS_EVENTS_FILES		+= keyboard
+CONTROLS_EVENTS_FILES		+= mouse
+CONTROLS_EVENTS_FILES		+= window
+
+CONTROLS_ACTIONS_FILES		+= rotate_action
+CONTROLS_ACTIONS_FILES		+= move_action
+CONTROLS_ACTIONS_FILES		+= zoom_action
+
+SRC_FILES					+= $(MAIN)
+SRC_FILES					+= $(addprefix $(AUX_PATH), $(AUX_FILES))
+SRC_FILES					+= $(addprefix $(AUX_GET_PATH), $(AUX_GET_FILES))
+SRC_FILES					+= $(addprefix $(UI_PATH), $(UI_FILES))
+SRC_FILES					+= $(addprefix $(UI_ARTS_PATH), $(UI_ARTS_FILES))
+SRC_FILES					+= $(addprefix $(RENDERER_PATH), $(RENDERER_FILES))
+SRC_FILES					+= $(addprefix $(RENDERER_DRAW_PATH), $(RENDERER_DRAW_FILES))
+SRC_FILES					+= $(addprefix $(RENDERER_DRAW_AUX_PATH), $(RENDERER_DRAW_AUX_FILES))
+SRC_FILES					+= $(addprefix $(PARSE_PATH), $(PARSE_FILES))
+SRC_FILES					+= $(addprefix $(PARSE_INITIALIZERS_PATH), $(PARSE_INITIALIZERS_FILES))
+SRC_FILES					+= $(addprefix $(CONTROLS_PATH), $(CONTROLS_FILES))
+SRC_FILES					+= $(addprefix $(CONTROLS_EVENTS_PATH), $(CONTROLS_EVENTS_FILES))
+SRC_FILES					+= $(addprefix $(CONTROLS_ACTIONS_PATH), $(CONTROLS_ACTIONS_FILES))
+
+OBJ_FILES					+= $(MAIN)
+OBJ_FILES					+= $(AUX_FILES)
+OBJ_FILES					+= $(AUX_GET_FILES)
+OBJ_FILES					+= $(UI_FILES)
+OBJ_FILES					+= $(UI_ARTS_FILES)
+OBJ_FILES					+= $(RENDERER_FILES)
+OBJ_FILES					+= $(RENDERER_DRAW_FILES)
+OBJ_FILES					+= $(RENDERER_DRAW_AUX_FILES)
+OBJ_FILES					+= $(PARSE_FILES)
+OBJ_FILES					+= $(PARSE_INITIALIZERS_FILES)
+OBJ_FILES					+= $(CONTROLS_FILES)
+OBJ_FILES					+= $(CONTROLS_EVENTS_FILES)
+OBJ_FILES					+= $(CONTROLS_ACTIONS_FILES)
+
+SRCS						= $(addprefix ./, $(addsuffix .c, $(SRC_FILES)))
+OBJS						= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(OBJ_FILES)))
 
 # **************************************************************************** #
 #                                    Git                                       #
 # **************************************************************************** #
 
-FTPRINTF_URL	= https://github.com/Denionline/ft_printf.git
-GNL_URL			= https://github.com/Denionline/get_next_line.git
-MLX_URL			= https://github.com/42paris/minilibx-linux.git
+FTPRINTF_URL				= https://github.com/Denionline/ft_printf.git
+GNL_URL						= https://github.com/Denionline/get_next_line.git
+MLX_URL						= https://github.com/42paris/minilibx-linux.git
 
 # **************************************************************************** #
 #                                  Compiler                                    #
 # **************************************************************************** #
 
-CC				= cc
-CFLAGS			= -Werror -Wextra -Wall
-MLXFLAGS		= -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm -lz
-MAKE			= make --no-print-directory
+CC							= cc
+CFLAGS						= -Werror -Wextra -Wall
+MLXFLAGS					= -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm -lz
+MAKE						= make --no-print-directory
 
 # **************************************************************************** #
 #                                  Commands                                    #
