@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 12:55:24 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 19:35:50 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 20:00:04 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ typedef struct s_keys
 {
 	int	mouse_left_click;
 	int	key_ctrl;
+	int	plane_mode;
 	int	any;
 }	t_keys;
 
