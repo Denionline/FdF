@@ -6,21 +6,23 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 18:44:10 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 15:32:20 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "FdF.h"
-
 #ifndef TYPES_H
-#define TYPES_H
+# define TYPES_H
+
+# include "FdF.h"
+
+typedef double	t_rotate3[3];
 
 typedef struct s_double_axis
 {
 	double	x;
 	double	y;
 	double	z;
-} t_double_axis;
+}	t_double_axis;
 
 typedef struct s_pixel
 {
@@ -28,7 +30,7 @@ typedef struct s_pixel
 	int	y;
 	int	z;
 	int	color;
-} t_pixel;
+}	t_pixel;
 
 typedef struct s_fps
 {
@@ -36,7 +38,7 @@ typedef struct s_fps
 	int				frame_count;
 	int				current_fps;
 	char			fps_str[5];
-} t_fps;
+}	t_fps;
 
 typedef struct s_img
 {
@@ -45,13 +47,13 @@ typedef struct s_img
 	int		line_bytes;
 	int		end;
 	char	*buffer;
-} t_img;
+}	t_img;
 
 typedef struct s_vars_art
 {
 	const char	*str[20];
 	int			color;
-} t_vars_art;
+}	t_vars_art;
 
 typedef struct s_arts
 {
@@ -72,12 +74,12 @@ typedef struct s_arts
 	t_vars_art	key_d;
 	t_vars_art	key_plus;
 	t_vars_art	key_minus;
-} t_arts;
+}	t_arts;
 
 typedef struct s_menu
 {
 	t_arts	arts;
-} t_menu;
+}	t_menu;
 
 typedef struct s_control
 {
@@ -86,7 +88,7 @@ typedef struct s_control
 	t_pixel			pad;
 	double			zoom;
 	t_keys			is_on;
-} t_control;
+}	t_control;
 
 typedef struct s_bresenham
 {
@@ -94,7 +96,7 @@ typedef struct s_bresenham
 	t_pixel	direction;
 	int		base_decision;
 	int		decision;
-} t_bresenham;
+}	t_bresenham;
 
 typedef struct s_draw
 {
@@ -108,20 +110,20 @@ typedef struct s_draw
 	double			zoom;
 	t_img			image;
 
-} t_draw;
+}	t_draw;
 
 typedef struct s_map
 {
 	t_pixel	**points;
 	char	*path;
 	t_pixel	size;
-} t_map;
+}	t_map;
 
 typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
-} t_vars;
+}	t_vars;
 
 typedef struct s_head
 {
@@ -131,6 +133,6 @@ typedef struct s_head
 	t_fps		fps;
 	t_menu		menu;
 	t_control	controls;
-} t_head;
+}	t_head;
 
 #endif
