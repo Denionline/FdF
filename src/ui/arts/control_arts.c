@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/25 09:32:10 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 20:11:54 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 20:16:34 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	get_aux_arts(t_arts *arts)
 	const char	*key_esc[4] = {"+---+", "|ESC| Exit", "+---+", NULL};
 	const char	*key_tab[4] = {"+---+", "|TAB|", "+---+", NULL};
 
-	arts->key_esc.color = 0xAF0000;
+	arts->key_esc.color = 0xAF00F0;
 	arts->key_tab.color = DEFAULT_KEY_COLOR;
 	ft_memcpy(arts->key_esc.str, key_esc, sizeof(key_esc));
 	ft_memcpy(arts->key_tab.str, key_tab, sizeof(key_tab));
