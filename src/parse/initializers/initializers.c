@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:57:54 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 18:09:01 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 19:28:59 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void	init_draw(t_head *head)
 	head->draw->ang.x = PI / 8;
 	head->draw->ang.y = PI / -6;
 	head->draw->ang.z = PI / 5;
-	head->draw->distance = 1.0;
 	head->draw->zoom = 1.0;
+	head->draw->plane_mode = 0;
 }
 
 void	init_program(t_head **head, char *path)

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 15:32:20 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 19:28:44 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,9 +106,9 @@ typedef struct s_draw
 	t_pixel			pad;
 	double			projection[3][3];
 	double			values[3];
-	double			distance;
 	double			zoom;
 	t_img			image;
+	int				plane_mode;
 
 }	t_draw;
 

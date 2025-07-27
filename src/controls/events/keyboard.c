@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 12:08:14 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 18:11:25 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 19:35:41 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,10 @@ int	key_release(int keycode, t_head *head)
 
 int	key_press(int keycode, t_head *head)
 {
+	// printf("%d\n", keycode);
 	rotate_action(keycode, &head->controls);
 	move_action(keycode, &head->controls);
 	zoom_action(keycode, &head->controls);
-	if (keycode == KEY_CTRL)
-		head->controls.is_on.key_ctrl = TRUE;
-	if (keycode == KEY_ESC)
-		mlx_loop_end(head->vars.mlx);
+	aux_action(keycode, head);
 	return (0);
 }

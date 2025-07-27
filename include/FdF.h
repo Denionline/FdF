@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 15:30:46 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 19:32:33 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int			key_press(int keycode, t_head *head);
 void		rotate_action(int keycode, t_control *control);
 void		move_action(int keycode, t_control *control);
 void		zoom_action(int keycode, t_control *control);
+void		aux_action(int keycode, t_head *head);
 
 // verify.c
 void		end(t_head *head);

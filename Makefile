@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/27 17:39:52 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/27 17:39:53 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/27 19:33:14 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,6 +105,7 @@ CONTROLS_EVENTS_FILES		+= window
 CONTROLS_ACTIONS_FILES		+= rotate_action
 CONTROLS_ACTIONS_FILES		+= move_action
 CONTROLS_ACTIONS_FILES		+= zoom_action
+CONTROLS_ACTIONS_FILES		+= aux_action
 
 SRC_FILES					+= $(MAIN)
 SRC_FILES					+= $(addprefix $(AUX_PATH), $(AUX_FILES))
