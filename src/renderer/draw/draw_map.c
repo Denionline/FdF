@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 15:27:43 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 17:52:39 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,17 @@ static void	get_pixel_values(t_head *head, int y, int x, t_pixel *s)
 
 static t_pixel	get_reference(t_head *head, int y, int x)
 {
-	int		ref_pos_x;
-	int		ref_pos_y;
 	t_pixel	pixel;
+	t_pixel	ref_pos;
 
 	get_pixel_values(head, y, x, &pixel);
 	pixel = mat_mult(rotate_x(head), pixel);
 	pixel = mat_mult(rotate_y(head), pixel);
 	pixel = mat_mult(rotate_z(head), pixel);
-	ref_pos_x = head->draw->position.x * (1 / head->draw->zoom);
-	ref_pos_y = head->draw->position.y * (1 / head->draw->zoom);
-	pixel.x += head->draw->start.x + ref_pos_x;
-	pixel.y += head->draw->start.y + ref_pos_y;
+	ref_pos.x = head->draw->position.x * (1 / head->draw->zoom);
+	ref_pos.y = head->draw->position.y * (1 / head->draw->zoom);
+	pixel.x += head->draw->start.x + ref_pos.x;
+	pixel.y += head->draw->start.y + ref_pos.y;
 	return (pixel);
 }
 
