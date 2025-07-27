@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 20:03:48 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 22:56:25 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ typedef struct s_arts
 
 typedef struct s_menu
 {
+	t_img	image;
 	t_arts	arts;
 }	t_menu;
 

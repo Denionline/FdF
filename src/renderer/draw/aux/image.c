@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 11:54:56 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 10:38:18 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 23:40:06 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 void	create_new_image(void *mlx, t_img *img, int width, int height)
 {
-	int	*pixel_bits;
-	int	*line_bytes;
-	int	*endian;
-
-	pixel_bits = &img->bits;
-	line_bytes = &img->line_bytes;
-	endian = &img->end;
 	if (img->img)
 		mlx_destroy_image(mlx, img->img);
-	ft_bzero(img, sizeof(*img));
 	img->img = mlx_new_image(mlx, width, height);
-	img->buffer = mlx_get_data_addr(img->img, pixel_bits, line_bytes, endian);
+	img->buffer = mlx_get_data_addr(
+		img->img,
+		&img->bits,
+		&img->line_bytes,
+		&img->end
+	);
 }
 
 void	put_pixel_image(t_img *img, int x, int y, int color)

@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 17:07:33 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 23:30:59 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ int	render(t_head *h)
 	draw_map(h);
 	menu(h);
 	update_fps(h, &h->fps);
-	mlx_loop(h->vars.mlx);
 	return (0);
 }

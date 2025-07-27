@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/11 17:31:48 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 17:22:59 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/28 00:11:33 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,20 @@ void	end(t_head *head)
 {
 	int	i;
 
-	mlx_destroy_image(head->vars.mlx, head->draw->image.img);
+	if (head->menu.image.img)
+		mlx_destroy_image(head->vars.mlx, head->menu.image.img);
+	if (head->draw->image.img)
+		mlx_destroy_image(head->vars.mlx, head->draw->image.img);
 	mlx_destroy_window(head->vars.mlx, head->vars.win);
 	mlx_destroy_display(head->vars.mlx);
 	i = 0;
-	while (head->map->points[0] && i < head->map->size.y)
+	while (head->map->points && i < head->map->size.y)
 		free(head->map->points[i++]);
 	if (head->map->points)
 		free(head->map->points);
-	if (head->vars.mlx)
-		free(head->vars.mlx);
-	if (head->map)
-		free(head->map);
-	if (head->draw)
-		free(head->draw);
-	if (head)
-		free(head);
+	free(head->map);
+	free(head->draw);
+	free(head->vars.mlx);
+	free(head);
 	exit(0);
 }

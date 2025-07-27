@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 22:37:46 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 20:09:52 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/28 00:10:45 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ void		transform(t_head *head);
 void		hooks(t_head *head);
 
 // src/controls/events/
-int			hook_window(int keycode, t_head *head);
+int			hook_window(t_head *head);
 int			mouse_move(int x, int y, t_head *head);
 int			mouse_press(int button, int x, int y, t_head *head);
 int			mouse_release(int button, int x, int y, t_head *head);

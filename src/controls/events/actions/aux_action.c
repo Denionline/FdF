@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/27 19:29:39 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 19:40:01 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/28 00:11:22 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,5 @@ void	aux_action(int keycode, t_head *head)
 	if (keycode == KEY_CTRL)
 		head->controls.is_on.key_ctrl = TRUE;
 	if (keycode == KEY_ESC)
-		mlx_loop_end(head->vars.mlx);
+		end(head);
 }

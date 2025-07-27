@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/18 20:31:04 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 17:04:14 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/28 00:11:42 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,8 @@ int	main(int argc, char *argv[])
 		return (0);
 	init_program(&head, argv[1]);
 	load_map(head, argv[1]);
-	hooks(head);
 	init_menu(head);
 	init_fps(&head->fps);
-	render(head);
-	end(head);
+	hooks(head);
 	return (0);
 }
