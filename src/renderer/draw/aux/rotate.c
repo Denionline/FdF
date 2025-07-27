@@ -6,13 +6,13 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 10:06:25 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 17:10:45 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 15:29:16 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-double	(*rotate_x(t_head *head))[3]
+t_rotate3	*rotate_x(t_head *head)
 {
 	const double	c = cos(head->draw->ang.x);
 	const double	s = sin(head->draw->ang.x);
@@ -29,7 +29,7 @@ double	(*rotate_x(t_head *head))[3]
 	return (head->draw->projection);
 }
 
-double	(*rotate_y(t_head *head))[3]
+t_rotate3	*rotate_y(t_head *head)
 {
 	const double	c = cos(head->draw->ang.y);
 	const double	s = sin(head->draw->ang.y);
@@ -46,7 +46,7 @@ double	(*rotate_y(t_head *head))[3]
 	return (head->draw->projection);
 }
 
-double	(*rotate_z(t_head *head))[3]
+t_rotate3	*rotate_z(t_head *head)
 {
 	const double	c = cos(head->draw->ang.z);
 	const double	s = sin(head->draw->ang.z);

@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/26 13:25:45 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/27 15:35:38 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ C_WHITE						= \033[0;97m
 #                                    Names                                     #
 # **************************************************************************** #
 
-EXEC						= fdf
+NAME						= fdf
 TEST						= test
 FTPRINTF					= $(FTPRINTF_PATH)libftprintf.a
 LIBFT						= $(LIBFT_PATH)libft.a
@@ -72,6 +72,7 @@ AUX_FILES					+= color
 AUX_FILES					+= fps
 
 AUX_GET_FILES				+= get_map_name
+AUX_GET_FILES				+= get_max
 
 UI_FILES					+= menu
 
@@ -156,7 +157,7 @@ MAKE						= make --no-print-directory
 # **************************************************************************** #
 
 
-all: verify_ftprintf $(FTPRINTF) verify_gnl $(GNL) verify_mlx $(MLX) $(EXEC)
+all: verify_ftprintf $(FTPRINTF) verify_gnl $(GNL) verify_mlx $(MLX) $(NAME)
 	@printf "\n$(C_GREEN)Program is ready :D$(C_STD)\n"
 
 $(FTPRINTF):
@@ -168,7 +169,7 @@ $(GNL):
 $(MLX):
 	@$(MAKE) -C $(MLX_PATH)
 
-$(EXEC): | $(BUILD_PATH)
+$(NAME): | $(BUILD_PATH)
 	@TOTAL=$$(echo $(SRCS) | wc -w); \
 	CUR=1; \
 	for SRC in $(SRCS); do\
@@ -182,8 +183,8 @@ $(EXEC): | $(BUILD_PATH)
 		CUR=$$((CUR + 1)); \
 	done; \
 	printf "\n";
-	@$(CC) $(CFLAGS) -I$(INCLUDE_PATH) $(OBJS) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(EXEC)
-	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
+	@$(CC) $(CFLAGS) -I$(INCLUDE_PATH) $(OBJS) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(NAME)
+	@printf "\n$(C_GREEN)Success to created $(C_STD)$(NAME)\n\n"
 
 $(BUILD_PATH):
 	@printf "\n$(C_CYAN)Building project...$(C_STD)\n"
@@ -195,24 +196,24 @@ $(BUILD_PATH):
 
 test:
 	@$(CC) $(CFLAGS) $(OBJS) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(TEST)
-	@printf "\n$(C_GREEN)Success to created $(C_STD)$(EXEC)\n\n"
+	@printf "\n$(C_GREEN)Success to created $(C_STD)$(NAME)\n\n"
 
 clean:
 	@rm -rf $(BUILD_PATH)
 
 fclean: clean
-	@rm -rf $(EXEC)
+	@rm -rf $(NAME)
 
 re: fclean all
 
 t0:
-	@./$(EXEC) maps/42.fdf
+	@./$(NAME) maps/42.fdf
 t1:
-	@./$(EXEC) maps/elem-col.fdf
+	@./$(NAME) maps/elem-col.fdf
 t2:
-	@./$(EXEC) maps/10-2.fdf
+	@./$(NAME) maps/10-2.fdf
 v:
-	@valgrind ./$(EXEC) maps/42.fdf
+	@valgrind ./$(NAME) maps/42.fdf
 
 # libft processes
 verify_ftprintf:

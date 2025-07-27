@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 11:59:00 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 17:16:05 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 11:27:28 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	update_fps(t_head *h, t_fps *fps)
 	gettimeofday(&current_time, NULL);
 	elapsed = (current_time.tv_sec - fps->last_time.tv_sec);
 	elapsed += (current_time.tv_usec - fps->last_time.tv_usec) / 1000000.0;
-
 	if (elapsed >= 1.0)
 	{
 		fps->current_fps = fps->frame_count;
@@ -66,10 +65,10 @@ void	update_fps(t_head *h, t_fps *fps)
 		itoa_fps(fps, fps->current_fps);
 	}
 	mlx_string_put(h->vars.mlx, h->vars.win, VW - 60, 15, 0xFFFFFF, "FPS:");
-	mlx_string_put(h->vars.mlx,\
-		h->vars.win,\
-		VW - 25,\
-		15,\
-		0xFFFF00,\
+	mlx_string_put(h->vars.mlx,
+		h->vars.win,
+		VW - 25,
+		15,
+		0xFFFF00,
 		fps->fps_str);
 }

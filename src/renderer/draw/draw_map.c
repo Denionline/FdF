@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 18:41:42 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/27 15:27:43 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 static void	get_pixel_values(t_head *head, int y, int x, t_pixel *s)
 {
-	const t_pixel	pixel = head->map->points[y][x];
-	const double	center_x = (head->map->size.x) / 2.0;
-	const double	center_y = (head->map->size.y) / 2.0;
-	const int		pixel_x = x - center_x;
-	const int		pixel_y = y - center_y;
+	const t_pixel	point = head->map->points[y][x];
+	t_double_axis	center;
+	t_pixel			pixel;
 	double			big_side;
 	double			value;
-	double			pad_z;
 
+	center.x = (head->map->size.x) / 2.0;
+	center.y = (head->map->size.y) / 2.0;
+	pixel.x = x - center.x;
+	pixel.y = y - center.y;
 	big_side = head->map->size.y;
 	if (head->map->size.x > head->map->size.y)
 		big_side = head->map->size.x;
@@ -31,11 +32,11 @@ static void	get_pixel_values(t_head *head, int y, int x, t_pixel *s)
 		value = 0.0;
 	if (value > 1.0)
 		value = 1.0;
-	pad_z = MAX_PADZ + (MIN_PADZ - MAX_PADZ) * value;
-	s->z = pad_z * head->draw->zoom * pixel.z;
-	s->x = (head->draw->pad.x * head->draw->zoom) * pixel_x;
-	s->y = (head->draw->pad.y * head->draw->zoom) * pixel_y;
-	s->color = pixel.color;
+	pixel.z = MAX_PADZ + (MIN_PADZ - MAX_PADZ) * value;
+	s->z = pixel.z * head->draw->zoom * point.z;
+	s->x = (head->draw->pad.x * head->draw->zoom) * pixel.x;
+	s->y = (head->draw->pad.y * head->draw->zoom) * pixel.y;
+	s->color = point.color;
 }
 
 static t_pixel	get_reference(t_head *head, int y, int x)
