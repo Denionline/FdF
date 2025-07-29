@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:57:54 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/29 09:56:51 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:58:41 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void	init_draw(t_head *head)
 	head->draw->pad.y = 20;
 	head->draw->position.x = 0;
 	head->draw->position.y = 0;
-	head->draw->ang.x = PI / 8;
-	head->draw->ang.y = PI / -6;
-	head->draw->ang.z = PI / 5;
+	head->draw->ang.x = 0.15;
+	head->draw->ang.y = -0.08;
+	head->draw->ang.z = 0.63;
 	head->draw->zoom = 1.0;
 	head->draw->plane_mode = 0;
 }

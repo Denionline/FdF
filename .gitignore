@@ -1,8 +1,0 @@
-include/libft
-include/ft_printf
-include/get_next_line
-include/minilibx-linux
-build/
-build/*
-.build/
-fdf

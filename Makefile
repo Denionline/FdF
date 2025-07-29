@@ -6,7 +6,7 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/27 17:39:52 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/28 00:16:54 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/29 10:46:12 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,17 +43,17 @@ MLX							= $(MLX_PATH)libmlx.a
 
 INCLUDE_PATH				= include
 BUILD_PATH					= .build/
-SRC							= src/
+SRC_PATH					= src/
 
-RENDERER_PATH				+= $(SRC)renderer/
+RENDERER_PATH				+= $(SRC_PATH)renderer/
 RENDERER_DRAW_PATH			+= $(RENDERER_PATH)draw/
 RENDERER_DRAW_AUX_PATH		+= $(RENDERER_DRAW_PATH)aux/
-PARSE_PATH					+= $(SRC)parse/
-UI_PATH						+= $(SRC)ui/
+PARSE_PATH					+= $(SRC_PATH)parse/
+UI_PATH						+= $(SRC_PATH)ui/
 UI_ARTS_PATH				+= $(UI_PATH)arts/
-AUX_PATH					+= $(SRC)aux/
+AUX_PATH					+= $(SRC_PATH)aux/
 AUX_GET_PATH				+= $(AUX_PATH)get/
-CONTROLS_PATH				+= $(SRC)controls/
+CONTROLS_PATH				+= $(SRC_PATH)controls/
 CONTROLS_EVENTS_PATH		+= $(CONTROLS_PATH)events/
 CONTROLS_ACTIONS_PATH		+= $(CONTROLS_EVENTS_PATH)actions/
 
@@ -156,8 +156,8 @@ MAKE						= make --no-print-directory
 # **************************************************************************** #
 
 
-all: verify_ftprintf $(FTPRINTF) verify_gnl $(GNL) verify_mlx $(MLX) $(NAME)
-	@printf "\n$(C_GREEN)Program is ready :D$(C_STD)\n"
+all: $(FTPRINTF) $(GNL) $(MLX) $(NAME)
+	@printf "$(C_GREEN)Program is ready :D$(C_STD)\n"
 
 $(FTPRINTF):
 	@$(MAKE) -C $(FTPRINTF_PATH)
@@ -189,10 +189,6 @@ $(BUILD_PATH):
 	@printf "\n$(C_CYAN)Building project...$(C_STD)\n"
 	@mkdir $(BUILD_PATH)
 
-# %.o: %.c
-# 	@$(CC) -I$(INCLUDE_PATH) -c $< -o $@
-# 	@printf "Compiling $(C_YELLOW)$<$(C_STD)...\n"
-
 test:
 	@$(CC) $(CFLAGS) $(OBJS) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(TEST)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(NAME)\n\n"
@@ -204,50 +200,3 @@ fclean: clean
 	@rm -rf $(NAME)
 
 re: fclean all
-
-t0:
-	@./$(NAME) maps/42.fdf
-t1:
-	@./$(NAME) maps/elem-col.fdf
-t2:
-	@./$(NAME) maps/10-2.fdf
-v:
-	@valgrind ./$(NAME) maps/42.fdf
-
-# libft processes
-verify_ftprintf:
-	@if test ! -d "$(FTPRINTF_PATH)"; then $(MAKE) get_ftprintf; \
-		else printf "ft_printf: $(C_GREEN)✅$(C_STD)\n"; fi
-	@$(MAKE) update_modules
-
-get_ftprintf:
-	@echo "Cloning ftprintf"
-	@git clone $(FTPRINTF_URL) $(FTPRINTF_PATH)
-	@echo "ft_printf clone successfully downloaded"
-
-# get_next_line processes
-verify_gnl:
-	@if test ! -d "$(GNL_PATH)"; then $(MAKE) get_gnl; \
-		else printf "get_next_line: $(C_GREEN)✅$(C_STD)\n"; fi
-	@$(MAKE) update_modules
-
-get_gnl:
-	@printf "Cloning get_next_line\n"
-	@git clone $(GNL_URL) $(GNL_PATH)
-	@printf "\n$(C_GREEN)get_next_line$(C_STD) successfully downloaded\n"
-
-# minilibx processes
-verify_mlx:
-	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_head; \
-		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
-	@$(MAKE) update_modules
-
-get_head:
-	@printf "Cloning get_next_line\n"
-	@git clone $(MLX_URL) $(MLX_PATH)
-	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
-
-#general processes
-update_modules:
-	@git submodule init
-	@git submodule update --recursive --remote

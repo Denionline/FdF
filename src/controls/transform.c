@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:32:02 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 20:04:45 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 11:00:35 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ static void	check_limits(t_head *head)
 
 void	transform(t_head *head)
 {
-	if (head->controls.rotation.x != 0)
+	if (!head->draw->plane_mode && head->controls.rotation.x != 0)
 		head->draw->ang.x += head->controls.rotation.x;
-	if (head->controls.rotation.y != 0)
+	if (!head->draw->plane_mode && head->controls.rotation.y != 0)
 		head->draw->ang.y += head->controls.rotation.y;
-	if (head->controls.rotation.z != 0)
+	if (!head->draw->plane_mode && head->controls.rotation.z != 0)
 		head->draw->ang.z += head->controls.rotation.z;
 	if (head->controls.zoom != 0)
 	{
