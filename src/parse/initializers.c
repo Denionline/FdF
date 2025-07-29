@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 14:57:54 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 19:28:59 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 09:56:51 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,6 @@ void	init_program(t_head **head, char *path)
 {
 	char	*fdf_file;
 
-	fdf_file = get_map_name(path);
-	if (!fdf_file)
-		end(*head);
 	(*head) = ft_calloc(1, sizeof(t_head));
 	if (!head)
 		return ;
@@ -54,6 +51,9 @@ void	init_program(t_head **head, char *path)
 	if (!(*head)->draw)
 		return ;
 	(*head)->vars.mlx = mlx_init();
+	fdf_file = get_map_name(path);
+	if (!fdf_file)
+		end(*head);
 	(*head)->vars.win = mlx_new_window((*head)->vars.mlx, VW, VH, fdf_file);
 	free(fdf_file);
 	ft_bzero(&(*head)->controls, sizeof((*head)->controls));
