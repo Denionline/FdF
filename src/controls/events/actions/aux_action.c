@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   render.c                                           :+:      :+:    :+:   */
+/*   aux_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 11:01:13 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/29 10:11:11 by dximenes         ###   ########.fr       */
+/*   Created: 2025/07/27 19:29:39 by dximenes          #+#    #+#             */
+/*   Updated: 2025/07/28 00:11:22 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-int	render(t_head *h)
+void	aux_action(int keycode, t_head *head)
 {
-	h->draw->start.x = (VW - MENU_W) / 2;
-	h->draw->start.y = VH / 2;
-	transform(h);
-	draw_map(h);
-	menu(h);
-	update_fps(h, &h->fps);
-	return (0);
+	if (keycode == KEY_TAB)
+	{
+		if (head->draw->plane_mode)
+			head->draw->plane_mode = FALSE;
+		else
+			head->draw->plane_mode = TRUE;
+	}
+	if (keycode == KEY_CTRL)
+		head->controls.is_on.key_ctrl = TRUE;
+	if (keycode == KEY_ESC)
+		end(head);
 }

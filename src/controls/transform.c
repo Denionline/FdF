@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/20 15:32:02 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 18:10:41 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:10:06 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,8 @@ void	transform(t_head *head)
 		head->draw->position.x += head->controls.position.x;
 	check_limits(head);
 	update_art_color(&head->controls, &head->menu.arts);
+	if (head->draw->plane_mode)
+		head->menu.arts.key_tab.color = ACTIVE_KEY_COLOR;
+	else
+		head->menu.arts.key_tab.color = DEFAULT_KEY_COLOR;
 }

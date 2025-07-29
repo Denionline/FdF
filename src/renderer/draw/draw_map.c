@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/09 11:48:17 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 15:27:43 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:11:30 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static void	get_pixel_values(t_head *head, int y, int x, t_pixel *s)
 {
 	const t_pixel	point = head->map->points[y][x];
 	t_double_axis	center;
-	t_pixel			pixel;
+	t_pixel			start;
 	double			big_side;
 	double			value;
 
 	center.x = (head->map->size.x) / 2.0;
 	center.y = (head->map->size.y) / 2.0;
-	pixel.x = x - center.x;
-	pixel.y = y - center.y;
+	start.x = x - center.x;
+	start.y = y - center.y;
 	big_side = head->map->size.y;
 	if (head->map->size.x > head->map->size.y)
 		big_side = head->map->size.x;
@@ -32,27 +32,29 @@ static void	get_pixel_values(t_head *head, int y, int x, t_pixel *s)
 		value = 0.0;
 	if (value > 1.0)
 		value = 1.0;
-	pixel.z = MAX_PADZ + (MIN_PADZ - MAX_PADZ) * value;
-	s->z = pixel.z * head->draw->zoom * point.z;
-	s->x = (head->draw->pad.x * head->draw->zoom) * pixel.x;
-	s->y = (head->draw->pad.y * head->draw->zoom) * pixel.y;
+	start.z = MAX_PADZ + (MIN_PADZ - MAX_PADZ) * value;
+	s->z = start.z * head->draw->zoom * point.z;
+	s->x = (head->draw->pad.x * head->draw->zoom) * start.x;
+	s->y = (head->draw->pad.y * head->draw->zoom) * start.y;
 	s->color = point.color;
 }
 
 static t_pixel	get_reference(t_head *head, int y, int x)
 {
-	int		ref_pos_x;
-	int		ref_pos_y;
 	t_pixel	pixel;
+	t_pixel	ref_pos;
 
 	get_pixel_values(head, y, x, &pixel);
-	pixel = mat_mult(rotate_x(head), pixel);
-	pixel = mat_mult(rotate_y(head), pixel);
-	pixel = mat_mult(rotate_z(head), pixel);
-	ref_pos_x = head->draw->position.x * (1 / head->draw->zoom);
-	ref_pos_y = head->draw->position.y * (1 / head->draw->zoom);
-	pixel.x += head->draw->start.x + ref_pos_x;
-	pixel.y += head->draw->start.y + ref_pos_y;
+	if (!head->draw->plane_mode)
+	{
+		pixel = mat_mult(rotate_x(head), pixel);
+		pixel = mat_mult(rotate_y(head), pixel);
+		pixel = mat_mult(rotate_z(head), pixel);
+	}
+	ref_pos.x = head->draw->position.x * (1 / head->draw->zoom);
+	ref_pos.y = head->draw->position.y * (1 / head->draw->zoom);
+	pixel.x += head->draw->start.x + ref_pos.x;
+	pixel.y += head->draw->start.y + ref_pos.y;
 	return (pixel);
 }
 

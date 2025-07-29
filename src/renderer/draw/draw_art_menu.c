@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/26 18:33:14 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 18:38:04 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:11:20 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,11 @@ void	draw_art_menu(t_head *h)
 	row = 0;
 	row = draw_art(h, default_column - 3, row + 1, h->menu.arts.key_esc);
 	row = draw_art(h, default_column, row + 2, h->menu.arts.logo);
-	row += 50;
+	row += 40;
+	row = draw_art(h, default_column + 3, row, h->menu.arts.plane_mode);
+	row += 1;
+	draw_art(h, default_column + 4, row, h->menu.arts.key_tab);
+	row += 6;
 	draw_zoom_arts(h, default_column, &row);
 	row += 6;
 	draw_rotation_arts(h, default_column, &row);

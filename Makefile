@@ -5,10 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/06/18 22:08:48 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/27 15:35:38 by dximenes         ###   ########.fr        #
+#    Created: 2025/07/27 17:39:52 by dximenes          #+#    #+#              #
+#    Updated: 2025/07/29 10:07:56 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+
 
 # **************************************************************************** #
 #                                    Colors                                    #
@@ -47,7 +49,6 @@ RENDERER_PATH				+= $(SRC)renderer/
 RENDERER_DRAW_PATH			+= $(RENDERER_PATH)draw/
 RENDERER_DRAW_AUX_PATH		+= $(RENDERER_DRAW_PATH)aux/
 PARSE_PATH					+= $(SRC)parse/
-PARSE_INITIALIZERS_PATH		+= $(PARSE_PATH)initializers/
 UI_PATH						+= $(SRC)ui/
 UI_ARTS_PATH				+= $(UI_PATH)arts/
 AUX_PATH					+= $(SRC)aux/
@@ -89,9 +90,8 @@ RENDERER_DRAW_AUX_FILES		+= image
 RENDERER_DRAW_AUX_FILES		+= rotate
 
 PARSE_FILES					+= load_map
-PARSE_FILES					+= verify
-
-PARSE_INITIALIZERS_FILES	+= initializers
+PARSE_FILES					+= end
+PARSE_FILES					+= initializers
 
 CONTROLS_FILES				+= hooks
 CONTROLS_FILES				+= transform
@@ -103,6 +103,7 @@ CONTROLS_EVENTS_FILES		+= window
 CONTROLS_ACTIONS_FILES		+= rotate_action
 CONTROLS_ACTIONS_FILES		+= move_action
 CONTROLS_ACTIONS_FILES		+= zoom_action
+CONTROLS_ACTIONS_FILES		+= aux_action
 
 SRC_FILES					+= $(MAIN)
 SRC_FILES					+= $(addprefix $(AUX_PATH), $(AUX_FILES))
@@ -113,7 +114,6 @@ SRC_FILES					+= $(addprefix $(RENDERER_PATH), $(RENDERER_FILES))
 SRC_FILES					+= $(addprefix $(RENDERER_DRAW_PATH), $(RENDERER_DRAW_FILES))
 SRC_FILES					+= $(addprefix $(RENDERER_DRAW_AUX_PATH), $(RENDERER_DRAW_AUX_FILES))
 SRC_FILES					+= $(addprefix $(PARSE_PATH), $(PARSE_FILES))
-SRC_FILES					+= $(addprefix $(PARSE_INITIALIZERS_PATH), $(PARSE_INITIALIZERS_FILES))
 SRC_FILES					+= $(addprefix $(CONTROLS_PATH), $(CONTROLS_FILES))
 SRC_FILES					+= $(addprefix $(CONTROLS_EVENTS_PATH), $(CONTROLS_EVENTS_FILES))
 SRC_FILES					+= $(addprefix $(CONTROLS_ACTIONS_PATH), $(CONTROLS_ACTIONS_FILES))
@@ -127,7 +127,6 @@ OBJ_FILES					+= $(RENDERER_FILES)
 OBJ_FILES					+= $(RENDERER_DRAW_FILES)
 OBJ_FILES					+= $(RENDERER_DRAW_AUX_FILES)
 OBJ_FILES					+= $(PARSE_FILES)
-OBJ_FILES					+= $(PARSE_INITIALIZERS_FILES)
 OBJ_FILES					+= $(CONTROLS_FILES)
 OBJ_FILES					+= $(CONTROLS_EVENTS_FILES)
 OBJ_FILES					+= $(CONTROLS_ACTIONS_FILES)

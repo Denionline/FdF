@@ -6,15 +6,14 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 12:09:27 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/26 18:10:59 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:10:28 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FdF.h"
 
-int	hook_window(int keycode, t_head *head)
+int	hook_window(t_head *head)
 {
-	if (keycode)
-		mlx_loop_end(head->vars.mlx);
+	end(head);
 	return (0);
 }

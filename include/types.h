@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 14:20:30 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/27 15:32:20 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:06:22 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ typedef struct s_arts
 	t_vars_art	zoom_title;
 	t_vars_art	rotation_title;
 	t_vars_art	move_title;
+	t_vars_art	plane_mode;
+	t_vars_art	key_tab;
 	t_vars_art	key_esc;
 	t_vars_art	key_up;
 	t_vars_art	key_down;
@@ -78,6 +80,7 @@ typedef struct s_arts
 
 typedef struct s_menu
 {
+	t_img	image;
 	t_arts	arts;
 }	t_menu;
 
@@ -106,9 +109,9 @@ typedef struct s_draw
 	t_pixel			pad;
 	double			projection[3][3];
 	double			values[3];
-	double			distance;
 	double			zoom;
 	t_img			image;
+	int				plane_mode;
 
 }	t_draw;
 
