@@ -6,11 +6,9 @@
 #    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/27 17:39:52 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/29 10:46:12 by dximenes         ###   ########.fr        #
+#    Updated: 2025/07/29 11:40:48 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-
 
 # **************************************************************************** #
 #                                    Colors                                    #
@@ -70,20 +68,20 @@ MAIN						= main
 
 AUX_FILES					+= math
 AUX_FILES					+= color
-AUX_FILES					+= fps
+AUX_FILES					+= fps_bonus
 
 AUX_GET_FILES				+= get_map_name
 AUX_GET_FILES				+= get_max
 
-UI_FILES					+= menu
+UI_FILES					+= menu_bonus
 
-UI_ARTS_FILES				+= menu_arts
-UI_ARTS_FILES				+= control_arts
+UI_ARTS_FILES				+= menu_arts_bonus
+UI_ARTS_FILES				+= control_arts_bonus
 
 RENDERER_FILES				+= render
 
 RENDERER_DRAW_FILES			+= draw_map
-RENDERER_DRAW_FILES			+= draw_art_menu
+RENDERER_DRAW_FILES			+= draw_art_menu_bonus
 
 RENDERER_DRAW_AUX_FILES		+= bresenham
 RENDERER_DRAW_AUX_FILES		+= image
@@ -96,27 +94,27 @@ PARSE_FILES					+= initializers
 CONTROLS_FILES				+= hooks
 CONTROLS_FILES				+= transform
 
-CONTROLS_EVENTS_FILES		+= keyboard
-CONTROLS_EVENTS_FILES		+= mouse
-CONTROLS_EVENTS_FILES		+= window
+CONTROLS_EVENTS_FILES		+= keyboard_bonus
+CONTROLS_EVENTS_FILES		+= mouse_bonus
+CONTROLS_EVENTS_FILES		+= window_bonus
 
-CONTROLS_ACTIONS_FILES		+= rotate_action
-CONTROLS_ACTIONS_FILES		+= move_action
-CONTROLS_ACTIONS_FILES		+= zoom_action
+CONTROLS_ACTIONS_FILES		+= rotate_action_bonus
+CONTROLS_ACTIONS_FILES		+= move_action_bonus
+CONTROLS_ACTIONS_FILES		+= zoom_action_bonus
 CONTROLS_ACTIONS_FILES		+= aux_action
 
-SRC_FILES					+= $(MAIN)
-SRC_FILES					+= $(addprefix $(AUX_PATH), $(AUX_FILES))
-SRC_FILES					+= $(addprefix $(AUX_GET_PATH), $(AUX_GET_FILES))
-SRC_FILES					+= $(addprefix $(UI_PATH), $(UI_FILES))
-SRC_FILES					+= $(addprefix $(UI_ARTS_PATH), $(UI_ARTS_FILES))
-SRC_FILES					+= $(addprefix $(RENDERER_PATH), $(RENDERER_FILES))
-SRC_FILES					+= $(addprefix $(RENDERER_DRAW_PATH), $(RENDERER_DRAW_FILES))
-SRC_FILES					+= $(addprefix $(RENDERER_DRAW_AUX_PATH), $(RENDERER_DRAW_AUX_FILES))
-SRC_FILES					+= $(addprefix $(PARSE_PATH), $(PARSE_FILES))
-SRC_FILES					+= $(addprefix $(CONTROLS_PATH), $(CONTROLS_FILES))
-SRC_FILES					+= $(addprefix $(CONTROLS_EVENTS_PATH), $(CONTROLS_EVENTS_FILES))
-SRC_FILES					+= $(addprefix $(CONTROLS_ACTIONS_PATH), $(CONTROLS_ACTIONS_FILES))
+SRC_FILES += $(MAIN)
+SRC_FILES += $(addprefix $(AUX_PATH), $(AUX_FILES))
+SRC_FILES += $(addprefix $(AUX_GET_PATH), $(AUX_GET_FILES))
+SRC_FILES += $(addprefix $(UI_PATH), $(UI_FILES))
+SRC_FILES += $(addprefix $(UI_ARTS_PATH), $(UI_ARTS_FILES))
+SRC_FILES += $(addprefix $(RENDERER_PATH), $(RENDERER_FILES))
+SRC_FILES += $(addprefix $(RENDERER_DRAW_PATH), $(RENDERER_DRAW_FILES))
+SRC_FILES += $(addprefix $(RENDERER_DRAW_AUX_PATH), $(RENDERER_DRAW_AUX_FILES))
+SRC_FILES += $(addprefix $(PARSE_PATH), $(PARSE_FILES))
+SRC_FILES += $(addprefix $(CONTROLS_PATH), $(CONTROLS_FILES))
+SRC_FILES += $(addprefix $(CONTROLS_EVENTS_PATH), $(CONTROLS_EVENTS_FILES))
+SRC_FILES += $(addprefix $(CONTROLS_ACTIONS_PATH), $(CONTROLS_ACTIONS_FILES))
 
 OBJ_FILES					+= $(MAIN)
 OBJ_FILES					+= $(AUX_FILES)
@@ -131,25 +129,18 @@ OBJ_FILES					+= $(CONTROLS_FILES)
 OBJ_FILES					+= $(CONTROLS_EVENTS_FILES)
 OBJ_FILES					+= $(CONTROLS_ACTIONS_FILES)
 
-SRCS						= $(addprefix ./, $(addsuffix .c, $(SRC_FILES)))
-OBJS						= $(addprefix $(BUILD_PATH), $(addsuffix .o, $(OBJ_FILES)))
-
-# **************************************************************************** #
-#                                    Git                                       #
-# **************************************************************************** #
-
-FTPRINTF_URL				= https://github.com/Denionline/ft_printf.git
-GNL_URL						= https://github.com/Denionline/get_next_line.git
-MLX_URL						= https://github.com/42paris/minilibx-linux.git
+SRCS = $(addprefix ./, $(addsuffix .c, $(SRC_FILES)))
+OBJS = $(addprefix $(BUILD_PATH), $(addsuffix .o, $(OBJ_FILES)))
 
 # **************************************************************************** #
 #                                  Compiler                                    #
 # **************************************************************************** #
 
-CC							= cc
-CFLAGS						= -Werror -Wextra -Wall
-MLXFLAGS					= -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH) -lXext -lX11 -lm -lz
-MAKE						= make --no-print-directory
+CC		 = cc
+CFLAGS	 = -Werror -Wextra -Wall -I$(INCLUDE_PATH)
+MLXFLAGS = -L$(MLX_PATH) -lmlx_Linux -L/usr/lib -I$(MLX_PATH)
+MLXFLAGS +=  -lXext -lX11 -lm -lz
+MAKE	 = make --no-print-directory
 
 # **************************************************************************** #
 #                                  Commands                                    #
@@ -173,25 +164,22 @@ $(NAME): | $(BUILD_PATH)
 	CUR=1; \
 	for SRC in $(SRCS); do\
 		OBJ=$(BUILD_PATH)$$(basename $$SRC .c).o;\
-		$(CC) $(CFLAGS) -I$(INCLUDE_PATH) -I/usr/include -I$(MLX_PATH) -O3 -c $$SRC -o $$OBJ;\
+		$(CC) $(CFLAGS) -I/usr/include -I$(MLX_PATH) -O3 -c $$SRC -o $$OBJ;\
 		PERC=$$(printf "%d" $$((100 * CUR / TOTAL))); \
 		FILLED=$$(printf "%0.f" $$((20 * PERC / 100))); \
 		EMPTY=$$((20 - FILLED)); \
-		BAR=$$(printf "$(C_GREEN)%*s$(C_STD)" $$FILLED "" | tr " " "#")$$(printf "%*s" $$EMPTY "" | tr " " "."); \
+		BAR=$$(printf "$(C_GREEN)%*s$(C_STD)" $$FILLED "" | tr " " "#")$$(\
+		printf "%*s" $$EMPTY "" | tr " " "."); \
 		printf "\rCompiling [%s] %3d%%" $$BAR $$PERC; \
 		CUR=$$((CUR + 1)); \
 	done; \
 	printf "\n";
-	@$(CC) $(CFLAGS) -I$(INCLUDE_PATH) $(OBJS) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJS) $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(NAME)
 	@printf "\n$(C_GREEN)Success to created $(C_STD)$(NAME)\n\n"
 
 $(BUILD_PATH):
 	@printf "\n$(C_CYAN)Building project...$(C_STD)\n"
 	@mkdir $(BUILD_PATH)
-
-test:
-	@$(CC) $(CFLAGS) $(OBJS) -g -pg $(MLXFLAGS) $(FTPRINTF) $(GNL) $(MLX) -o $(TEST)
-	@printf "\n$(C_GREEN)Success to created $(C_STD)$(NAME)\n\n"
 
 clean:
 	@rm -rf $(BUILD_PATH)
