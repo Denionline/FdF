@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/23 12:08:14 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/29 10:10:21 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:22:14 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int	key_release(int keycode, t_head *head)
 
 int	key_press(int keycode, t_head *head)
 {
-	// printf("%d\n", keycode);
 	rotate_action(keycode, &head->controls);
 	move_action(keycode, &head->controls);
 	zoom_action(keycode, &head->controls);

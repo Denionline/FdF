@@ -6,7 +6,7 @@
 /*   By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/29 10:13:07 by dximenes          #+#    #+#             */
-/*   Updated: 2025/07/29 10:13:21 by dximenes         ###   ########.fr       */
+/*   Updated: 2025/07/29 10:22:58 by dximenes         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	end(t_head *head)
 	if (head->map)
 		free(head->map);
 	if (head->draw)
-			free(head->draw);
+		free(head->draw);
 	if (head->vars.mlx)
 		free(head->vars.mlx);
 	if (head)
