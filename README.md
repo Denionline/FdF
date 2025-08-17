@@ -5,7 +5,7 @@ Welcome to **FdF**, a beautiful wireframe map renderer written in C. This projec
 ---
 
 <p align="center">
-  <img src="assets/fdf.png" width="400" alt="FdF Screenshot" />
+  <img src="assets/fdf.png" alt="FdF Screenshot" />
 </p>
 
 ---
