@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dximenes <dximenes@student.42porto.com>    +#+  +:+       +#+         #
+#    By: dximenes <dximenes@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/27 17:39:52 by dximenes          #+#    #+#              #
-#    Updated: 2025/07/29 10:07:56 by dximenes         ###   ########.fr        #
+#    Updated: 2025/08/17 21:14:14 by dximenes         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -218,7 +218,6 @@ v:
 verify_ftprintf:
 	@if test ! -d "$(FTPRINTF_PATH)"; then $(MAKE) get_ftprintf; \
 		else printf "ft_printf: $(C_GREEN)✅$(C_STD)\n"; fi
-	@$(MAKE) update_modules
 
 get_ftprintf:
 	@echo "Cloning ftprintf"
@@ -229,7 +228,6 @@ get_ftprintf:
 verify_gnl:
 	@if test ! -d "$(GNL_PATH)"; then $(MAKE) get_gnl; \
 		else printf "get_next_line: $(C_GREEN)✅$(C_STD)\n"; fi
-	@$(MAKE) update_modules
 
 get_gnl:
 	@printf "Cloning get_next_line\n"
@@ -238,16 +236,10 @@ get_gnl:
 
 # minilibx processes
 verify_mlx:
-	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_head; \
+	@if test ! -d "$(MLX_PATH)"; then $(MAKE) get_mlx; \
 		else printf "minilibx: $(C_GREEN)✅$(C_STD)\n"; fi
-	@$(MAKE) update_modules
 
-get_head:
+get_mlx:
 	@printf "Cloning get_next_line\n"
 	@git clone $(MLX_URL) $(MLX_PATH)
 	@printf "\n$(C_GREEN)minilibx$(C_STD) successfully downloaded\n"
-
-#general processes
-update_modules:
-	@git submodule init
-	@git submodule update --recursive --remote
