@@ -86,10 +86,6 @@ Student at 42 Porto
 
 ---
 
-<p align="center">
-  <b>🌐 [Explore more maps and code on GitHub!](https://github.com/Denionline/FdF)</b>
-</p>
-
 ---
 
 > _Results may be incomplete due to response limits. For a full list of files and features, [view the code on GitHub](https://github.com/Denionline/FdF/search)._  
