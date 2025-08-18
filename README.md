@@ -1,6 +1,6 @@
 # 🌄 FdF — Wireframe Map Renderer
 
-Welcome to **FdF**, a beautiful wireframe map renderer written in C. This project visualizes 3D landscapes from simple map files, transforming raw height data into interactive, artistic wireframe views. Designed with performance and style in mind, FdF brings mathematical maps to life!
+Welcome to my **FdF**, a beautiful wireframe map renderer written in C. This project visualizes 3D landscapes from simple map files, transforming raw height data into interactive, artistic wireframe views. Designed with performance and style in mind, FdF brings mathematical maps to life!
 
 ---
 
@@ -81,11 +81,11 @@ Each map file is a grid of integers (optionally with colors), representing heigh
 
 ## 💡 Author
 
-Made with ❤️ by [Denionline](https://github.com/Denionline)  
+Made with ❤️ by [Denionline](https://github.com/Denionline)
 Student at 42 Porto
 
 ---
 
 ---
 
-> _Results may be incomplete due to response limits. For a full list of files and features, [view the code on GitHub](https://github.com/Denionline/FdF/search)._  
+> _Results may be incomplete due to response limits. For a full list of files and features, [view the code on GitHub](https://github.com/Denionline/FdF/search)._
